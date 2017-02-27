@@ -61,7 +61,7 @@ $DBcon->close();
         echo '<li role="separator" class="divider"></li>';
     }
     ?>
-<li><a href="#">Mijn Account</a></li>
+<li><a href="profile.php">Mijn Account</a></li>
 <li><a href="logout.php">Uitloggen</a></li>
 </ul>
 </li>
