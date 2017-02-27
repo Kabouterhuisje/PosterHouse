@@ -148,7 +148,7 @@ if (isset($_SESSION['userSession'])) {
                 $country = $_POST['country'];
 
                 $query = $DBcon->query("UPDATE user SET username='$usernaam', email='$email', name='$name', phone='$phone', address='$address', city='$city', country='$country' WHERE user_id=".$_SESSION['userSession']);
-
+                echo "<meta http-equiv='refresh' content='0'>";
                 $DBcon->close();
 
             }

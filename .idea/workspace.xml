@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6832f546-8faf-49fb-a66a-91599e6d5444" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PosterHouse/dbconnect.php" afterPath="$PROJECT_DIR$/PosterHouse/dbconnect.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PosterHouse/profile.php" afterPath="$PROJECT_DIR$/PosterHouse/profile.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -57,12 +56,12 @@
       <file leaf-file-name="profile.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/PosterHouse/profile.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="135" column="90" lean-forward="true" selection-start-line="135" selection-start-column="90" selection-end-line="135" selection-end-column="90" />
+            <state relative-caret-position="450">
+              <caret line="150" column="63" lean-forward="false" selection-start-line="150" selection-start-column="63" selection-end-line="150" selection-end-column="63" />
               <folding>
-                <marker date="1488208753673" expanded="true" signature="121:154" ph="SELECT * FRO... user" />
-                <marker date="1488208753673" expanded="true" signature="7384:7535" ph="UPDATE user " />
-                <marker date="1488208753673" expanded="true" signature="7390:7535" ph="SELECT * FRO... user" />
+                <marker date="1488209045126" expanded="true" signature="121:154" ph="SELECT * FRO... user" />
+                <marker date="1488209045126" expanded="true" signature="7384:7535" ph="UPDATE user " />
+                <marker date="1488209045126" expanded="true" signature="7390:7535" ph="SELECT * FRO... user" />
               </folding>
             </state>
           </provider>
@@ -210,12 +209,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1488200296412</updated>
-      <workItem from="1488200298382" duration="8406000" />
+      <workItem from="1488200298382" duration="8697000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8406000" />
+    <option name="totallyTimeSpent" value="8697000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -303,12 +302,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/PosterHouse/profile.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="135" column="90" lean-forward="true" selection-start-line="135" selection-start-column="90" selection-end-line="135" selection-end-column="90" />
+        <state relative-caret-position="450">
+          <caret line="150" column="63" lean-forward="false" selection-start-line="150" selection-start-column="63" selection-end-line="150" selection-end-column="63" />
           <folding>
-            <marker date="1488208753673" expanded="true" signature="121:154" ph="SELECT * FRO... user" />
-            <marker date="1488208753673" expanded="true" signature="7384:7535" ph="UPDATE user " />
-            <marker date="1488208753673" expanded="true" signature="7390:7535" ph="SELECT * FRO... user" />
+            <marker date="1488209045126" expanded="true" signature="121:154" ph="SELECT * FRO... user" />
+            <marker date="1488209045126" expanded="true" signature="7384:7535" ph="UPDATE user " />
+            <marker date="1488209045126" expanded="true" signature="7390:7535" ph="SELECT * FRO... user" />
           </folding>
         </state>
       </provider>
