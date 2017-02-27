@@ -60,9 +60,13 @@ $DBcon->close();
                         if (!isset($_SESSION['userSession'])) {
                             echo '<li><a href="login.php">Inloggen</a></li>';
                             echo '<li role="separator" class="divider"></li>';
+
+                        }
+                        if (isset($_SESSION['userSession'])) {
+                            echo '<li><a href="profile.php">Mijn Account</a></li>';
                         }
                         ?>
-                        <li><a href="profile.php">Mijn Account</a></li>
+
                         <li><a href="logout.php?logout">Uitloggen</a></li>
                     </ul>
                 </li>

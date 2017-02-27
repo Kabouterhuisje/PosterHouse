@@ -56,9 +56,13 @@ if (isset($_SESSION['userSession'])) {
                         if (!isset($_SESSION['userSession'])) {
                             echo '<li><a href="login.php">Inloggen</a></li>';
                             echo '<li role="separator" class="divider"></li>';
+
+                        }
+                        if (isset($_SESSION['userSession'])) {
+                            echo '<li><a href="profile.php">Mijn Account</a></li>';
                         }
                         ?>
-                        <li><a href="#">Mijn Account</a></li>
+
                         <li><a href="logout.php?logout">Uitloggen</a></li>
                     </ul>
                 </li>
@@ -149,7 +153,7 @@ if (isset($_SESSION['userSession'])) {
 
                 $query = $DBcon->query("UPDATE user SET username='$usernaam', email='$email', name='$name', phone='$phone', address='$address', city='$city', country='$country' WHERE user_id=".$_SESSION['userSession']);
                 echo "<meta http-equiv='refresh' content='0'>";
-                $DBcon->close();
+
 
             }
             ?>
@@ -160,23 +164,54 @@ if (isset($_SESSION['userSession'])) {
                 <div class="form-group row">
                     <label for="example-search-input" class="col-2 col-form-label">Huidig wachtwoord</label>
                     <div class="col-10">
-                        <input class="form-control" type="password" value="" id="example-search-input">
+                        <input name="oldPass" class="form-control" type="password" value="" id="example-search-input">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="example-search-input" class="col-2 col-form-label">Nieuw wachtwoord</label>
                     <div class="col-10">
-                        <input class="form-control" type="password" value="" id="example-search-input">
+                        <input name="newPass" class="form-control" type="password" value="" id="example-search-input">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="example-search-input" class="col-2 col-form-label">Herhaal nieuw wachtwoord</label>
                     <div class="col-10">
-                        <input class="form-control" type="password" value="" id="example-search-input">
+                        <input name="newPassAgain" class="form-control" type="password" value="" id="example-search-input">
                     </div>
                 </div>
-                <input type="submit" class="btn btn-primary" name="btnInfo" value="Update"></input>
+                <input type="submit" class="btn btn-primary" name="btnPassword" value="Update"></input>
             </form>
+
+            <?php
+            if (ISSET($_POST['btnPassword'])) {
+
+                $oldPassword = strip_tags($_POST['oldPass']);
+                $newPassword = strip_tags($_POST['newPass']);
+                $newPasswordAgain = strip_tags($_POST['newPassAgain']);
+
+                $oldPassword = $DBcon->real_escape_string($oldPassword);
+                $newPassword = $DBcon->real_escape_string($oldPassword);
+                $newPasswordAgain = $DBcon->real_escape_string($newPasswordAgain);
+
+                $oldPasswordHashed = password_hash($oldPassword, PASSWORD_DEFAULT);
+                $newPasswordHashed = password_hash($newPassword, PASSWORD_DEFAULT);
+
+                if ($newPassword == $newPasswordAgain) {
+                    $query = $DBcon->query("UPDATE user SET password='$newPasswordHashed' WHERE user_id=".$_SESSION['userSession']);
+                    echo "<br /><div class='alert alert-success'>
+						<span class='glyphicon glyphicon-info-sign'></span> &nbsp; successfully registered !
+					</div>";
+                }
+                else {
+                    echo "<br /><div class='alert alert-danger'>
+						<span class='glyphicon glyphicon-info-sign'></span> &nbsp; Je hebt iets verkeerd gedaan! 
+					</div>";
+                }
+
+                $DBcon->close();
+            }
+            ?>
+
         </div>
     </div>
 </div>

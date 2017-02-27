@@ -92,7 +92,7 @@ if(isset($_POST['btn-signup'])) {
             <button type="submit" class="btn btn-default" name="btn-signup">
     		<span class="glyphicon glyphicon-log-in"></span> &nbsp; Create Account
 			</button> 
-            <a href="login.php.php" class="btn btn-default" style="float:right;">Log In Here</a>
+            <a href="login.php" class="btn btn-default" style="float:right;">Log In Here</a>
         </div> 
       
       </form>
