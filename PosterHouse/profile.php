@@ -7,7 +7,7 @@ if (isset($_SESSION['userSession'])) {
     $userRow=$query->fetch_array();
 }
 
-$DBcon->close();
+
 
 ?>
 <!DOCTYPE html>
@@ -83,79 +83,100 @@ $DBcon->close();
         <li><a data-toggle="tab" href="#menu1">Gegevens</a></li>
         <li><a data-toggle="tab" href="#menu2">Wachtwoord veranderen</a></li>
     </ul>
-
     <div class="tab-content">
         <div id="home" class="tab-pane fade in active">
             <h3>Home</h3>
-            <p>Welkom, <?php echo $userRow['username'];?>!<br /><br /> Pas op deze pagina je gegevens aan om zo eenvoudig producten te kunnen bestellen. De gegevens die u hier invuld, zullen automatisch worden ingevuld als u een product wilt kopen! Bespaar tijd en vul uw contactgegevens in!</p>
+            <p>Welkom, <?php echo $userRow['username'];?>!<br /><br /> Pas op deze pagina je gegevens aan om zo eenvoudig producten te kunnen bestellen. De gegevens die u hier invuld, zullen automatisch worden ingevuld als u een product wilt kopen! Bespaar tijd en sla uw contactgegevens nu op in het profiel!</p>
         </div>
         <div id="menu1" class="tab-pane fade">
             <h3>Gegevens</h3>
-            <div class="form-group row">
-                <label for="example-text-input" class="col-2 col-form-label">Username</label>
-                <div class="col-10">
-                    <input class="form-control" type="text" value=<?php echo $userRow['username']?> id="example-text-input">
+            <form name="gegevens" method="post" action="">
+                <div class="form-group row">
+                    <label for="example-text-input" class="col-2 col-form-label">Username</label>
+                    <div class="col-10">
+                        <input name="username" class="form-control" type="text" value=<?php echo $userRow['username']?> id="example-text-input">
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="example-search-input" class="col-2 col-form-label">Email</label>
-                <div class="col-10">
-                    <input class="form-control" type="email" value=<?php echo $userRow['email']?> id="example-search-input">
+                <div class="form-group row">
+                    <label for="example-search-input" class="col-2 col-form-label">Email</label>
+                    <div class="col-10">
+                        <input name="email" class="form-control" type="email" value=<?php echo $userRow['email']?> id="example-search-input">
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="example-email-input" class="col-2 col-form-label">Naam</label>
-                <div class="col-10">
-                    <input class="form-control" type="text" value=<?php echo $userRow['name']?> id="example-email-input">
+                <div class="form-group row">
+                    <label for="example-email-input" class="col-2 col-form-label">Naam</label>
+                    <div class="col-10">
+                        <input name="name" class="form-control" type="text" value=<?php echo $userRow['name']?> id="example-email-input">
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="example-url-input" class="col-2 col-form-label">Telefoonnummer</label>
-                <div class="col-10">
-                    <input class="form-control" type="tel" value=<?php echo $userRow['phone']?> id="example-url-input">
+                <div class="form-group row">
+                    <label for="example-url-input" class="col-2 col-form-label">Telefoonnummer</label>
+                    <div class="col-10">
+                        <input name="phone" class="form-control" type="tel" value=<?php echo $userRow['phone']?> id="example-url-input">
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="example-tel-input" class="col-2 col-form-label">Adres</label>
-                <div class="col-10">
-                    <input class="form-control" type="text" value=<?php echo $userRow['address']?> id="example-tel-input">
+                <div class="form-group row">
+                    <label for="example-tel-input" class="col-2 col-form-label">Adres</label>
+                    <div class="col-10">
+                        <input name="address" class="form-control" type="text" value=<?php echo $userRow['address']?> id="example-tel-input">
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="example-password-input" class="col-2 col-form-label">Stad</label>
-                <div class="col-10">
-                    <input class="form-control" type="text" value=<?php echo $userRow['city']?> id="example-password-input">
+                <div class="form-group row">
+                    <label for="example-password-input" class="col-2 col-form-label">Stad</label>
+                    <div class="col-10">
+                        <input name="city" class="form-control" type="text" value=<?php echo $userRow['city']?> id="example-password-input">
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="example-number-input" class="col-2 col-form-label">Land</label>
-                <div class="col-10">
-                    <input class="form-control" type="text" value=<?php echo $userRow['country']?> id="example-number-input">
+                <div class="form-group row">
+                    <label for="example-number-input" class="col-2 col-form-label">Land</label>
+                    <div class="col-10">
+                        <input name="country" class="form-control" type="text" value=<?php echo $userRow['country']?> id="example-number-input">
+                    </div>
                 </div>
-            </div>
-            <button type="button" class="btn btn-primary">Update</button>
+                <input type="submit" class="btn btn-primary" name="btnInfo" value="Update"></input>
+            </form>
+
+            <?php
+            if (ISSET($_POST['btnInfo'])) {
+
+                $usernaam = $_POST['username'];
+                $email = $_POST['email'];
+                $name = $_POST['name'];
+                $phone = $_POST['phone'];
+                $address = $_POST['address'];
+                $city = $_POST['city'];
+                $country = $_POST['country'];
+
+                $query = $DBcon->query("UPDATE user SET username='$usernaam', email='$email', name='$name', phone='$phone', address='$address', city='$city', country='$country' WHERE user_id=".$_SESSION['userSession']);
+
+                $DBcon->close();
+
+            }
+            ?>
         </div>
         <div id="menu2" class="tab-pane fade">
             <h3>Wachtwoord veranderen</h3>
-            <div class="form-group row">
-                <label for="example-search-input" class="col-2 col-form-label">Huidig wachtwoord</label>
-                <div class="col-10">
-                    <input class="form-control" type="password" value="" id="example-search-input">
+            <form name="updateWW" method="post" action="">
+                <div class="form-group row">
+                    <label for="example-search-input" class="col-2 col-form-label">Huidig wachtwoord</label>
+                    <div class="col-10">
+                        <input class="form-control" type="password" value="" id="example-search-input">
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="example-search-input" class="col-2 col-form-label">Nieuw wachtwoord</label>
-                <div class="col-10">
-                    <input class="form-control" type="password" value="" id="example-search-input">
+                <div class="form-group row">
+                    <label for="example-search-input" class="col-2 col-form-label">Nieuw wachtwoord</label>
+                    <div class="col-10">
+                        <input class="form-control" type="password" value="" id="example-search-input">
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="example-search-input" class="col-2 col-form-label">Herhaal nieuw wachtwoord</label>
-                <div class="col-10">
-                    <input class="form-control" type="password" value="" id="example-search-input">
+                <div class="form-group row">
+                    <label for="example-search-input" class="col-2 col-form-label">Herhaal nieuw wachtwoord</label>
+                    <div class="col-10">
+                        <input class="form-control" type="password" value="" id="example-search-input">
+                    </div>
                 </div>
-            </div>
-            <button type="button" class="btn btn-primary">Update</button>
+                <input type="submit" class="btn btn-primary" name="btnInfo" value="Update"></input>
+            </form>
         </div>
     </div>
 </div>
