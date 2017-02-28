@@ -12,9 +12,9 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="index.php">Home</a></li>
-                <li><a href="producten.php">Producten</a></li>
-                <li><a href="contact.php">Contact</a></li>
+                <li class="active"><a href="index.php"><?php echo 'Home'; ?></a></li>
+                <li><a href="producten.php"><?php echo 'Producten'; ?></a></li>
+                <li><a href="contact.php"><?php echo 'Contact'; ?></a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="winkelwagen.php"><span class="glyphicon glyphicon-shopping-cart"></span> Winkelwagen</a></li>

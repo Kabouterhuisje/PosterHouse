@@ -7,6 +7,8 @@ if (isset($_SESSION['userSession'])) {
     $userRow=$query->fetch_array();
 }
 
+//    $menuitemName = $DBcon->query("SELECT menuitem_name FROM menuitem WHERE id=1")->fetch_object()->menuitem_name;
+
 $DBcon->close();
 
 ?>
@@ -68,6 +70,7 @@ require 'header.php';
 
 <?php
 require 'footer.php';
+
 ?>
 
 </body>
