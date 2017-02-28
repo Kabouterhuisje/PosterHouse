@@ -24,8 +24,6 @@ $DBcon->close();
 </head>
 <body>
 
-<!-- <a href="#" class="pull-left"><img src="images/Logo.png"></a>  -->
-
 <?php
 require 'header.php';
 ?>
@@ -42,7 +40,6 @@ require 'header.php';
                     <li data-target="#my-slider" data-slide-to="1"></li>
                     <li data-target="#my-slider" data-slide-to="2"></li>
                 </ol>
-
                 <!-- images -->
                 <div class="carousel-inner" role="listbox">
                     <div class="item active">
@@ -55,13 +52,11 @@ require 'header.php';
                         <img class="img-responsive center-block" src="images/aanbieding3.png" alt="carousel3"/>
                     </div>
                 </div>
-
                 <!-- controls (links en rechts) -->
                 <a class="left carousel-control" href="#my-slider" role="button" data-slide="prev">
                     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
                 </a>
-
                 <a class="right carousel-control" href="#my-slider" role="button" data-slide="next">
                     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>

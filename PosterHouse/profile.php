@@ -7,8 +7,6 @@ if (isset($_SESSION['userSession'])) {
     $userRow=$query->fetch_array();
 }
 
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -99,8 +97,6 @@ require 'header.php';
 
                 $query = $DBcon->query("UPDATE user SET username='$usernaam', email='$email', name='$name', phone='$phone', address='$address', city='$city', country='$country' WHERE user_id=".$_SESSION['userSession']);
                 echo "<meta http-equiv='refresh' content='0'>";
-
-
             }
             ?>
         </div>
@@ -161,6 +157,5 @@ require 'header.php';
         </div>
     </div>
 </div>
-
 </body>
 </html>
