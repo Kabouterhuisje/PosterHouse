@@ -186,12 +186,12 @@ require 'header.php';
                 if ($newPassword == $newPasswordAgain && password_verify($oldPassword, $userRow['password'])) {
                     $query = $DBcon->query("UPDATE user SET password='$newPasswordHashed' WHERE user_id=".$_SESSION['userSession']);
                     echo "<br /><div class='alert alert-success'>
-						<span class='glyphicon glyphicon-info-sign'></span> &nbsp; Wachtwoord is verandert!
+						<span class='glyphicon glyphicon-info-sign'></span> &nbsp; Je wachtwoord is verandert!
 					</div>";
                 }
                 else {
                     echo "<br /><div class='alert alert-danger'>
-						<span class='glyphicon glyphicon-info-sign'></span> &nbsp; Je hebt iets verkeerd gedaan! 
+						<span class='glyphicon glyphicon-info-sign'></span> &nbsp; Wachtwoord onjuist of nieuw wachtwoord komt niet overeen!
 					</div>";
 
                     echo $oldPasswordHashed;
