@@ -24,6 +24,51 @@ if (isset($_SESSION['userSession'])) {
 require 'header.php';
 ?>
 
+<?php
+
+    $uName;
+    $uTel;
+    $uAddress;
+    $uCity;
+    $uCountry;
+
+    if (empty($userRow['name'])) {
+        $uName = 'Naam';
+    }
+    else {
+        $uName = $userRow['name'];
+    }
+
+    if (empty($userRow['phone'])) {
+        $uTel = '0612345678';
+    }
+    else {
+        $uTel = $userRow['phone'];
+    }
+
+    if (empty($userRow['address'])) {
+        $uAddress = 'Adres';
+    }
+    else {
+        $uAddress = $userRow['address'];
+    }
+
+    if (empty($userRow['city'])) {
+        $uCity = 'Stad';
+    }
+    else {
+        $uCity = $userRow['city'];
+    }
+
+    if (empty($userRow['country'])) {
+        $uCountry = 'Land';
+    }
+    else {
+        $uCountry = $userRow['country'];
+    }
+
+?>
+
 <div class="container"><br /><br /><br />
     <h2>Profiel Settings</h2>
     <ul class="nav nav-tabs">
@@ -54,31 +99,31 @@ require 'header.php';
                 <div class="form-group row">
                     <label for="example-email-input" class="col-2 col-form-label">Naam</label>
                     <div class="col-10">
-                        <input name="name" class="form-control" type="text" value=<?php echo $userRow['name']?> id="example-email-input">
+                        <input name="name" class="form-control" type="text" value=<?php echo $uName?> id="example-email-input">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="example-url-input" class="col-2 col-form-label">Telefoonnummer</label>
                     <div class="col-10">
-                        <input name="phone" class="form-control" type="tel" value=<?php echo $userRow['phone']?> id="example-url-input">
+                        <input name="phone" class="form-control" type="tel" value=<?php echo $uTel?> id="example-url-input">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="example-tel-input" class="col-2 col-form-label">Adres</label>
                     <div class="col-10">
-                        <input name="address" class="form-control" type="text" value=<?php echo $userRow['address']?> id="example-tel-input">
+                        <input name="address" class="form-control" type="text" value=<?php echo $uAddress?> id="example-tel-input">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="example-password-input" class="col-2 col-form-label">Stad</label>
                     <div class="col-10">
-                        <input name="city" class="form-control" type="text" value=<?php echo $userRow['city']?> id="example-password-input">
+                        <input name="city" class="form-control" type="text" value=<?php echo $uCity?> id="example-password-input">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="example-number-input" class="col-2 col-form-label">Land</label>
                     <div class="col-10">
-                        <input name="country" class="form-control" type="text" value=<?php echo $userRow['country']?> id="example-number-input">
+                        <input name="country" class="form-control" type="text" value=<?php echo $uCountry?> id="example-number-input">
                     </div>
                 </div>
                 <input type="submit" class="btn btn-primary" name="btnInfo" value="Update"></input>
