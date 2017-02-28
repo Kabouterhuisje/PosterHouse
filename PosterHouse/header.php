@@ -1,3 +1,6 @@
+<?php
+//global $menuitemName;
+?>
 <!-- Navigatiebar -->
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -12,7 +15,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="index.php"><?php echo 'Home'; ?></a></li>
+                <li><a href="index.php"><?php echo 'Home'; ?></a></li>
                 <li><a href="producten.php"><?php echo 'Producten'; ?></a></li>
                 <li><a href="contact.php"><?php echo 'Contact'; ?></a></li>
             </ul>
