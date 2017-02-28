@@ -183,16 +183,20 @@ require 'header.php';
                 $oldPasswordHashed = password_hash($oldPassword, PASSWORD_DEFAULT);
                 $newPasswordHashed = password_hash($newPassword, PASSWORD_DEFAULT);
 
-                if ($newPassword == $newPasswordAgain) {
+                if ($newPassword == $newPasswordAgain && password_verify($oldPassword, $userRow['password'])) {
                     $query = $DBcon->query("UPDATE user SET password='$newPasswordHashed' WHERE user_id=".$_SESSION['userSession']);
                     echo "<br /><div class='alert alert-success'>
-						<span class='glyphicon glyphicon-info-sign'></span> &nbsp; successfully registered !
+						<span class='glyphicon glyphicon-info-sign'></span> &nbsp; Wachtwoord is verandert!
 					</div>";
                 }
                 else {
                     echo "<br /><div class='alert alert-danger'>
 						<span class='glyphicon glyphicon-info-sign'></span> &nbsp; Je hebt iets verkeerd gedaan! 
 					</div>";
+
+                    echo $oldPasswordHashed;
+                    echo '<br />';
+                    echo $userRow['password'];
                 }
 
                 $DBcon->close();
