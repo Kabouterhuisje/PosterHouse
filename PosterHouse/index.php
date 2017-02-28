@@ -25,64 +25,10 @@ $DBcon->close();
 <body>
 
 <!-- <a href="#" class="pull-left"><img src="images/Logo.png"></a>  -->
-<!-- Navigatiebar -->
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="index.php">PosterHouse</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="index.php">Home</a></li>
-                <li><a href="producten.php">Producten</a></li>
-                <li><a href="contact.php">Contact</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="winkelwagen.php"><span class="glyphicon glyphicon-shopping-cart"></span> Winkelwagen</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <?php
-                        if (isset($_SESSION['userSession'])) {
-                            echo $userRow['username'];
-                        }
-                        else {
-                            echo 'Profiel';
-                        }
-                        ?><span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <?php
-                        if (!isset($_SESSION['userSession'])) {
-                            echo '<li><a href="login.php">Inloggen</a></li>';
-                            echo '<li role="separator" class="divider"></li>';
 
-                        }
-                        if (isset($_SESSION['userSession'])) {
-                            echo '<li><a href="profile.php">Mijn Account</a></li>';
-                        }
-                        ?>
-
-                        <li><a href="logout.php?logout">Uitloggen</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <div class="nav navbar-nav form-inline navbar-right" style="padding: 10px;">
-                <div class="input-group">
-                    <input type="text" class="form-control"></input>
-                    <div class="input-group-btn">
-                        <button class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
-                    </div>
-                </div>
-            </div>
-
-        </div><!--/.nav-collapse -->
-    </div>
-</nav>
+<?php
+require 'header.php';
+?>
 
 <!-- carousel -->
 <div class="container" style="margin-top:60px;text-align:center;font-family:Verdana, Geneva, sans-serif;font-size:35px;">
@@ -125,30 +71,10 @@ $DBcon->close();
     </div>
 </div>
 
-<!-- Footer -->
-<div class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container">
-        <div class="row">
+<?php
+require 'footer.php';
+?>
 
-            <div class="col-xs-6 col-md-3">
-                <h3>Title 1</h3>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
-            </div>
-            <div class="col-xs-6 col-md-3">
-                <h3>Title 2</h3>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
-            </div>
-            <div class="col-xs-6 col-md-3">
-                <h3>Title 3</h3>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
-            </div>
-            <div class="col-xs-6 col-md-3">
-                <img src="images/Logo.png" width="200" height="200"/>
-            </div>
-        </div>
-
-    </div>
-</div>
 </body>
 </html>
 
