@@ -1,5 +1,23 @@
 <?php
-//global $menuitemName;
+
+$DBhost = "localhost";
+$DBuser = "root";
+$DBpass = "";
+$DBname = "posterhouse_database";
+
+$DBcon = new MySQLi($DBhost,$DBuser,$DBpass,$DBname);
+
+if ($DBcon->connect_errno) {
+    die("ERROR : -> ".$DBcon->connect_error);
+}
+
+$menuQuery = "SELECT menuitem_name, menuitem_link FROM menuitem ORDER BY id ASC";
+$result = $DBcon->query($menuQuery);
+
+while($row = $result->fetch_array()) {
+    $rows[] = $row;
+}
+
 ?>
 <!-- Navigatiebar -->
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -15,9 +33,12 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="index.php"><?php echo 'Home'; ?></a></li>
-                <li><a href="producten.php"><?php echo 'Producten'; ?></a></li>
-                <li><a href="contact.php"><?php echo 'Contact'; ?></a></li>
+                <?php
+                foreach ($rows as $row) {
+                    $menuItemLink = $row['menuitem_link'];
+                    echo "<li><a href='$menuItemLink'>".$row['menuitem_name']."</a></li>";
+                }
+                ?>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="winkelwagen.php"><span class="glyphicon glyphicon-shopping-cart"></span> Winkelwagen</a></li>
@@ -55,3 +76,7 @@
         </div><!--/.nav-collapse -->
     </div>
 </nav>
+
+<?php
+$DBcon->close();
+?>

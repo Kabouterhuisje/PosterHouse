@@ -6,12 +6,6 @@ if (isset($_SESSION['userSession'])) {
     $query = $DBcon->query("SELECT * FROM user WHERE user_id=".$_SESSION['userSession']);
     $userRow=$query->fetch_array();
 }
-
-//global $menuitemName;
-//$menuitemName= $DBcon->query("SELECT menuitem_name FROM menuitem order by id ASC")->fetch_object()->menuitem_name;
-
-$DBcon->close();
-
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
