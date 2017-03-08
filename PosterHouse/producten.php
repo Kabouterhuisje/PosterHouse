@@ -73,8 +73,30 @@ require 'header.php';
 	$query = "SELECT * FROM product";
 	$result = mysqli_query($connect, $query);
 	$num_rows = mysqli_num_rows($result);
-	//$productname = $result['product_name'];
 	
+	// De hoeveelheid resultaten die we per pagina willen laten zien
+	$countresults = 8;
+	
+	// De hoeveelheid pagina's die we nodig hebben
+	$countpages = ceil($num_rows / $countresults);
+	
+	// Het bepalen op welke pagina de gebruiker zit
+	if(!isset($_GET['page']))
+	{
+		$page = 1;
+	}
+	else
+	{
+		$page = $_GET['page'];
+	}
+	
+	// Het bepalen van het sql LIMIT startcijfer
+	$firstresult = ($page - 1) * $countresults;
+	
+	// Het ophalen van de geselecteerde resultaten uit de database
+	$query = "SELECT * FROM product LIMIT " . $firstresult . ',' . $countresults;
+	$result = mysqli_query($connect, $query);
+
 	if($num_rows > 0)
 	{
 		for ($i = 0; $i < $num_rows; $i++)
@@ -84,7 +106,7 @@ require 'header.php';
 	?>
 	<div class="col-xs-6 col-md-3">
 		<img src="images/artikel.png"/>
-		<p><?php echo $row['product_name'];?> - €<?php echo $row['price'];?></p>
+		<p><?php echo $row['product_name'] . ' - €' . $row['price'];?></p>
 		<p><?php echo $row['description'];?></p>
 	</div>
 	<?php 
@@ -98,11 +120,16 @@ require 'header.php';
 <div class="fixed-bottom">
     <div class="container center">
         <ul class="pagination">
-          <li><a href="#">1</a></li>
-          <li><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-          <li><a href="#">4</a></li>
-          <li><a href="#">5</a></li>
+          <?php
+          // Het weergeven van de links naar de pagina's
+          for ($page=1; $page<=$countpages; $page++)
+          {
+          	if ($num_rows > $countresults)
+          	{
+          	echo '<li><a href="producten.php?page=' . $page . '">' . $page . '</a></li>';
+          	}
+          }
+          ?>
         </ul>
     </div>
 </div>
