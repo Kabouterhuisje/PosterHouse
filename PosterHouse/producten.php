@@ -73,17 +73,19 @@ require 'header.php';
 	$query = "SELECT * FROM product";
 	$result = mysqli_query($connect, $query);
 	$num_rows = mysqli_num_rows($result);
+	//$productname = $result['product_name'];
 	
 	if($num_rows > 0)
 	{
-		while($row = mysqli_fetch_array($result)) 
+		for ($i = 0; $i < $num_rows; $i++)
 		{
-			for ($i = 0; $i < $num_rows; $i++)
+			while($row = mysqli_fetch_array($result))
 			{
 	?>
 	<div class="col-xs-6 col-md-3">
 		<img src="images/artikel.png"/>
-		<p>Placeholder</p>
+		<p><?php echo $row['product_name'];?> - €<?php echo $row['price'];?></p>
+		<p><?php echo $row['description'];?></p>
 	</div>
 	<?php 
 			}
