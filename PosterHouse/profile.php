@@ -182,8 +182,9 @@ require 'header.php';
 
                 $oldPasswordHashed = password_hash($oldPassword, PASSWORD_DEFAULT);
                 $newPasswordHashed = password_hash($newPassword, PASSWORD_DEFAULT);
+                $newPasswordAgainHashed = password_hash($newPasswordAgain, PASSWORD_DEFAULT);
 
-                if ($newPassword == $newPasswordAgain && password_verify($oldPassword, $userRow['password'])) {
+                if ($_POST['newPass'] == $_POST['newPassAgain'] && password_verify($oldPassword, $userRow['password'])) {
                     $query = $connect->query("UPDATE user SET password='$newPasswordHashed' WHERE user_id=".$_SESSION['userSession']);
                     echo "<br /><div class='alert alert-success'>
 						<span class='glyphicon glyphicon-info-sign'></span> &nbsp; Je wachtwoord is verandert!
@@ -193,10 +194,6 @@ require 'header.php';
                     echo "<br /><div class='alert alert-danger'>
 						<span class='glyphicon glyphicon-info-sign'></span> &nbsp; Wachtwoord onjuist of nieuw wachtwoord komt niet overeen!
 					</div>";
-
-                    echo $oldPasswordHashed;
-                    echo '<br />';
-                    echo $userRow['password'];
                 }
 
                 $connect->close();
