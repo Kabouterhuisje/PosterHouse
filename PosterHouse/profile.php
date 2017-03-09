@@ -1,9 +1,9 @@
 <?php
 session_start();
-include_once 'dbconnect.php';
+$connect = mysqli_connect("localhost", "root", "", "posterhouse_database");
 
 if (isset($_SESSION['userSession'])) {
-    $query = $DBcon->query("SELECT * FROM user WHERE user_id=".$_SESSION['userSession']);
+    $query = $connect->query("SELECT * FROM user WHERE user_id=".$_SESSION['userSession']);
     $userRow=$query->fetch_array();
 }
 
@@ -140,7 +140,7 @@ require 'header.php';
                 $city = $_POST['city'];
                 $country = $_POST['country'];
 
-                $query = $DBcon->query("UPDATE user SET username='$usernaam', email='$email', name='$name', phone='$phone', address='$address', city='$city', country='$country' WHERE user_id=".$_SESSION['userSession']);
+                $query = $connect->query("UPDATE user SET username='$usernaam', email='$email', name='$name', phone='$phone', address='$address', city='$city', country='$country' WHERE user_id=".$_SESSION['userSession']);
                 echo "<meta http-equiv='refresh' content='0'>";
             }
             ?>
@@ -176,15 +176,15 @@ require 'header.php';
                 $newPassword = strip_tags($_POST['newPass']);
                 $newPasswordAgain = strip_tags($_POST['newPassAgain']);
 
-                $oldPassword = $DBcon->real_escape_string($oldPassword);
-                $newPassword = $DBcon->real_escape_string($oldPassword);
-                $newPasswordAgain = $DBcon->real_escape_string($newPasswordAgain);
+                $oldPassword = $connect->real_escape_string($oldPassword);
+                $newPassword = $connect->real_escape_string($oldPassword);
+                $newPasswordAgain = $connect->real_escape_string($newPasswordAgain);
 
                 $oldPasswordHashed = password_hash($oldPassword, PASSWORD_DEFAULT);
                 $newPasswordHashed = password_hash($newPassword, PASSWORD_DEFAULT);
 
                 if ($newPassword == $newPasswordAgain && password_verify($oldPassword, $userRow['password'])) {
-                    $query = $DBcon->query("UPDATE user SET password='$newPasswordHashed' WHERE user_id=".$_SESSION['userSession']);
+                    $query = $connect->query("UPDATE user SET password='$newPasswordHashed' WHERE user_id=".$_SESSION['userSession']);
                     echo "<br /><div class='alert alert-success'>
 						<span class='glyphicon glyphicon-info-sign'></span> &nbsp; Je wachtwoord is verandert!
 					</div>";
@@ -199,7 +199,7 @@ require 'header.php';
                     echo $userRow['password'];
                 }
 
-                $DBcon->close();
+                $connect->close();
             }
             ?>
 

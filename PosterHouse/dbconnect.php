@@ -1,14 +1,14 @@
 <?php
 
-	 $DBhost = "localhost";
-	 $DBuser = "root";
-	 $DBpass = "";
-	 $DBname = "posterhouse_database";
-	 
-	 $DBcon = new MySQLi($DBhost,$DBuser,$DBpass,$DBname);
+	 $host = "localhost";
+	 $account = "root";
+	 $pass = "";
+	 $name = "posterhouse_database";
+
+		$connect = new MySQLi($host,$account,$pass,$name);
     
-     if ($DBcon->connect_errno) {
-         die("ERROR : -> ".$DBcon->connect_error);
+     if ($connect->connect_errno) {
+         die("ERROR : -> ".$connect->connect_error);
      }
 
 ?>
