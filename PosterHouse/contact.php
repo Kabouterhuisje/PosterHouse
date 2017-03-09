@@ -1,13 +1,13 @@
 <?php
 session_start();
-include_once 'dbconnect.php';
+$connect = mysqli_connect("localhost", "root", "", "posterhouse_database");
 
 if (isset($_SESSION['userSession'])) {
-    $query = $DBcon->query("SELECT * FROM user WHERE user_id=".$_SESSION['userSession']);
+    $query = $connect->query("SELECT * FROM user WHERE user_id=".$_SESSION['userSession']);
     $userRow=$query->fetch_array();
 }
 
-$DBcon->close();
+$connect->close();
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

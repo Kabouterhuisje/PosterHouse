@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'dbconnect.php';
+$connect = mysqli_connect("localhost", "root", "", "posterhouse_database");
 
 if (isset($_SESSION['userSession'])!="") {
 	header("Location: index.php");
@@ -12,10 +12,10 @@ if (isset($_POST['btn-login'])) {
 	$email = strip_tags($_POST['email']);
 	$password = strip_tags($_POST['password']);
 	
-	$email = $DBcon->real_escape_string($email);
-	$password = $DBcon->real_escape_string($password);
+	$email = $connect->real_escape_string($email);
+	$password = $connect->real_escape_string($password);
 	
-	$query = $DBcon->query("SELECT user_id, email, password FROM user WHERE email='$email'");
+	$query = $connect->query("SELECT user_id, email, password FROM user WHERE email='$email'");
 	$row=$query->fetch_array();
 	
 	$count = $query->num_rows; // if email/password are correct returns must be 1 row
@@ -28,7 +28,7 @@ if (isset($_POST['btn-login'])) {
 					<span class='glyphicon glyphicon-info-sign'></span> &nbsp; Invalid Username or Password !
 				</div>";
 	}
-	$DBcon->close();
+    $connect->close();
 }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

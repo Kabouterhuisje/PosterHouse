@@ -3,7 +3,7 @@ session_start();
 if (isset($_SESSION['userSession'])!="") {
 	header("Location: index.php");
 }
-require_once 'dbconnect.php';
+$connect = mysqli_connect("localhost", "root", "", "posterhouse_database");
 
 if(isset($_POST['btn-signup'])) {
 	
@@ -11,20 +11,20 @@ if(isset($_POST['btn-signup'])) {
 	$email = strip_tags($_POST['email']);
 	$upass = strip_tags($_POST['password']);
 	
-	$uname = $DBcon->real_escape_string($uname);
-	$email = $DBcon->real_escape_string($email);
-	$upass = $DBcon->real_escape_string($upass);
+	$uname = $connect->real_escape_string($uname);
+	$email = $connect->real_escape_string($email);
+	$upass = $connect->real_escape_string($upass);
 	
 	$hashed_password = password_hash($upass, PASSWORD_DEFAULT);
 	
-	$check_email = $DBcon->query("SELECT email FROM user WHERE email='$email'");
+	$check_email = $connect->query("SELECT email FROM user WHERE email='$email'");
 	$count=$check_email->num_rows;
 	
 	if ($count==0) {
 		
 		$query = "INSERT INTO user(username,password,email) VALUES('$uname','$hashed_password','$email')";
 
-		if ($DBcon->query($query)) {
+		if ($connect->query($query)) {
 			$msg = "<div class='alert alert-success'>
 						<span class='glyphicon glyphicon-info-sign'></span> &nbsp; successfully registered !
 					</div>";
@@ -42,8 +42,8 @@ if(isset($_POST['btn-signup'])) {
 				</div>";
 			
 	}
-	
-	$DBcon->close();
+
+    $connect->close();
 }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
