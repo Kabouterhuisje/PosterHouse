@@ -104,8 +104,8 @@ require 'header.php';
 			while($row = mysqli_fetch_array($result))
 			{
 	?>
-	<div class="col-xs-6 col-md-3">
-		<img src="images/artikel.png"/>
+	<div class="col-xs-6 col-md-3" align="center">
+		<img src="images/posters/<?php echo $row['image'];?>" height="200" width="150"/>
 		<p><?php echo $row['product_name'] . ' - €' . $row['price'];?></p>
 		<p><?php echo $row['description'];?></p>
 	</div>
