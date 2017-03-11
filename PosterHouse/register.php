@@ -3,7 +3,7 @@ session_start();
 if (isset($_SESSION['userSession'])!="") {
 	header("Location: index.php");
 }
-$connect = mysqli_connect("localhost", "root", "", "posterhouse_database");
+$connect = mysqli_connect("localhost", "root", "", "posterhouse_databaseV2");
 
 if(isset($_POST['btn-signup'])) {
 	
@@ -22,7 +22,7 @@ if(isset($_POST['btn-signup'])) {
 	
 	if ($count==0) {
 		
-		$query = "INSERT INTO user(username,password,email) VALUES('$uname','$hashed_password','$email')";
+		$query = "INSERT INTO user(username,password,email,role) VALUES('$uname','$hashed_password','$email','Gebruiker')";
 
 		if ($connect->query($query)) {
 			$msg = "<div class='alert alert-success'>

@@ -3,7 +3,7 @@
 $DBhost = "localhost";
 $DBuser = "root";
 $DBpass = "";
-$DBname = "posterhouse_database";
+$DBname = "posterhouse_databaseV2";
 
 $DBcon = new MySQLi($DBhost,$DBuser,$DBpass,$DBname);
 
