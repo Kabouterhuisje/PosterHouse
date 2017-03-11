@@ -177,7 +177,7 @@ require 'header.php';
                 $newPasswordAgain = strip_tags($_POST['newPassAgain']);
 
                 $oldPassword = $connect->real_escape_string($oldPassword);
-                $newPassword = $connect->real_escape_string($oldPassword);
+                $newPassword = $connect->real_escape_string($newPassword);
                 $newPasswordAgain = $connect->real_escape_string($newPasswordAgain);
 
                 $oldPasswordHashed = password_hash($oldPassword, PASSWORD_DEFAULT);
