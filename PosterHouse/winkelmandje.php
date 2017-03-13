@@ -107,7 +107,7 @@ require 'header.php';
             ?>
         </table>
     </div>
-    <a href="producten.php"><input type="submit" name="checkout" style="margin-top:5px;" class="btn btn-success" value="Afrekenen" /></a>
+    <a href="checkout.php"><input type="submit" name="checkout" style="margin-top:5px;" class="btn btn-success" value="Afrekenen" /></a>
     <a href="producten.php"><input type="submit" name="verder" style="margin-top:5px;" class="btn btn-primary" value="Verder winkelen" /></a>
 </div>
 <br />

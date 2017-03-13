@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6832f546-8faf-49fb-a66a-91599e6d5444" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PosterHouse/checkout.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PosterHouse/producten.php" afterPath="$PROJECT_DIR$/PosterHouse/producten.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PosterHouse/winkelmandje.php" afterPath="$PROJECT_DIR$/PosterHouse/winkelmandje.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -41,18 +42,18 @@
       <file leaf-file-name="contact.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PosterHouse/contact.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="7" selection-end-column="1" />
+            <state relative-caret-position="671">
+              <caret line="106" column="0" lean-forward="true" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="producten.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="producten.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PosterHouse/producten.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="1" lean-forward="false" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+            <state relative-caret-position="408">
+              <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="26" selection-end-column="2" />
               <folding>
                 <element signature="n#style#0;n#input#3;n#div#0;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <marker date="1489410672403" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
@@ -114,13 +115,25 @@
       <file leaf-file-name="winkelmandje.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PosterHouse/winkelmandje.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="14" lean-forward="true" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
+            <state relative-caret-position="654">
+              <caret line="109" column="25" lean-forward="false" selection-start-line="109" selection-start-column="25" selection-end-line="109" selection-end-column="25" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#input#0;n#a#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#input#0;n#a#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1489410606193" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
+                <marker date="1489410909936" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="checkout.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/PosterHouse/checkout.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="578">
+              <caret line="34" column="39" lean-forward="false" selection-start-line="34" selection-start-column="39" selection-end-line="34" selection-end-column="39" />
+              <folding>
+                <marker date="1489411372693" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
               </folding>
             </state>
           </provider>
@@ -175,8 +188,9 @@
         <option value="$PROJECT_DIR$/PosterHouse/login.php" />
         <option value="$PROJECT_DIR$/PosterHouse/index.php" />
         <option value="$PROJECT_DIR$/PosterHouse/profile.php" />
-        <option value="$PROJECT_DIR$/PosterHouse/winkelmandje.php" />
         <option value="$PROJECT_DIR$/PosterHouse/producten.php" />
+        <option value="$PROJECT_DIR$/PosterHouse/winkelmandje.php" />
+        <option value="$PROJECT_DIR$/PosterHouse/checkout.php" />
       </list>
     </option>
   </component>
@@ -244,6 +258,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
+    <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
@@ -320,12 +336,12 @@
       <workItem from="1489045964976" duration="5035000" />
       <workItem from="1489052601992" duration="13000" />
       <workItem from="1489262255072" duration="2153000" />
-      <workItem from="1489406872971" duration="3247000" />
+      <workItem from="1489406872971" duration="3952000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46143000" />
+    <option name="totallyTimeSpent" value="46848000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -361,19 +377,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/PosterHouse/winkelmandje.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="71" lean-forward="false" selection-start-line="28" selection-start-column="71" selection-end-line="28" selection-end-column="71" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#a#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#a#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1489410606193" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PosterHouse/login.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
@@ -469,7 +472,7 @@
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#0;n#a#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#0;n#a#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1489410606193" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
+            <marker date="1489410909936" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
           </folding>
         </state>
       </provider>
@@ -569,7 +572,7 @@
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#0;n#a#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#0;n#a#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1489410606193" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
+            <marker date="1489410909936" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
           </folding>
         </state>
       </provider>
@@ -669,7 +672,7 @@
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#0;n#a#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#0;n#a#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1489410606193" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
+            <marker date="1489410909936" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
           </folding>
         </state>
       </provider>
@@ -865,14 +868,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PosterHouse/contact.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="7" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PosterHouse/dbconnect.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -920,6 +915,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/PosterHouse/header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding>
+            <marker date="1489263136524" expanded="true" signature="246:311" ph="SELECT menui... menuitem" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/PosterHouse/profile.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="249">
@@ -937,38 +942,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PosterHouse/header.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding>
-            <marker date="1489263136524" expanded="true" signature="246:311" ph="SELECT menui... menuitem" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PosterHouse/winkelmandje.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="14" lean-forward="true" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#a#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#a#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1489410606193" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PosterHouse/producten.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="1" lean-forward="false" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+        <state relative-caret-position="408">
+          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="26" selection-end-column="2" />
           <folding>
             <element signature="n#style#0;n#input#3;n#div#0;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <marker date="1489410672403" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
             <marker date="1489410672403" expanded="true" signature="2955:2976" ph="SELECT * FRO... product" />
             <marker date="1489410672403" expanded="true" signature="3551:3600" ph="SELECT * FRO... product" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PosterHouse/contact.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="671">
+          <caret line="106" column="0" lean-forward="true" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PosterHouse/winkelmandje.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="654">
+          <caret line="109" column="25" lean-forward="false" selection-start-line="109" selection-start-column="25" selection-end-line="109" selection-end-column="25" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#a#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#a#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1489410909936" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PosterHouse/checkout.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="34" column="39" lean-forward="false" selection-start-line="34" selection-start-column="39" selection-end-line="34" selection-end-column="39" />
+          <folding>
+            <marker date="1489411372693" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
           </folding>
         </state>
       </provider>
