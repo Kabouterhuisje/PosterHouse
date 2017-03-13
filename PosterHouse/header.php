@@ -59,6 +59,9 @@ while($row = $result->fetch_array()) {
                         }
                         if (isset($_SESSION['userSession'])) {
                             echo '<li><a href="profile.php">Mijn Account</a></li>';
+                            if ($userRow['role'] == 'Admin') {
+                                echo '<li><a href="admin.php">Admin panel</a></li>';
+                            }
                             echo '<li><a href="logout.php?logout">Uitloggen</a></li>';
                         }
                         ?>
