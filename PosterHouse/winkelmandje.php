@@ -69,33 +69,6 @@ require 'header.php';
 ?>
 <br /><br /><br />
 <div class="container" style="width:700px;">
-    <h3 align="center">Winkelmandje</h3><br />
-    <?php
-    $query = "SELECT * FROM product ORDER BY id ASC";
-    $result = mysqli_query($connect, $query);
-    if(mysqli_num_rows($result) > 0)
-    {
-        while($row = mysqli_fetch_array($result))
-        {
-            ?>
-            <div class="col-md-4">
-                <form method="post" action="winkelmandje.php?action=add&id=<?php echo $row["id"]; ?>">
-                    <div style="border:1px solid #333; background-color:#f1f1f1; border-radius:5px; padding:16px;" align="center">
-                        <h4 class="text-info"><?php echo $row["product_name"]; ?></h4>
-                        <h4 class="text-danger">$ <?php echo $row["price"]; ?></h4>
-                        <input type="text" name="quantity" class="form-control" value="1" />
-                        <input type="hidden" name="hidden_name" value="<?php echo $row["product_name"]; ?>" />
-                        <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" />
-                        <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-success" value="Add to Cart" />
-                    </div>
-                </form>
-            </div>
-            <?php
-        }
-    }
-    ?>
-    <div style="clear:both"></div>
-    <br />
     <h3>Order Details</h3>
     <div class="table-responsive">
         <table class="table table-bordered">
@@ -134,6 +107,8 @@ require 'header.php';
             ?>
         </table>
     </div>
+    <a href="producten.php"><input type="submit" name="checkout" style="margin-top:5px;" class="btn btn-success" value="Afrekenen" /></a>
+    <a href="producten.php"><input type="submit" name="verder" style="margin-top:5px;" class="btn btn-primary" value="Verder winkelen" /></a>
 </div>
 <br />
 <?php

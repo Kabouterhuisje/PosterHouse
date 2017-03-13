@@ -6,6 +6,54 @@ if (isset($_SESSION['userSession'])) {
     $query = $connect->query("SELECT * FROM user WHERE user_id=".$_SESSION['userSession']);
     $userRow=$query->fetch_array();
 }
+
+if(isset($_POST["add_to_cart"]))
+{
+    if(isset($_SESSION["shopping_cart"]))
+    {
+        $item_array_id = array_column($_SESSION["shopping_cart"], "item_id");
+        if(!in_array($_GET["id"], $item_array_id))
+        {
+            $count = count($_SESSION["shopping_cart"]);
+            $item_array = array(
+                'item_id' => $_GET["id"],
+                'item_name' => $_POST["hidden_name"],
+                'item_price' => $_POST["hidden_price"],
+                'item_quantity' => $_POST["quantity"]
+            );
+            $_SESSION["shopping_cart"][$count] = $item_array;
+        }
+        else
+        {
+            echo '<script>alert("Item Already Added")</script>';
+            echo '<script>window.location="winkelmandje.php"</script>';
+        }
+    }
+    else
+    {
+        $item_array = array(
+            'item_id' => $_GET["id"],
+            'item_name' => $_POST["hidden_name"],
+            'item_price' => $_POST["hidden_price"],
+            'item_quantity' => $_POST["quantity"]
+        );
+        $_SESSION["shopping_cart"][0] = $item_array;
+    }
+}
+if(isset($_GET["action"]))
+{
+    if($_GET["action"] == "delete")
+    {
+        foreach($_SESSION["shopping_cart"] as $keys => $values)
+        {
+            if($values["item_id"] == $_GET["id"])
+            {
+                unset($_SESSION["shopping_cart"][$keys]);
+                echo '<script>window.location="winkelmandje.php"</script>';
+            }
+        }
+    }
+}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
     <html xmlns="http://www.w3.org/1999/xhtml">
@@ -18,6 +66,7 @@ if (isset($_SESSION['userSession'])) {
         <link rel="stylesheet" href="style.css" type="text/css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
     </head>
 <body>
 
@@ -104,11 +153,16 @@ require 'header.php';
 			while($row = mysqli_fetch_array($result))
 			{
 	?>
+    <form method="post" action="winkelmandje.php?action=add&id=<?php echo $row["id"]; ?>">
 	<div class="col-xs-6 col-md-3" align="center">
 		<img src="images/posters/<?php echo $row['image'];?>" height="200" width="150"/>
-		<p><?php echo $row['product_name'] . ' - €' . $row['price'];?></p>
+        <input type="hidden" name="hidden_name" value="<?php echo $row["product_name"]; ?>" />
+        <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" />
 		<p><?php echo $row['description'];?></p>
+        <input type="text" name="quantity" class="form-control" value="1" />
+        <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-success" value="Add to Cart" />
 	</div>
+    </form>
 	<?php 
 			}
 		}
