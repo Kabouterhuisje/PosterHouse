@@ -32,35 +32,45 @@ require 'header.php';
 	<p>Filter op categorie</p>
       <ul class="nav navbar-nav">
       <div class="col-lg-3">
-        <li data-toggle="collapse" data-target="#dieren" class="collapsed">
-                  <a href="#"><i class="fa fa-globe fa-lg"></i>Dieren<span class="arrow"></span></a>
+      <?php 
+		$query = "SELECT * FROM category";
+		$result = mysqli_query($connect, $query);
+		$num_rows = mysqli_num_rows($result);
+		
+		if($num_rows > 0)
+		{
+			for ($i = 0; $i < $num_rows; $i++)
+			{
+				while($row = mysqli_fetch_array($result))
+				{
+		?>
+        <li data-toggle="collapse" data-target="<?php echo $row['category_name'];?>" class="collapsed">
+                  <a href="#"><i class="fa fa-globe fa-lg"></i><?php echo $row['category_name'];?><span class="arrow"></span></a>
         </li>  
-        <ul class="sub-menu collapse" id="dieren">
-           <li>Poezen</li>
-           <li>Koraalwormen</li>
-         </ul>  
-         <li data-toggle="collapse" data-target="#quotes" class="collapsed">
-                  <a href="#"><i class="fa fa-globe fa-lg"></i>Quotes<span class="arrow"></span></a>
-        </li>      
-         <ul class="sub-menu collapse" id="quotes">
-           <li>Leven</li>
-           <li>Trump</li>
-         </ul>  
-         <li data-toggle="collapse" data-target="#natuurwonderen" class="collapsed">
-                  <a href="#"><i class="fa fa-globe fa-lg"></i>Natuurwonderen<span class="arrow"></span></a>
-        </li>  
-         <ul class="sub-menu collapse" id="natuurwonderen">
-           <li>Honden</li>
-           <li>Wereld</li>
-         </ul>  
-         <li data-toggle="collapse" data-target="#muziek" class="collapsed">
-                  <a href="#"><i class="fa fa-globe fa-lg"></i>Muziek<span class="arrow"></span></a>
-        </li>  
-         <ul class="sub-menu collapse" id="muziek">
-           <li>Smurfenhouse</li>
-           <li>Techno</li>
-           <li>Pop</li>
-         </ul>    
+        <?php 
+        		}
+       	    }
+        }
+        ?>
+        <ul class="sub-menu collapse" id="<?php echo $row['category_name'];?>">
+	        <?php 
+			$query = "SELECT * FROM subcategory where Category_id = ".$row['id'];
+			$result = mysqli_query($connect, $query);
+			$num_rows = mysqli_num_rows($result);
+			
+			if($num_rows > 0)
+			{
+				for ($i = 0; $i < $num_rows; $i++)
+				{
+					while($row = mysqli_fetch_array($result))
+					{
+			?>
+           <li><?php echo $row['subcategory_name'];?></li>
+           <?php 
+	        		}
+	       	    }
+	        }
+	        ?>
         </div>
       </ul>
     </div>
@@ -71,7 +81,16 @@ require 'header.php';
 		<h2>Artikelen</h2>
 	</div>
 	<?php 
-	$query = "SELECT * FROM product";
+	// Kijken of er een request uit de searchbar komt
+	if (isset($_GET['searchbar']))
+	{
+		$query = "SELECT * FROM product WHERE product_name LIKE '%" . $_GET['searchbar'] . "%'";
+	}
+	// Zoniet dat laten we alle producten zien
+	else
+	{
+		$query = "SELECT * FROM product";
+	}
 	$result = mysqli_query($connect, $query);
 	$num_rows = mysqli_num_rows($result);
 	
@@ -108,11 +127,8 @@ require 'header.php';
     <form method="post" action="winkelmandje.php?action=add&id=<?php echo $row["id"]; ?>">
 	<div class="col-xs-6 col-md-3" align="center">
 		<img src="images/posters/<?php echo $row['image'];?>" height="200" width="150"/>
-        <input type="hidden" name="hidden_name" value="<?php echo $row["product_name"]; ?>" />
-        <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" />
-		<p><?php echo $row['description'];?></p>
-        <input type="text" name="quantity" class="form-control" value="1" />
-        <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-success" value="Add to Cart" />
+        <p><?php echo "€".$row['price'];?></p>
+        <a href="productdetails.php?id=<?php echo $row['id'];?>"><?php echo $row['product_name'];?></a>
 	</div>
     </form>
 	<?php 
