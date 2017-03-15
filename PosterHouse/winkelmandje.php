@@ -1,6 +1,6 @@
 <?php
 session_start();
-$connect = mysqli_connect("localhost", "root", "", "posterhouse_databaseV2");
+$connect = mysqli_connect("localhost", "root", "", "posterhouse_databaseV3");
 
 if (isset($_SESSION['userSession'])) {
     $query = $connect->query("SELECT * FROM user WHERE user_id=".$_SESSION['userSession']);
@@ -53,6 +53,10 @@ if(isset($_GET["action"]))
             }
         }
     }
+}
+
+if(isset($_POST['checkout'])) {
+    // query for inserting order
 }
 ?>
 <!DOCTYPE html>
@@ -107,8 +111,17 @@ require 'header.php';
             ?>
         </table>
     </div>
-    <a href="checkout.php"><input type="submit" name="checkout" style="margin-top:5px;" class="btn btn-success" value="Afrekenen" /></a>
-    <a href="producten.php"><input type="submit" name="verder" style="margin-top:5px;" class="btn btn-primary" value="Verder winkelen" /></a>
+    <?php
+    $locationPage;
+    if (isset($_SESSION['userSession'])) {
+        $locationPage = "order_overview.php";
+    }
+    else {
+        $locationPage = "login.php";
+    }
+    echo "<a href='$locationPage'><input type='submit' name='checkout' style='margin-top:5px;' class='btn btn-success' value='Afrekenen' /></a>";
+    echo "<a href='producten.php'><input type='submit' name='verder' style='margin-top:5px;' class='btn btn-primary' value='Verder winkelen' /></a>";
+    ?>
 </div>
 <br />
 <?php

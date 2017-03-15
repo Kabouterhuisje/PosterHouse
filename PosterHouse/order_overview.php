@@ -28,7 +28,7 @@ require 'header.php';
     <div class="jumbotron">
         <h1>Bedankt voor je bestelling!</h1>
         <p>Hieronder vind je een overzicht van uw bestelling.<br />
-           Heeft u klachten over uw bestelling of bent u niet tevreden met het resultaat?<br />
+            Heeft u klachten over uw bestelling of bent u niet tevreden met het resultaat?<br />
             Neem dan contact op met onze deskundige door <b><a href="contact.php">hier</a></b> te klikken!
         </p>
     </div>
