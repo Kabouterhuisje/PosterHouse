@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6832f546-8faf-49fb-a66a-91599e6d5444" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PosterHouse/checkout.php" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PosterHouse/order_overview.php" afterPath="$PROJECT_DIR$/PosterHouse/order_overview.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PosterHouse/winkelmandje.php" afterPath="$PROJECT_DIR$/PosterHouse/winkelmandje.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -104,37 +101,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="winkelmandje.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="winkelmandje.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/PosterHouse/winkelmandje.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="99" column="22" lean-forward="true" selection-start-line="99" selection-start-column="22" selection-end-line="99" selection-end-column="22" />
+            <state relative-caret-position="433">
+              <caret line="70" column="48" lean-forward="false" selection-start-line="70" selection-start-column="48" selection-end-line="70" selection-end-column="48" />
               <folding>
-                <marker date="1489578519316" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
-                <marker date="1489578519316" expanded="true" signature="1781:1863" ph="INSERT INTO `order`... " />
-                <marker date="1489578519316" expanded="true" signature="1781:1892" ph="INSERT INTO posterhouse_databaseV3.order... " />
-                <marker date="1489578519316" expanded="true" signature="2095:2151" ph="..." />
-                <marker date="1489578519316" expanded="true" signature="2095:2460" ph="..." />
-                <marker date="1489578519316" expanded="true" signature="2102:2151" ph="..." />
-                <marker date="1489578519316" expanded="true" signature="2445:2460" ph="..." />
-                <marker date="1489578519316" expanded="true" signature="2540:4170" ph="..." />
-                <marker date="1489578519316" expanded="true" signature="2602:4116" ph="..." />
-                <marker date="1489578519316" expanded="true" signature="2647:4105" ph="..." />
-                <marker date="1489578519316" expanded="true" signature="2664:2904" ph="..." />
-                <marker date="1489578519316" expanded="true" signature="3153:3665" ph="..." />
-                <marker date="1489578519316" expanded="true" signature="3839:4037" ph="..." />
-                <marker date="1489578519316" expanded="true" signature="4383:4398" ph="..." />
-                <marker date="1489578519316" expanded="true" signature="4523:4538" ph="..." />
+                <marker date="1489579095961" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
+                <marker date="1489579095961" expanded="true" signature="1781:1863" ph="INSERT INTO `order`... " />
+                <marker date="1489579095961" expanded="true" signature="1781:1892" ph="INSERT INTO posterhouse_databaseV3.order... " />
+                <marker date="1489579095961" expanded="true" signature="2189:2245" ph="..." />
+                <marker date="1489579095961" expanded="true" signature="2189:2554" ph="..." />
+                <marker date="1489579095961" expanded="true" signature="2196:2245" ph="..." />
+                <marker date="1489579095961" expanded="true" signature="2539:2554" ph="..." />
+                <marker date="1489579095961" expanded="true" signature="2634:4264" ph="..." />
+                <marker date="1489579095961" expanded="true" signature="2696:4210" ph="..." />
+                <marker date="1489579095961" expanded="true" signature="2741:4199" ph="..." />
+                <marker date="1489579095961" expanded="true" signature="2758:2998" ph="..." />
+                <marker date="1489579095961" expanded="true" signature="3247:3759" ph="..." />
+                <marker date="1489579095961" expanded="true" signature="3933:4131" ph="..." />
+                <marker date="1489579095961" expanded="true" signature="4477:4492" ph="..." />
+                <marker date="1489579095961" expanded="true" signature="4593:4608" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="order_overview.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="order_overview.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PosterHouse/order_overview.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" column="2" lean-forward="true" selection-start-line="25" selection-start-column="2" selection-end-line="25" selection-end-column="2" />
+            <state relative-caret-position="34">
+              <caret line="20" column="95" lean-forward="true" selection-start-line="20" selection-start-column="95" selection-end-line="20" selection-end-column="95" />
               <folding>
                 <marker date="1489578745990" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
               </folding>
@@ -193,9 +190,9 @@
         <option value="$PROJECT_DIR$/PosterHouse/login.php" />
         <option value="$PROJECT_DIR$/PosterHouse/index.php" />
         <option value="$PROJECT_DIR$/PosterHouse/register.php" />
-        <option value="$PROJECT_DIR$/PosterHouse/winkelmandje.php" />
         <option value="$PROJECT_DIR$/PosterHouse/checkout.php" />
         <option value="$PROJECT_DIR$/PosterHouse/order_overview.php" />
+        <option value="$PROJECT_DIR$/PosterHouse/winkelmandje.php" />
       </list>
     </option>
   </component>
@@ -342,15 +339,15 @@
       <workItem from="1489052601992" duration="13000" />
       <workItem from="1489262255072" duration="2153000" />
       <workItem from="1489406872971" duration="5247000" />
-      <workItem from="1489571469221" duration="7306000" />
+      <workItem from="1489571469221" duration="7606000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55449000" />
+    <option name="totallyTimeSpent" value="55749000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -454,21 +451,21 @@
         <state relative-caret-position="476">
           <caret line="28" column="71" lean-forward="false" selection-start-line="28" selection-start-column="71" selection-end-line="28" selection-end-column="71" />
           <folding>
-            <marker date="1489578519316" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
-            <marker date="1489578519316" expanded="true" signature="1781:1863" ph="INSERT INTO `order`... " />
-            <marker date="1489578519316" expanded="true" signature="1781:1892" ph="INSERT INTO posterhouse_databaseV3.order... " />
-            <marker date="1489578519316" expanded="true" signature="2095:2151" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="2095:2460" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="2102:2151" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="2445:2460" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="2540:4170" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="2602:4116" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="2647:4105" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="2664:2904" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="3153:3665" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="3839:4037" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="4383:4398" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="4523:4538" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
+            <marker date="1489579095961" expanded="true" signature="1781:1863" ph="INSERT INTO `order`... " />
+            <marker date="1489579095961" expanded="true" signature="1781:1892" ph="INSERT INTO posterhouse_databaseV3.order... " />
+            <marker date="1489579095961" expanded="true" signature="2189:2245" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="2189:2554" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="2196:2245" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="2539:2554" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="2634:4264" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="2696:4210" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="2741:4199" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="2758:2998" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="3247:3759" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="3933:4131" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="4477:4492" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="4593:4608" ph="..." />
           </folding>
         </state>
       </provider>
@@ -566,21 +563,21 @@
         <state relative-caret-position="476">
           <caret line="28" column="71" lean-forward="true" selection-start-line="28" selection-start-column="71" selection-end-line="28" selection-end-column="71" />
           <folding>
-            <marker date="1489578519316" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
-            <marker date="1489578519316" expanded="true" signature="1781:1863" ph="INSERT INTO `order`... " />
-            <marker date="1489578519316" expanded="true" signature="1781:1892" ph="INSERT INTO posterhouse_databaseV3.order... " />
-            <marker date="1489578519316" expanded="true" signature="2095:2151" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="2095:2460" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="2102:2151" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="2445:2460" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="2540:4170" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="2602:4116" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="2647:4105" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="2664:2904" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="3153:3665" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="3839:4037" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="4383:4398" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="4523:4538" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
+            <marker date="1489579095961" expanded="true" signature="1781:1863" ph="INSERT INTO `order`... " />
+            <marker date="1489579095961" expanded="true" signature="1781:1892" ph="INSERT INTO posterhouse_databaseV3.order... " />
+            <marker date="1489579095961" expanded="true" signature="2189:2245" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="2189:2554" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="2196:2245" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="2539:2554" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="2634:4264" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="2696:4210" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="2741:4199" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="2758:2998" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="3247:3759" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="3933:4131" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="4477:4492" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="4593:4608" ph="..." />
           </folding>
         </state>
       </provider>
@@ -678,21 +675,21 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1489578519316" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
-            <marker date="1489578519316" expanded="true" signature="1781:1863" ph="INSERT INTO `order`... " />
-            <marker date="1489578519316" expanded="true" signature="1781:1892" ph="INSERT INTO posterhouse_databaseV3.order... " />
-            <marker date="1489578519316" expanded="true" signature="2095:2151" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="2095:2460" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="2102:2151" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="2445:2460" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="2540:4170" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="2602:4116" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="2647:4105" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="2664:2904" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="3153:3665" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="3839:4037" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="4383:4398" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="4523:4538" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
+            <marker date="1489579095961" expanded="true" signature="1781:1863" ph="INSERT INTO `order`... " />
+            <marker date="1489579095961" expanded="true" signature="1781:1892" ph="INSERT INTO posterhouse_databaseV3.order... " />
+            <marker date="1489579095961" expanded="true" signature="2189:2245" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="2189:2554" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="2196:2245" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="2539:2554" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="2634:4264" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="2696:4210" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="2741:4199" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="2758:2998" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="3247:3759" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="3933:4131" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="4477:4492" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="4593:4608" ph="..." />
           </folding>
         </state>
       </provider>
@@ -986,30 +983,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PosterHouse/winkelmandje.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="99" column="22" lean-forward="true" selection-start-line="99" selection-start-column="22" selection-end-line="99" selection-end-column="22" />
-          <folding>
-            <marker date="1489578519316" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
-            <marker date="1489578519316" expanded="true" signature="1781:1863" ph="INSERT INTO `order`... " />
-            <marker date="1489578519316" expanded="true" signature="1781:1892" ph="INSERT INTO posterhouse_databaseV3.order... " />
-            <marker date="1489578519316" expanded="true" signature="2095:2151" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="2095:2460" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="2102:2151" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="2445:2460" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="2540:4170" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="2602:4116" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="2647:4105" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="2664:2904" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="3153:3665" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="3839:4037" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="4383:4398" ph="..." />
-            <marker date="1489578519316" expanded="true" signature="4523:4538" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PosterHouse/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -1030,10 +1003,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/PosterHouse/order_overview.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="2" lean-forward="true" selection-start-line="25" selection-start-column="2" selection-end-line="25" selection-end-column="2" />
+        <state relative-caret-position="34">
+          <caret line="20" column="95" lean-forward="true" selection-start-line="20" selection-start-column="95" selection-end-line="20" selection-end-column="95" />
           <folding>
             <marker date="1489578745990" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PosterHouse/winkelmandje.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="70" column="48" lean-forward="false" selection-start-line="70" selection-start-column="48" selection-end-line="70" selection-end-column="48" />
+          <folding>
+            <marker date="1489579095961" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
+            <marker date="1489579095961" expanded="true" signature="1781:1863" ph="INSERT INTO `order`... " />
+            <marker date="1489579095961" expanded="true" signature="1781:1892" ph="INSERT INTO posterhouse_databaseV3.order... " />
+            <marker date="1489579095961" expanded="true" signature="2189:2245" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="2189:2554" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="2196:2245" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="2539:2554" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="2634:4264" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="2696:4210" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="2741:4199" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="2758:2998" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="3247:3759" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="3933:4131" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="4477:4492" ph="..." />
+            <marker date="1489579095961" expanded="true" signature="4593:4608" ph="..." />
           </folding>
         </state>
       </provider>

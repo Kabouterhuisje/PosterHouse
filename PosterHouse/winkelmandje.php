@@ -66,6 +66,10 @@ if(isset($_POST['checkout'])) {
     }
 
 }
+
+if(isset($_POST['verder'])) {
+    echo '<script>window.location="producten.php"</script>';
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -129,7 +133,7 @@ require 'header.php';
     }
     echo "<form method='post'>";
     echo "<input type='submit' name='checkout' style='margin-top:5px;' class='btn btn-success' value='Afrekenen' />";
-    echo "<a href='producten.php'><input type='submit' name='verder' style='margin-top:5px;' class='btn btn-primary' value='Verder winkelen' /></a>";
+    echo "<input type='submit' name='verder' style='margin-top:5px;' class='btn btn-primary' value='Verder winkelen' />";
     echo "</form>";
     ?>
 </div>
