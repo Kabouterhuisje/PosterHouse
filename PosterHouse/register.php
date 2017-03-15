@@ -101,7 +101,7 @@ if(isset($_POST['btn-signup'])) {
        </div>
 
        <div class="form-group">
-           <input type="phone" class="form-control" placeholder="Phone number" name="phone" required  />
+           <input type="phone" class="form-control" placeholder="Phone number" name="phone" maxlength="10" required  />
        </div>
 
        <div class="form-group">

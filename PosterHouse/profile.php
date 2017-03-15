@@ -105,7 +105,7 @@ require 'header.php';
                 <div class="form-group row">
                     <label for="example-url-input" class="col-2 col-form-label">Telefoonnummer</label>
                     <div class="col-10">
-                        <input name="phone" class="form-control" type="tel" value=<?php echo $uTel?> id="example-url-input">
+                        <input name="phone" class="form-control" type="tel" maxlength="10" value=<?php echo $uTel?> id="example-url-input">
                     </div>
                 </div>
                 <div class="form-group row">

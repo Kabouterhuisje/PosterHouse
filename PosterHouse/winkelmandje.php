@@ -63,6 +63,7 @@ if(isset($_POST['checkout'])) {
         $total = $total + ($values["item_quantity"] * $values["item_price"]);
     }
 
+    // insert order details in order_hasProduct table
     $query = "INSERT INTO `order` (total_price,date_created,User_id) VALUES ($total,CURRENT_DATE,".$_SESSION['userSession'].")";
 
     if ($connect->query($query)) {
