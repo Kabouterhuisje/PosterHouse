@@ -57,14 +57,19 @@ if(isset($_GET["action"]))
 
 if(isset($_POST['checkout'])) {
 
-    $query = "INSERT INTO `order` (total_price,date_created,User_id) VALUES (12.12,CURRENT_DATE,".$_SESSION['userSession'].")";
+    $total = 0;
+    foreach($_SESSION["shopping_cart"] as $keys => $values)
+    {
+        $total = $total + ($values["item_quantity"] * $values["item_price"]);
+    }
+
+    $query = "INSERT INTO `order` (total_price,date_created,User_id) VALUES ($total,CURRENT_DATE,".$_SESSION['userSession'].")";
 
     if ($connect->query($query)) {
         echo '<script>window.location="order_overview.php"</script>';
     }else {
         echo '<script>alert("error");</script>';
     }
-
 }
 
 if(isset($_POST['verder'])) {
