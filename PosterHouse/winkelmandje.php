@@ -67,11 +67,12 @@ if(isset($_POST['checkout'])) {
     foreach($_SESSION["shopping_cart"] as $keys => $values)
     {
         $orderquery = "INSERT INTO order_has_product (Order_id,Order_User_id,quantity,Product_id) VALUES (1,".$_SESSION['userSession'].",".$values['item_quantity'].",".$values['item_id'].")";
+        $connect->query($orderquery);
     }
 
     $query = "INSERT INTO `order` (total_price,date_created,User_id) VALUES ($total,CURRENT_DATE,".$_SESSION['userSession'].")";
 
-    if ($connect->query($query) && $connect->query($orderquery)) {
+    if ($connect->query($query)) {
         echo '<script>window.location="order_overview.php"</script>';
     }else {
         echo '<script>alert("error");</script>';
