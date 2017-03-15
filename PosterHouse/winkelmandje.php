@@ -64,9 +64,14 @@ if(isset($_POST['checkout'])) {
     }
 
     // insert order details in order_hasProduct table
+    foreach($_SESSION["shopping_cart"] as $keys => $values)
+    {
+        $orderquery = "INSERT INTO order_has_product (Order_id,Order_User_id,quantity,Product_id) VALUES (1,".$_SESSION['userSession'].",".$values['item_quantity'].",".$values['item_id'].")";
+    }
+
     $query = "INSERT INTO `order` (total_price,date_created,User_id) VALUES ($total,CURRENT_DATE,".$_SESSION['userSession'].")";
 
-    if ($connect->query($query)) {
+    if ($connect->query($query) && $connect->query($orderquery)) {
         echo '<script>window.location="order_overview.php"</script>';
     }else {
         echo '<script>alert("error");</script>';
