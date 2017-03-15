@@ -70,10 +70,12 @@ while($row = $result->fetch_array()) {
             </ul>
             <div class="nav navbar-nav form-inline navbar-right" style="padding: 10px;">
                 <div class="input-group">
-                    <input type="text" class="form-control"></input>
+                <form action="#" method="get">
+                    <input type="text" name="searchbar" class="form-control"></input>
                     <div class="input-group-btn">
                         <button class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
                     </div>
+                </form>
                 </div>
             </div>
         </div><!--/.nav-collapse -->
