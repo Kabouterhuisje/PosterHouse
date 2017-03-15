@@ -10,10 +10,20 @@ if(isset($_POST['btn-signup'])) {
 	$uname = strip_tags($_POST['username']);
 	$email = strip_tags($_POST['email']);
 	$upass = strip_tags($_POST['password']);
+	$upersonname = strip_tags($_POST['name']);
+    $uphone = strip_tags($_POST['phone']);
+    $uaddress = strip_tags($_POST['address']);
+    $ucity = strip_tags($_POST['city']);
+    $ucountry = strip_tags($_POST['country']);
 	
 	$uname = $connect->real_escape_string($uname);
 	$email = $connect->real_escape_string($email);
 	$upass = $connect->real_escape_string($upass);
+    $upersonname = $connect->real_escape_string($upersonname);
+    $uphone = $connect->real_escape_string($uphone);
+    $uaddress = $connect->real_escape_string($uaddress);
+    $ucity = $connect->real_escape_string($ucity);
+    $ucountry = $connect->real_escape_string($ucountry);
 	
 	$hashed_password = password_hash($upass, PASSWORD_DEFAULT);
 	
@@ -22,7 +32,7 @@ if(isset($_POST['btn-signup'])) {
 	
 	if ($count==0) {
 		
-		$query = "INSERT INTO user(username,password,email,role) VALUES('$uname','$hashed_password','$email','Gebruiker')";
+		$query = "INSERT INTO user(username,password,email,role,name,phone,address,city,country) VALUES('$uname','$hashed_password','$email','Gebruiker','$upersonname','$uphone','$uaddress','$ucity','$ucountry')";
 
 		if ($connect->query($query)) {
 			$msg = "<div class='alert alert-success'>
@@ -85,8 +95,28 @@ if(isset($_POST['btn-signup'])) {
         <div class="form-group">
         <input type="password" class="form-control" placeholder="Password" name="password" required  />
         </div>
-        
-     	<hr />
+
+       <div class="form-group">
+           <input type="text" class="form-control" placeholder="Name" name="name" required  />
+       </div>
+
+       <div class="form-group">
+           <input type="phone" class="form-control" placeholder="Phone number" name="phone" required  />
+       </div>
+
+       <div class="form-group">
+           <input type="text" class="form-control" placeholder="Address" name="address" required  />
+       </div>
+
+       <div class="form-group">
+           <input type="text" class="form-control" placeholder="City" name="city" required  />
+       </div>
+
+       <div class="form-group">
+           <input type="text" class="form-control" placeholder="Country" name="country" required  />
+       </div>
+
+           <hr />
         
         <div class="form-group">
             <button type="submit" class="btn btn-default" name="btn-signup">
