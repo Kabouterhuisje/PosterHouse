@@ -32,7 +32,42 @@ require 'header.php';
             Neem dan contact op met onze deskundige door <b><a href="contact.php">hier</a></b> te klikken!
         </p>
     </div>
-    <p>Bestelling overzicht komt hier..</p>
+    <h2>Overzicht van uw bestelling:</h2>
+    <table class="table table-bordered">
+        <tr>
+            <th width="40%">Productnaam</th>
+            <th width="10%">Aantal</th>
+            <th width="20%">Prijs</th>
+            <th width="15%">Totaal</th>
+            <th width="5%">Actie</th>
+        </tr>
+        <?php
+        if(!empty($_SESSION["shopping_cart"]))
+        {
+            $total = 0;
+            foreach($_SESSION["shopping_cart"] as $keys => $values)
+            {
+                ?>
+                <tr>
+                    <td><?php echo $values["item_name"]; ?></td>
+                    <td><?php echo $values["item_quantity"]; ?></td>
+                    <td>$ <?php echo $values["item_price"]; ?></td>
+                    <td>$ <?php echo number_format($values["item_quantity"] * $values["item_price"], 2); ?></td>
+                    <td><a href="winkelmandje.php?action=delete&id=<?php echo $values["item_id"]; ?>"><span class="text-danger">Remove</span></a></td>
+                </tr>
+                <?php
+                $total = $total + ($values["item_quantity"] * $values["item_price"]);
+            }
+            ?>
+            <tr>
+                <td colspan="3" align="right">Total</td>
+                <td align="right">$ <?php echo number_format($total, 2); ?></td>
+                <td></td>
+            </tr>
+            <?php
+        }
+        ?>
+    </table>
 </div>
 <?php
 require 'footer.php';

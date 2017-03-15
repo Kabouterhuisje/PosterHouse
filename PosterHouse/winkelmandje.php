@@ -56,7 +56,15 @@ if(isset($_GET["action"]))
 }
 
 if(isset($_POST['checkout'])) {
-    // query for inserting order
+
+    $query = "INSERT INTO `order` (total_price,date_created,User_id) VALUES (12.12,CURRENT_DATE,".$_SESSION['userSession'].")";
+
+    if ($connect->query($query)) {
+        echo '<script>window.location="order_overview.php"</script>';
+    }else {
+        echo '<script>alert("error");</script>';
+    }
+
 }
 ?>
 <!DOCTYPE html>
@@ -119,8 +127,10 @@ require 'header.php';
     else {
         $locationPage = "login.php";
     }
-    echo "<a href='$locationPage'><input type='submit' name='checkout' style='margin-top:5px;' class='btn btn-success' value='Afrekenen' /></a>";
+    echo "<form method='post'>";
+    echo "<input type='submit' name='checkout' style='margin-top:5px;' class='btn btn-success' value='Afrekenen' />";
     echo "<a href='producten.php'><input type='submit' name='verder' style='margin-top:5px;' class='btn btn-primary' value='Verder winkelen' /></a>";
+    echo "</form>";
     ?>
 </div>
 <br />
