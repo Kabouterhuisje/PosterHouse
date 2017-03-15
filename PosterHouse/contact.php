@@ -31,7 +31,7 @@ require 'header.php';
 <!-- Form -->
 <div class="container">
     <div class="col-xs-6 col-md-7">
-        <form class="form-horizontal" role="form" method="post" action="index.php">
+        <form class="form-horizontal" role="form" method="post" action="?">
         <div class="form-group" style="margin-top:23%;text-align:center;font-family:Verdana, Geneva, sans-serif;font-size:35px;">
             <p>Contact opnemen</p>
         </div>
@@ -50,7 +50,7 @@ require 'header.php';
             <div class="form-group">
                 <label for="onderwerp" class="col-sm-2 control-label">Onderwerp</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="email" name="email" placeholder="Bijv: Beschadigd Product" value="">
+                    <input type="text" class="form-control" id="subject" name="subject" placeholder="Bijv: Beschadigd Product" value="">
                 </div>
             </div>
             <div class="form-group">
@@ -71,6 +71,20 @@ require 'header.php';
             </div>
         </form>
     </div>
+    
+    <?php 
+	    if(isset($_POST['submit'])){
+	    	// Het opslaan van de formuliergegevens in variabelen
+	    	$to = "smk.vanbeurden@student.avans.nl";
+	    	$from = $_POST['email'];
+	    	$name = $_POST['name'];
+	    	$subject = $_POST['subject'];
+	    	$message = $_POST['message'];
+	    	
+	    	$headers = "From:" . $from;
+	    	mail($to,$subject,$message,$headers);
+	    }
+    ?>
 
     <!-- Contactgegevens -->
     <div class="col-xs-6 col-md-4">
