@@ -73,17 +73,16 @@ require 'header.php';
     </div>
     
     <?php 
-	    if(isset($_POST['submit'])){
-	    	// Het opslaan van de formuliergegevens in variabelen
-	    	$to = "smk.vanbeurden@student.avans.nl";
-	    	$from = $_POST['email'];
-	    	$name = $_POST['name'];
-	    	$subject = $_POST['subject'];
-	    	$message = $_POST['message'];
-	    	
-	    	$headers = "From:" . $from;
-	    	mail($to,$subject,$message,$headers);
-	    }
+//	    if(isset($_POST['submit'])){
+//	    	$to = "smk.vanbeurden@student.avans.nl";
+//	    	$from = $_POST['email'];
+//	    	$name = $_POST['name'];
+//	    	$subject = $_POST['subject'];
+//	    	$message = $_POST['message'];
+//
+//	    	$headers = "From:" . $from;
+//	    	mail($to,$subject,$message,$headers);
+//	    }
     ?>
 
     <!-- Contactgegevens -->
