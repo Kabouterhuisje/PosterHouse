@@ -21,7 +21,7 @@ Open an issue first to discuss potential changes/additions.
 
 #### (The MIT License)
 
-Copyright (c) 2014 Bill Gooch
+Copyright (c) 2017 Dennis Tijbosch & Shaun van Beurden
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
