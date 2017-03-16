@@ -7,7 +7,10 @@ if (isset($_SESSION['userSession'])) {
     $userRow=$query->fetch_array();
 }
 
-$connect->close();
+if(isset($_POST['closeOveriew'])) {
+    unset($_SESSION['shopping_cart']);
+    echo '<script>window.location="index.php"</script>';
+}
 
 ?>
 <!DOCTYPE html>
@@ -21,9 +24,6 @@ $connect->close();
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<?php
-require 'header.php';
-?>
 <div class="container"><br /><br /><br /><br />
     <div class="jumbotron">
         <h1>Bedankt voor je bestelling!</h1>
@@ -39,7 +39,6 @@ require 'header.php';
             <th width="10%">Aantal</th>
             <th width="20%">Prijs</th>
             <th width="15%">Totaal</th>
-            <th width="5%">Actie</th>
         </tr>
         <?php
         if(!empty($_SESSION["shopping_cart"]))
@@ -65,12 +64,13 @@ require 'header.php';
             </tr>
             <?php
         }
+        $connect->close();
         ?>
-    </table>
+    </table><br />
+    <form method="post">
+    <input type='submit' name='closeOveriew' style='margin-top:5px;' class='btn btn-success' value='Klik hier om door te gaan' />
+    </form>
 </div>
-<?php
-require 'footer.php';
-?>
 </body>
 </html>
 
