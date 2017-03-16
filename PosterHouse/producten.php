@@ -44,7 +44,7 @@ require 'header.php';
 				while($row = mysqli_fetch_array($result))
 				{
 		?>
-        <li data-toggle="collapse" data-target="<?php echo $row['category_name'];?>" class="collapsed">
+        <li data-toggle="collapse" data-target="<?php echo $row['category_name'];?>" class="collapsed" style="width: 200px;">
                   <a href="#"><i class="fa fa-globe fa-lg"></i><?php echo $row['category_name'];?><span class="arrow"></span></a>
         </li>  
         <?php 
