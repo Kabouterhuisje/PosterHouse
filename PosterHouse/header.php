@@ -36,7 +36,16 @@ while($row = $result->fetch_array()) {
                 <?php
                 foreach ($rows as $row) {
                     $menuItemLink = $row['menuitem_link'];
-                    echo "<li><a href='$menuItemLink'>".$row['menuitem_name']."</a></li>";
+                    // Checkt of de link van de huidige pagina overeenkomt met die uit de database
+                    if ($menuItemLink == basename($_SERVER['PHP_SELF']))
+                    {
+                    	echo "<li class='active'><a href='$menuItemLink'>".$row['menuitem_name']."</a></li>";
+                    }
+                    else
+                    {
+                    	echo "<li><a href='$menuItemLink'>".$row['menuitem_name']."</a></li>";
+                    }
+                    
                 }
                 ?>
             </ul>
