@@ -81,8 +81,8 @@ require 'header.php';
 		<h2>Artikelen</h2>
 	</div>
 	<?php 
-	// Kijken of er een request uit de searchbar komt
-	if (isset($_GET['searchbar']))
+	// Kijken of er een request uit btnsearch komt
+	if (isset($_GET['btnsearch']))
 	{
 		$query = "SELECT * FROM product WHERE product_name LIKE '%" . $_GET['searchbar'] . "%'";
 	}
@@ -114,7 +114,14 @@ require 'header.php';
 	$firstresult = ($page - 1) * $countresults;
 	
 	// Het ophalen van de geselecteerde resultaten uit de database
-	$query = "SELECT * FROM product LIMIT " . $firstresult . ',' . $countresults;
+	if (isset($_GET['btnsearch']))
+	{
+		$query = "SELECT * FROM product WHERE product_name LIKE '%" . $_GET['searchbar'] . "%' LIMIT " . $firstresult . ',' . $countresults;
+	}
+	else
+	{
+		$query = "SELECT * FROM product LIMIT " . $firstresult . ',' . $countresults;
+	}
 	$result = mysqli_query($connect, $query);
 
 	if($num_rows > 0)
@@ -126,7 +133,7 @@ require 'header.php';
 	?>
     <form method="post" action="winkelmandje.php?action=add&id=<?php echo $row["id"]; ?>">
 	<div class="col-xs-6 col-md-3" align="center">
-		<img src="images/posters/<?php echo $row['image'];?>" height="200" width="150"/>
+		<img src="images/posters/<?php echo $row['image'];?>" height="250" width="180"/>
         <p><?php echo "€".$row['price'];?></p>
         <a href="productdetails.php?id=<?php echo $row['id'];?>"><?php echo $row['product_name'];?></a>
 	</div>
