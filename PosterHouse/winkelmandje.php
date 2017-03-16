@@ -63,20 +63,37 @@ if(isset($_POST['checkout'])) {
         $total = $total + ($values["item_quantity"] * $values["item_price"]);
     }
 
-    // insert order details in order_hasProduct table
-    foreach($_SESSION["shopping_cart"] as $keys => $values)
-    {
-        $orderquery = "INSERT INTO order_has_product (Order_id,Order_User_id,quantity,Product_id) VALUES (1,".$_SESSION['userSession'].",".$values['item_quantity'].",".$values['item_id'].")";
-        $connect->query($orderquery);
+    if(isset($_SESSION['userSession'])) {
+        // insert order details in order_hasProduct table
+        foreach($_SESSION["shopping_cart"] as $keys => $values)
+        {
+            $orderquery = "INSERT INTO order_has_product (Order_id,Order_User_id,quantity,Product_id) VALUES (1,".$_SESSION['userSession'].",".$values['item_quantity'].",".$values['item_id'].")";
+            $connect->query($orderquery);
+        }
+
+        $query = "INSERT INTO `order` (total_price,date_created,User_id) VALUES ($total,CURRENT_DATE,".$_SESSION['userSession'].")";
+
+        if ($connect->query($query)) {
+
+            $locationPage;
+            if (isset($_SESSION['userSession'])) {
+                $locationPage = "order_overview.php";
+                echo '<script>window.location="order_overview.php"</script>';
+//                unset($_SESSION['shopping_cart']);
+            }
+            else {
+                $locationPage = "login.php";
+            }
+
+        }else {
+            echo '<script>alert("error");</script>';
+        }
+    }
+    else {
+        echo '<script>window.location="login.php"</script>';
     }
 
-    $query = "INSERT INTO `order` (total_price,date_created,User_id) VALUES ($total,CURRENT_DATE,".$_SESSION['userSession'].")";
 
-    if ($connect->query($query)) {
-        echo '<script>window.location="order_overview.php"</script>';
-    }else {
-        echo '<script>alert("error");</script>';
-    }
 }
 
 if(isset($_POST['verder'])) {
@@ -136,17 +153,13 @@ require 'header.php';
         </table>
     </div>
     <?php
-    $locationPage;
-    if (isset($_SESSION['userSession'])) {
-        $locationPage = "order_overview.php";
-    }
-    else {
-        $locationPage = "login.php";
-    }
+
     echo "<form method='post'>";
     echo "<input type='submit' name='checkout' style='margin-top:5px;' class='btn btn-success' value='Afrekenen' />";
     echo "<input type='submit' name='verder' style='margin-top:5px;' class='btn btn-primary' value='Verder winkelen' />";
     echo "</form>";
+
+    $connect->close();
     ?>
 </div>
 <br />
