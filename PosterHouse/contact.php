@@ -1,6 +1,6 @@
 <?php
 session_start();
-$connect = mysqli_connect("localhost", "root", "", "posterhouse_databaseV3");
+$connect = mysqli_connect("localhost", "root", "", "posterhouse_databaseV4");
 
 if (isset($_SESSION['userSession'])) {
     $query = $connect->query("SELECT * FROM user WHERE user_id=".$_SESSION['userSession']);
