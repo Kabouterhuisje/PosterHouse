@@ -7,6 +7,23 @@ if (isset($_SESSION['userSession'])) {
     $userRow=$query->fetch_array();
 }
 
+if (isset($_POST['submit'])) {
+
+    $formName = $_POST['name'];
+    $formEmail = $_POST['email'];
+    $formTitle = $_POST['subject'];
+    $formMessage = $_POST['message'];
+
+    $query = "INSERT INTO message (form_name,form_email,form_title,form_message) VALUES ('$formName','$formEmail','$formTitle','$formMessage')";
+
+    if ($connect->query($query)) {
+        echo '<script>alert("Je formulier is verzonden!")</script>';
+    }
+    else {
+        echo '<script>alert("Er is helaas iets niet helemaal goed gegaan. Probeer het nog eens!")</script>';
+    }
+}
+
 $connect->close();
 
 ?>
@@ -31,7 +48,7 @@ require 'header.php';
 <!-- Form -->
 <div class="container">
     <div class="col-xs-6 col-md-7">
-        <form class="form-horizontal" role="form" method="post" action="?">
+        <form class="form-horizontal" role="form" method="post" action="contact.php">
         <div class="form-group" style="margin-top:23%;text-align:center;font-family:Verdana, Geneva, sans-serif;font-size:35px;">
             <p>Contact opnemen</p>
         </div>
@@ -71,19 +88,6 @@ require 'header.php';
             </div>
         </form>
     </div>
-    
-    <?php 
-//	    if(isset($_POST['submit'])){
-//	    	$to = "smk.vanbeurden@student.avans.nl";
-//	    	$from = $_POST['email'];
-//	    	$name = $_POST['name'];
-//	    	$subject = $_POST['subject'];
-//	    	$message = $_POST['message'];
-//
-//	    	$headers = "From:" . $from;
-//	    	mail($to,$subject,$message,$headers);
-//	    }
-    ?>
 
     <!-- Contactgegevens -->
     <div class="col-xs-6 col-md-4">
