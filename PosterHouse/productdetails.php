@@ -43,11 +43,11 @@ require 'header.php';
 					</div>
 				</div>	
 				<div style="text-align:center;">
-					<h3><?php echo $row['product_name'];?></h3>
-					<p><?php echo $row['price'];?></p>
-					<p><?php echo $row['description'];?></p>
+                    <form method="post" action="winkelmandje.php?action=add&id=<?php echo $row['id'];?>">
+                    <input type="hidden" name="hidden_name" value="<?php echo $row["product_name"]; ?>" />
+                    <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" />
+                    <p><?php echo $row['description'];?></p>
 					<div class="btn-group cart">
-						<form method="post" action="winkelmandje.php?action=add&id=<?php echo $row['id'];?>">
 							<input type="text" name="quantity" class="form-control" value="1" />
 	        				<input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-success" value="Add to Cart" />	
         				</form>
