@@ -33,6 +33,7 @@ require 'header.php';
       	<ul class="nav navbar-nav">
 	      	<div class="col-lg-16">
 	      	<?php 
+	      	
 			$query = "SELECT * FROM category";
 			$subquery = "";
 			$result = mysqli_query($connect, $query);
@@ -42,7 +43,9 @@ require 'header.php';
 			{
 				while($row = mysqli_fetch_array($result))
 				{
-					echo "<li><a href='#'><p>".$row['category_name']."</p></a></li>";
+					echo "<form action='producten.php' method='get'>";
+						echo "<li><a href='producten.php?category=".$row['category_name']."'><p>".$row['category_name']."</p></a></li>";
+					echo "</form>";
 				       	
 					$subquery = "SELECT * FROM subcategory where Category_id = ".$row['id'];
 					$subresult = mysqli_query($connect, $subquery);
@@ -52,7 +55,9 @@ require 'header.php';
 					{
 						while($row = mysqli_fetch_array($subresult))
 						{
-							echo "<li style='margin-left:10%'><a href='#'><p>".$row['subcategory_name']."</p></a></li>";
+							echo "<form action='producten.php' method='get'>";
+								echo "<li style='margin-left:10%'><a href='producten.php?subcategory=".$row['subcategory_name']."'><p>".$row['subcategory_name']."</p></a></li>";
+							echo "</form>";
 						}
 					}
 	        	}
@@ -72,6 +77,18 @@ require 'header.php';
 	if (isset($_GET['btnsearch']))
 	{
 		$query = "SELECT * FROM product WHERE product_name LIKE '%" . $_GET['searchbar'] . "%'";
+	}
+	else if (isset($_GET['category']))
+	{
+		$query = "SELECT * FROM product JOIN product_has_category ON product_has_category.Product_id = product.id"
+    			." JOIN category ON category.id = product_has_category.Category_id where category_name = '" . $_GET['category'] . "'";
+
+	}
+	else if (isset($_GET['subcategory']))
+	{
+		$query = "SELECT * FROM product JOIN product_has_category ON product_has_category.Product_id = product.id"
+        		." JOIN category ON category.id = product_has_category.Category_id JOIN subcategory ON subcategory.Category_id = category.id"
+        		." where subcategory_name = '" . $_GET['subcategory'] . "'";
 	}
 	// Zoniet dat laten we alle producten zien
 	else
@@ -104,6 +121,19 @@ require 'header.php';
 	if (isset($_GET['btnsearch']))
 	{
 		$query = "SELECT * FROM product WHERE product_name LIKE '%" . $_GET['searchbar'] . "%' LIMIT " . $firstresult . ',' . $countresults;
+	}
+	else if (isset($_GET['category']))
+	{
+		$query = "SELECT * FROM `product` JOIN product_has_category ON product_has_category.Product_id = product.id"
+				." JOIN category ON category.id = product_has_category.Category_id where category_name = '" . $_GET['category'] . "'"
+				." LIMIT " . $firstresult . ',' . $countresults;
+	}
+	else if (isset($_GET['subcategory']))
+	{
+		$query = "SELECT * FROM product JOIN product_has_category ON product_has_category.Product_id = product.id"
+				." JOIN category ON category.id = product_has_category.Category_id JOIN subcategory ON subcategory.Category_id = category.id"
+				." where subcategory_name = '" . $_GET['subcategory'] . "'"
+				." LIMIT " . $firstresult . ',' . $countresults;					
 	}
 	else
 	{
