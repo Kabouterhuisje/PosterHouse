@@ -46,11 +46,11 @@ require 'header.php';
                 <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </div>
             <div id="menu2" class="tab-pane fade">
-                <h3>Categoriën</h3>
+                <h3>Categorieën</h3>
                 <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
             </div>
             <div id="menu3" class="tab-pane fade">
-                <h3>Subcategoriën</h3>
+                <h3>Subcategorieën</h3>
                 <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
             </div>
             <div id="menu4" class="tab-pane fade">
