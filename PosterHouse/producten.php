@@ -28,52 +28,39 @@ require 'header.php';
 
 <!-- sidemenu -->
 <!-- style="margin-top:12%;text-align:left; -->
-<div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1" style="margin-top:12%;text-align:left;">
-	<p>Filter op categorie</p>
-      <ul class="nav navbar-nav">
-      <div class="col-lg-3">
-      <?php 
-		$query = "SELECT * FROM category";
-		$result = mysqli_query($connect, $query);
-		$num_rows = mysqli_num_rows($result);
-		
-		if($num_rows > 0)
-		{
-			for ($i = 0; $i < $num_rows; $i++)
-			{
-				while($row = mysqli_fetch_array($result))
-				{
-		?>
-        <li data-toggle="collapse" data-target="<?php echo $row['category_name'];?>" class="collapsed" style="width: 200px;">
-                  <a href="#"><i class="fa fa-globe fa-lg"></i><?php echo $row['category_name'];?><span class="arrow"></span></a>
-        </li>  
-        <?php 
-        		}
-       	    }
-        }
-        ?>
-        <ul class="sub-menu collapse" id="<?php echo $row['category_name'];?>">
-	        <?php 
-			$query = "SELECT * FROM subcategory where Category_id = ".$row['id'];
+<div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1" style="margin-top:12%; text-align:left;">
+	<h4>Filter op categorie</h4>
+      	<ul class="nav navbar-nav">
+	      	<div class="col-lg-16">
+	      	<?php 
+			$query = "SELECT * FROM category";
+			$subquery = "";
 			$result = mysqli_query($connect, $query);
 			$num_rows = mysqli_num_rows($result);
 			
 			if($num_rows > 0)
 			{
-				for ($i = 0; $i < $num_rows; $i++)
+				while($row = mysqli_fetch_array($result))
 				{
-					while($row = mysqli_fetch_array($result))
+					echo "<li><a href='#'><p>".$row['category_name']."</p></a></li>";
+				       	
+					$subquery = "SELECT * FROM subcategory where Category_id = ".$row['id'];
+					$subresult = mysqli_query($connect, $subquery);
+					$num_rows = mysqli_num_rows($result);
+					 
+					if($num_rows > 0)
 					{
-			?>
-           <li><?php echo $row['subcategory_name'];?></li>
-           <?php 
-	        		}
-	       	    }
+						while($row = mysqli_fetch_array($subresult))
+						{
+							echo "<li style='margin-left:10%'><a href='#'><p>".$row['subcategory_name']."</p></a></li>";
+						}
+					}
+	        	}
 	        }
-	        ?>
-        </div>
-      </ul>
-    </div>
+			 ?>
+	        </div>
+     	 </ul>
+</div>
 
 <!-- artikelen -->
 <div class="container">
