@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6832f546-8faf-49fb-a66a-91599e6d5444" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PosterHouse/contact.php" afterPath="$PROJECT_DIR$/PosterHouse/contact.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PosterHouse/winkelmandje.php" afterPath="$PROJECT_DIR$/PosterHouse/winkelmandje.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,11 +26,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="contact.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="contact.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PosterHouse/contact.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+            <state relative-caret-position="272">
+              <caret line="16" column="144" lean-forward="false" selection-start-line="16" selection-start-column="144" selection-end-line="16" selection-end-column="144" />
               <folding>
                 <marker date="1489704838134" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
                 <marker date="1489704838134" expanded="true" signature="459:587" ph="INSERT INTO message... " />
@@ -56,17 +57,18 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="winkelmandje.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="winkelmandje.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/PosterHouse/winkelmandje.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="45" column="5" lean-forward="true" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
+            <state relative-caret-position="640">
+              <caret line="92" column="5" lean-forward="false" selection-start-line="92" selection-start-column="5" selection-end-line="92" selection-end-column="5" />
               <folding>
-                <marker date="1489703925532" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
-                <marker date="1489703925532" expanded="true" signature="2135:2301" ph="INSERT INTO order_has_product... " />
-                <marker date="1489703925532" expanded="true" signature="2375:2487" ph="INSERT INTO `order`... " />
-                <marker date="1489703925532" expanded="true" signature="5293:5308" ph="..." />
-                <marker date="1489703925532" expanded="true" signature="5409:5424" ph="..." />
+                <marker date="1489763961342" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
+                <marker date="1489763961342" expanded="true" signature="1995:2107" ph="INSERT INTO `order`... " />
+                <marker date="1489763961342" expanded="true" signature="2675:2758" ph="INSERT INTO order_has_product... " />
+                <marker date="1489763961342" expanded="true" signature="2675:2852" ph="INSERT INTO order_has_product... " />
+                <marker date="1489763961342" expanded="true" signature="5229:5244" ph="..." />
+                <marker date="1489763961342" expanded="true" signature="5345:5360" ph="..." />
               </folding>
             </state>
           </provider>
@@ -100,8 +102,8 @@
         <option value="$PROJECT_DIR$/PosterHouse/login.php" />
         <option value="$PROJECT_DIR$/PosterHouse/index.php" />
         <option value="$PROJECT_DIR$/PosterHouse/productdetails.php" />
-        <option value="$PROJECT_DIR$/PosterHouse/winkelmandje.php" />
         <option value="$PROJECT_DIR$/PosterHouse/contact.php" />
+        <option value="$PROJECT_DIR$/PosterHouse/winkelmandje.php" />
       </list>
     </option>
   </component>
@@ -133,8 +135,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -163,6 +163,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -251,12 +253,13 @@
       <workItem from="1489571469221" duration="11493000" />
       <workItem from="1489649293277" duration="6611000" />
       <workItem from="1489656582130" duration="103000" />
-      <workItem from="1489702520672" duration="2343000" />
+      <workItem from="1489702520672" duration="2405000" />
+      <workItem from="1489762135579" duration="1828000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="68693000" />
+    <option name="totallyTimeSpent" value="70583000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -347,11 +350,12 @@
         <state relative-caret-position="476">
           <caret line="28" column="71" lean-forward="false" selection-start-line="28" selection-start-column="71" selection-end-line="28" selection-end-column="71" />
           <folding>
-            <marker date="1489703925532" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
-            <marker date="1489703925532" expanded="true" signature="2135:2301" ph="INSERT INTO order_has_product... " />
-            <marker date="1489703925532" expanded="true" signature="2375:2487" ph="INSERT INTO `order`... " />
-            <marker date="1489703925532" expanded="true" signature="5293:5308" ph="..." />
-            <marker date="1489703925532" expanded="true" signature="5409:5424" ph="..." />
+            <marker date="1489763961342" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
+            <marker date="1489763961342" expanded="true" signature="1995:2107" ph="INSERT INTO `order`... " />
+            <marker date="1489763961342" expanded="true" signature="2675:2758" ph="INSERT INTO order_has_product... " />
+            <marker date="1489763961342" expanded="true" signature="2675:2852" ph="INSERT INTO order_has_product... " />
+            <marker date="1489763961342" expanded="true" signature="5229:5244" ph="..." />
+            <marker date="1489763961342" expanded="true" signature="5345:5360" ph="..." />
           </folding>
         </state>
       </provider>
@@ -454,11 +458,12 @@
         <state relative-caret-position="476">
           <caret line="28" column="71" lean-forward="true" selection-start-line="28" selection-start-column="71" selection-end-line="28" selection-end-column="71" />
           <folding>
-            <marker date="1489703925532" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
-            <marker date="1489703925532" expanded="true" signature="2135:2301" ph="INSERT INTO order_has_product... " />
-            <marker date="1489703925532" expanded="true" signature="2375:2487" ph="INSERT INTO `order`... " />
-            <marker date="1489703925532" expanded="true" signature="5293:5308" ph="..." />
-            <marker date="1489703925532" expanded="true" signature="5409:5424" ph="..." />
+            <marker date="1489763961342" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
+            <marker date="1489763961342" expanded="true" signature="1995:2107" ph="INSERT INTO `order`... " />
+            <marker date="1489763961342" expanded="true" signature="2675:2758" ph="INSERT INTO order_has_product... " />
+            <marker date="1489763961342" expanded="true" signature="2675:2852" ph="INSERT INTO order_has_product... " />
+            <marker date="1489763961342" expanded="true" signature="5229:5244" ph="..." />
+            <marker date="1489763961342" expanded="true" signature="5345:5360" ph="..." />
           </folding>
         </state>
       </provider>
@@ -561,11 +566,12 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1489703925532" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
-            <marker date="1489703925532" expanded="true" signature="2135:2301" ph="INSERT INTO order_has_product... " />
-            <marker date="1489703925532" expanded="true" signature="2375:2487" ph="INSERT INTO `order`... " />
-            <marker date="1489703925532" expanded="true" signature="5293:5308" ph="..." />
-            <marker date="1489703925532" expanded="true" signature="5409:5424" ph="..." />
+            <marker date="1489763961342" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
+            <marker date="1489763961342" expanded="true" signature="1995:2107" ph="INSERT INTO `order`... " />
+            <marker date="1489763961342" expanded="true" signature="2675:2758" ph="INSERT INTO order_has_product... " />
+            <marker date="1489763961342" expanded="true" signature="2675:2852" ph="INSERT INTO order_has_product... " />
+            <marker date="1489763961342" expanded="true" signature="5229:5244" ph="..." />
+            <marker date="1489763961342" expanded="true" signature="5345:5360" ph="..." />
           </folding>
         </state>
       </provider>
@@ -904,27 +910,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PosterHouse/winkelmandje.php">
+    <entry file="file://$PROJECT_DIR$/PosterHouse/contact.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="45" column="5" lean-forward="true" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
+        <state relative-caret-position="272">
+          <caret line="16" column="144" lean-forward="false" selection-start-line="16" selection-start-column="144" selection-end-line="16" selection-end-column="144" />
           <folding>
-            <marker date="1489703925532" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
-            <marker date="1489703925532" expanded="true" signature="2135:2301" ph="INSERT INTO order_has_product... " />
-            <marker date="1489703925532" expanded="true" signature="2375:2487" ph="INSERT INTO `order`... " />
-            <marker date="1489703925532" expanded="true" signature="5293:5308" ph="..." />
-            <marker date="1489703925532" expanded="true" signature="5409:5424" ph="..." />
+            <marker date="1489704838134" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
+            <marker date="1489704838134" expanded="true" signature="459:587" ph="INSERT INTO message... " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PosterHouse/contact.php">
+    <entry file="file://$PROJECT_DIR$/PosterHouse/winkelmandje.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+        <state relative-caret-position="640">
+          <caret line="92" column="5" lean-forward="false" selection-start-line="92" selection-start-column="5" selection-end-line="92" selection-end-column="5" />
           <folding>
-            <marker date="1489704838134" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
-            <marker date="1489704838134" expanded="true" signature="459:587" ph="INSERT INTO message... " />
+            <marker date="1489763961342" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
+            <marker date="1489763961342" expanded="true" signature="1995:2107" ph="INSERT INTO `order`... " />
+            <marker date="1489763961342" expanded="true" signature="2675:2758" ph="INSERT INTO order_has_product... " />
+            <marker date="1489763961342" expanded="true" signature="2675:2852" ph="INSERT INTO order_has_product... " />
+            <marker date="1489763961342" expanded="true" signature="5229:5244" ph="..." />
+            <marker date="1489763961342" expanded="true" signature="5345:5360" ph="..." />
           </folding>
         </state>
       </provider>

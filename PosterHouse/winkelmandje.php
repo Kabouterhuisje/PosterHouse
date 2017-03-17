@@ -64,22 +64,15 @@ if(isset($_POST['checkout'])) {
     }
 
     if(isset($_SESSION['userSession'])) {
-        // insert order details in order_hasProduct table
-        foreach($_SESSION["shopping_cart"] as $keys => $values)
-        {
-            $orderquery = "INSERT INTO order_has_product (Order_id,Order_User_id,quantity,Product_id) VALUES (1,".$_SESSION['userSession'].",".$values['item_quantity'].",".$values['item_id'].")";
-            $connect->query($orderquery);
-        }
 
         $query = "INSERT INTO `order` (total_price,date_created,User_id) VALUES ($total,CURRENT_DATE,".$_SESSION['userSession'].")";
 
         if ($connect->query($query)) {
-
+            $last_id = $connect->insert_id;
             $locationPage;
             if (isset($_SESSION['userSession'])) {
                 $locationPage = "order_overview.php";
                 echo '<script>window.location="order_overview.php"</script>';
-//                unset($_SESSION['shopping_cart']);
             }
             else {
                 $locationPage = "login.php";
@@ -88,12 +81,16 @@ if(isset($_POST['checkout'])) {
         }else {
             echo '<script>alert("error");</script>';
         }
+
+        foreach($_SESSION["shopping_cart"] as $keys => $values)
+        {
+            $details = "INSERT INTO order_has_product (Order_id,Order_User_id,quantity,Product_id) VALUES (".$last_id.",".$_SESSION['userSession'].",".$values['item_quantity'].",".$values['item_id'].")";
+            $connect->query($details);
+        }
     }
     else {
         echo '<script>window.location="login.php"</script>';
     }
-
-
 }
 
 if(isset($_POST['verder'])) {
