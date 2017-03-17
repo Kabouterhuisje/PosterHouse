@@ -84,7 +84,7 @@ if(isset($_POST['checkout'])) {
 
         foreach($_SESSION["shopping_cart"] as $keys => $values)
         {
-            $details = "INSERT INTO order_has_product (Order_id,Order_User_id,quantity,Product_id) VALUES (".$last_id.",".$_SESSION['userSession'].",".$values['item_quantity'].",".$values['item_id'].")";
+            $details = "INSERT INTO order_has_product (Order_id,Order_User_id,quantity,Product_id) VALUES (".$last_id.",".$_SESSION['userSession'].",".$_POST['quantity'].",".$values['item_id'].")";
             $connect->query($details);
         }
     }
@@ -112,6 +112,7 @@ require 'header.php';
 <br /><br /><br />
 <div class="container" style="width:700px;">
     <h3>Order Details</h3>
+    <?php echo "<form method='post'>"; ?>
     <div class="table-responsive">
         <table class="table table-bordered">
             <tr>
@@ -130,7 +131,7 @@ require 'header.php';
                     ?>
                     <tr>
                         <td><?php echo $values["item_name"]; ?></td>
-                        <td><?php echo $values["item_quantity"]; ?></td>
+                        <td><input type="number" name="quantity" min="1" value="<?php echo $values["item_quantity"]; ?>"></td>
                         <td>$ <?php echo $values["item_price"]; ?></td>
                         <td>$ <?php echo number_format($values["item_quantity"] * $values["item_price"], 2); ?></td>
                         <td><a href="winkelmandje.php?action=delete&id=<?php echo $values["item_id"]; ?>"><span class="text-danger">Remove</span></a></td>
@@ -151,12 +152,13 @@ require 'header.php';
     </div>
     <?php
 
-    echo "<form method='post'>";
+
     echo "<input type='submit' name='checkout' style='margin-top:5px;' class='btn btn-success' value='Afrekenen' />";
     echo "<input type='submit' name='verder' style='margin-top:5px;' class='btn btn-primary' value='Verder winkelen' />";
     echo "</form>";
 
-    $connect->close();
+    $_SESSION['updatedQuantity'] = $_POST['quantity'];
+        $connect->close();
     ?>
 </div>
 <br />
