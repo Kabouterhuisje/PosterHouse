@@ -28,10 +28,12 @@ require 'header.php';
 
 <!-- sidemenu -->
 <!-- style="margin-top:12%;text-align:left; -->
-<div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1" style="margin-top:12%; text-align:left;">
+<div class="row" style="margin-top:5%;">
+  <div class="col-sm-3">
+<div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1" style="text-align:left; overflow:hidden;">
 	<h4>Filter op categorie</h4>
       	<ul class="nav navbar-nav">
-	      	<div class="col-lg-16">
+	      	<div class="col-lg">
 	      	<?php 
 	      	
 			$query = "SELECT * FROM category";
@@ -66,12 +68,14 @@ require 'header.php';
 	        </div>
      	 </ul>
 </div>
+</div>
 
+  <div class="col-sm-6" style="margin-bottom:2%; text-align:center;">
 <!-- artikelen -->
-<div class="container">
-	<div class="row" style="margin-bottom:2%; text-align:center;">
+
+
 		<h2>Artikelen</h2>
-	</div>
+	
 	<?php 
 	// Kijken of er een request uit btnsearch komt
 	if (isset($_GET['btnsearch']))
@@ -160,6 +164,7 @@ require 'header.php';
 		}
 	}
 	?>
+</div>
 </div>
 
 <!-- Paginering -->
