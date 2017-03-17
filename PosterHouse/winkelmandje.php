@@ -157,7 +157,9 @@ require 'header.php';
     echo "<input type='submit' name='verder' style='margin-top:5px;' class='btn btn-primary' value='Verder winkelen' />";
     echo "</form>";
 
-    $_SESSION['updatedQuantity'] = $_POST['quantity'];
+    if(isset($_POST['quantity'])) {
+        $_SESSION['updatedQuantity'] = $_POST['quantity'];
+    }
         $connect->close();
     ?>
 </div>
