@@ -128,6 +128,7 @@ require 'header.php';
                     echo "<p>Totaalprijs: ".$row['total_price']."</p>";
                     echo "<p>Besteldatum: ".$row['date_created']."</p>";
                     echo "<p>User ID: ".$row['User_id']."</p>";
+                    echo "<input type='submit' name='deleteOrder' style='margin-top:5px;' class='btn btn-danger' value='Delete' />";
                     echo "</form><br />";
                 }
 
