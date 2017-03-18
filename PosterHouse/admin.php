@@ -7,8 +7,6 @@ if (isset($_SESSION['userSession'])) {
     $userRow=$query->fetch_array();
 }
 
-
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -43,8 +41,9 @@ require 'header.php';
             <div id="menu1" class="tab-pane fade">
                 <!-- artikelen -->
                 <div class="col-sm-6" style="margin-bottom:2%; text-align:center;">
-                    <h2>Producten <input type='submit' name='deleteProduct' style='margin-top:5px;' class='btn btn-success' value='Add' /></h2>
-
+                    <form method="post" action="addProduct.php">
+                    <h2>Producten <input type='submit' name='addProduct' style='margin-top:5px;' class='btn btn-success' value='Add' /></h2>
+                    </form>
                     <?php
 
                     $query = "SELECT * FROM product";
@@ -137,6 +136,7 @@ require 'header.php';
             </div>
             </div>
         </div>
+</div>
 <?php
 require 'footer.php';
 ?>
