@@ -30,8 +30,7 @@ require 'header.php';
             <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
             <li><a data-toggle="tab" href="#menu1">Producten</a></li>
             <li><a data-toggle="tab" href="#menu2">Categoriën</a></li>
-            <li><a data-toggle="tab" href="#menu3">Subcategoriën</a></li>
-            <li><a data-toggle="tab" href="#menu4">Bestellingen</a></li>
+            <li><a data-toggle="tab" href="#menu3">Bestellingen</a></li>
         </ul>
 
         <div class="tab-content">
@@ -75,13 +74,45 @@ require 'header.php';
                 </div>
             </div>
             <div id="menu2" class="tab-pane fade"><br />
-                Categoriën
+                <h2>Categoriën <input type='submit' name='deleteProduct' style='margin-top:5px;' class='btn btn-success' value='Add' /></h2>
+                <?php
+
+                $query = "SELECT * FROM category";
+                $subquery = "";
+                $result = mysqli_query($connect, $query);
+                $num_rows = mysqli_num_rows($result);
+
+                if($num_rows > 0)
+                {
+                    while($row = mysqli_fetch_array($result))
+                    {
+                        echo "<form method='get'>";
+                        echo "<li>".$row['category_name']."</li>";
+                        echo "<input type='submit' name='updateCategory' style='margin-top:5px;' class='btn btn-warning' value='Update' />";
+                        echo "<input type='submit' name='deleteCategory' style='margin-top:5px;' class='btn btn-danger' value='Delete' />";
+                        echo "</form><br />";
+
+                        $subquery = "SELECT * FROM subcategory where Category_id = ".$row['id'];
+                        $subresult = mysqli_query($connect, $subquery);
+                        $num_rows = mysqli_num_rows($result);
+
+                        if($num_rows > 0)
+                        {
+                            while($row = mysqli_fetch_array($subresult))
+                            {
+                                echo "<form method='get'>";
+                                echo "<li style='margin-left:10%'>".$row['subcategory_name']."</li>";
+                                echo "<input type='submit' name='updateSubCategory' style='margin-top:5px; margin-left:10%;' class='btn btn-warning' value='Update' />";
+                                echo "<input type='submit' name='deleteSubCategory' style='margin-top:5px;' class='btn btn-danger' value='Delete' />";
+                                echo "</form><br />";
+                            }
+                        }
+                    }
+                }
+                ?>
             </div>
             <div id="menu3" class="tab-pane fade"><br />
-                Subcategoriën
-            </div>
-            <div id="menu4" class="tab-pane fade"><br />
-                Bestellingen
+                <h2>Bestellingen</h2>
             </div>
         </div>
 <?php
