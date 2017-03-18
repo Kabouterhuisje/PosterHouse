@@ -7,7 +7,7 @@ if (isset($_SESSION['userSession'])) {
     $userRow=$query->fetch_array();
 }
 
-$connect->close();
+
 
 ?>
 <!DOCTYPE html>
@@ -42,23 +42,39 @@ require 'header.php';
                 </div>
             </div>
             <div id="menu1" class="tab-pane fade">
-                <h3>Producten</h3>
-                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            </div>
-            <div id="menu2" class="tab-pane fade">
-                <h3>Categorieën</h3>
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-            </div>
-            <div id="menu3" class="tab-pane fade">
-                <h3>Subcategorieën</h3>
-                <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-            </div>
-            <div id="menu4" class="tab-pane fade">
-                <h3>Bestellingen</h3>
-                <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                <!-- artikelen -->
+                <div class="col-sm-6" style="margin-bottom:2%; text-align:center;">
+                    <h2>Producten <input type='submit' name='deleteProduct' style='margin-top:5px;' class='btn btn-success' value='Add' /></h2>
+
+                    <?php
+
+                    $query = "SELECT * FROM product";
+
+                    $result = mysqli_query($connect, $query);
+
+                    while($row = mysqli_fetch_array($result))
+                    {
+                        echo "<form method='post' style='margin-right: -400px'>";
+                        echo "<div class='col-xs-6 col-md-3' align='center'>";
+                        echo "<img src='images/posters/".$row['image']."' height='250' width='180'/>";
+                        echo "<p><b>Prijs:</b> €<input type='number' step='any' name='p_prijs' value='".$row['price']."'</p>";
+                        echo "<p><b>Product:</b> <input type='text' name='p_naam' value='".$row['product_name']."' </p>";
+                        echo "<p><b>Beschrijving:</b> <input type='text' name='p_beschrijving' value='".$row['description']."' </p>";
+                        $catQuery = $connect->query("SELECT * FROM product_has_category WHERE Product_id = ".$row['id'].";");
+                        $catRow = $catQuery->fetch_array();
+                        echo "<p><b>Categorie:</b> <input type='number' name='p_category' value='".$catRow['Category_id']."' </p>";
+                        $subCatQuery = $connect->query("SELECT * FROM subcategory WHERE Category_id = ".$catRow['Category_id'].";");
+                        $subCatRow = $subCatQuery->fetch_array();
+                        echo "<p><b>Subcategorie:</b> <input type='number' name='p_subcategory' value='".$subCatRow['id']."' </p>";
+                        echo "<input type='submit' name='updateProduct' style='margin-top:5px;' class='btn btn-warning' value='Update' />&nbsp";
+                        echo "<input type='submit' name='deleteProduct' style='margin-top:5px;' class='btn btn-danger' value='Delete' />";
+                        echo "</div>";
+                        echo "</form>";
+                    }
+                    ?>
+                </div>
             </div>
         </div>
-</div>
 <?php
 require 'footer.php';
 ?>
