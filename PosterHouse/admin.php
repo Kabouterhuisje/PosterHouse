@@ -74,6 +74,15 @@ require 'header.php';
                     ?>
                 </div>
             </div>
+            <div id="menu2" class="tab-pane fade"><br />
+                Categoriën
+            </div>
+            <div id="menu3" class="tab-pane fade"><br />
+                Subcategoriën
+            </div>
+            <div id="menu4" class="tab-pane fade"><br />
+                Bestellingen
+            </div>
         </div>
 <?php
 require 'footer.php';

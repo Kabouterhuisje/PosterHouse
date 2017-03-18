@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6832f546-8faf-49fb-a66a-91599e6d5444" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PosterHouse/admin.php" afterPath="$PROJECT_DIR$/PosterHouse/admin.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -82,23 +81,23 @@
       <file leaf-file-name="admin.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/PosterHouse/admin.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="50" column="53" lean-forward="true" selection-start-line="50" selection-start-column="53" selection-end-line="50" selection-end-column="53" />
+            <state relative-caret-position="756">
+              <caret line="82" column="26" lean-forward="false" selection-start-line="82" selection-start-column="26" selection-end-line="82" selection-end-column="26" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#input#0;n#h2#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1489841049079" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
-                <marker date="1489841049079" expanded="true" signature="2027:2048" ph="SELECT * FRO... product" />
-                <marker date="1489841049079" expanded="true" signature="2256:2276" ph="..." />
-                <marker date="1489841049079" expanded="true" signature="2495:2639" ph="..." />
-                <marker date="1489841049079" expanded="true" signature="2899:2952" ph="SELECT * FRO... product_has_category" />
-                <marker date="1489841049079" expanded="true" signature="2899:2953" ph="SELECT * FRO... product_has_category" />
-                <marker date="1489841049079" expanded="true" signature="2899:2967" ph="SELECT * FRO... product_has_category" />
-                <marker date="1489841049079" expanded="true" signature="2899:2969" ph="SELECT * FRO... product_has_category" />
-                <marker date="1489841049079" expanded="true" signature="2899:2970" ph="SELECT * FRO... product_has_category" />
-                <marker date="1489841049079" expanded="true" signature="3220:3266" ph="SELECT * FRO... subcategory" />
-                <marker date="1489841049079" expanded="true" signature="3574:3589" ph="..." />
-                <marker date="1489841049079" expanded="true" signature="3719:3734" ph="..." />
+                <marker date="1489841422290" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
+                <marker date="1489841422290" expanded="true" signature="2027:2048" ph="SELECT * FRO... product" />
+                <marker date="1489841422290" expanded="true" signature="2256:2276" ph="..." />
+                <marker date="1489841422290" expanded="true" signature="2495:2639" ph="..." />
+                <marker date="1489841422290" expanded="true" signature="2899:2952" ph="SELECT * FRO... product_has_category" />
+                <marker date="1489841422290" expanded="true" signature="2899:2953" ph="SELECT * FRO... product_has_category" />
+                <marker date="1489841422290" expanded="true" signature="2899:2967" ph="SELECT * FRO... product_has_category" />
+                <marker date="1489841422290" expanded="true" signature="2899:2969" ph="SELECT * FRO... product_has_category" />
+                <marker date="1489841422290" expanded="true" signature="2899:2970" ph="SELECT * FRO... product_has_category" />
+                <marker date="1489841422290" expanded="true" signature="3220:3266" ph="SELECT * FRO... subcategory" />
+                <marker date="1489841422290" expanded="true" signature="3574:3589" ph="..." />
+                <marker date="1489841422290" expanded="true" signature="3719:3734" ph="..." />
               </folding>
             </state>
           </provider>
@@ -286,12 +285,12 @@
       <workItem from="1489702520672" duration="2405000" />
       <workItem from="1489762135579" duration="7832000" />
       <workItem from="1489780047428" duration="183000" />
-      <workItem from="1489834198986" duration="6864000" />
+      <workItem from="1489834198986" duration="7220000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83634000" />
+    <option name="totallyTimeSpent" value="83990000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -989,23 +988,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/PosterHouse/admin.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="50" column="53" lean-forward="true" selection-start-line="50" selection-start-column="53" selection-end-line="50" selection-end-column="53" />
+        <state relative-caret-position="756">
+          <caret line="82" column="26" lean-forward="false" selection-start-line="82" selection-start-column="26" selection-end-line="82" selection-end-column="26" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#0;n#h2#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1489841049079" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
-            <marker date="1489841049079" expanded="true" signature="2027:2048" ph="SELECT * FRO... product" />
-            <marker date="1489841049079" expanded="true" signature="2256:2276" ph="..." />
-            <marker date="1489841049079" expanded="true" signature="2495:2639" ph="..." />
-            <marker date="1489841049079" expanded="true" signature="2899:2952" ph="SELECT * FRO... product_has_category" />
-            <marker date="1489841049079" expanded="true" signature="2899:2953" ph="SELECT * FRO... product_has_category" />
-            <marker date="1489841049079" expanded="true" signature="2899:2967" ph="SELECT * FRO... product_has_category" />
-            <marker date="1489841049079" expanded="true" signature="2899:2969" ph="SELECT * FRO... product_has_category" />
-            <marker date="1489841049079" expanded="true" signature="2899:2970" ph="SELECT * FRO... product_has_category" />
-            <marker date="1489841049079" expanded="true" signature="3220:3266" ph="SELECT * FRO... subcategory" />
-            <marker date="1489841049079" expanded="true" signature="3574:3589" ph="..." />
-            <marker date="1489841049079" expanded="true" signature="3719:3734" ph="..." />
+            <marker date="1489841422290" expanded="true" signature="171:204" ph="SELECT * FRO... user" />
+            <marker date="1489841422290" expanded="true" signature="2027:2048" ph="SELECT * FRO... product" />
+            <marker date="1489841422290" expanded="true" signature="2256:2276" ph="..." />
+            <marker date="1489841422290" expanded="true" signature="2495:2639" ph="..." />
+            <marker date="1489841422290" expanded="true" signature="2899:2952" ph="SELECT * FRO... product_has_category" />
+            <marker date="1489841422290" expanded="true" signature="2899:2953" ph="SELECT * FRO... product_has_category" />
+            <marker date="1489841422290" expanded="true" signature="2899:2967" ph="SELECT * FRO... product_has_category" />
+            <marker date="1489841422290" expanded="true" signature="2899:2969" ph="SELECT * FRO... product_has_category" />
+            <marker date="1489841422290" expanded="true" signature="2899:2970" ph="SELECT * FRO... product_has_category" />
+            <marker date="1489841422290" expanded="true" signature="3220:3266" ph="SELECT * FRO... subcategory" />
+            <marker date="1489841422290" expanded="true" signature="3574:3589" ph="..." />
+            <marker date="1489841422290" expanded="true" signature="3719:3734" ph="..." />
           </folding>
         </state>
       </provider>
