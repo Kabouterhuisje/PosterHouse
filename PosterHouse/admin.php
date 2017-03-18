@@ -112,7 +112,28 @@ require 'header.php';
                 ?>
             </div>
             <div id="menu3" class="tab-pane fade"><br />
+                <div class="col-sm-3" style="margin-bottom:2%; text-align:center;">
                 <h2>Bestellingen</h2>
+
+                <?php
+
+                $query = "SELECT * FROM `order`";
+
+                $result = mysqli_query($connect, $query);
+
+                while ($row = mysqli_fetch_array($result))
+                {
+                    echo "<form method='post'>";
+                    echo "<p>Order ID: ".$row['id']."</p>";
+                    echo "<p>Totaalprijs: ".$row['total_price']."</p>";
+                    echo "<p>Besteldatum: ".$row['date_created']."</p>";
+                    echo "<p>User ID: ".$row['User_id']."</p>";
+                    echo "</form><br />";
+                }
+
+                $connect->close();
+                ?>
+            </div>
             </div>
         </div>
 <?php
