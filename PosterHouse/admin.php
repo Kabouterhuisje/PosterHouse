@@ -87,7 +87,7 @@ require 'header.php';
                     while($row = mysqli_fetch_array($result))
                     {
                         echo "<form method='get'>";
-                        echo "<li>".$row['category_name']."</li>";
+                        echo "<li><input type='text' value='".$row['category_name']."'</li>";
                         echo "<input type='submit' name='updateCategory' style='margin-top:5px;' class='btn btn-warning' value='Update' />";
                         echo "<input type='submit' name='deleteCategory' style='margin-top:5px;' class='btn btn-danger' value='Delete' />";
                         echo "</form><br />";
@@ -101,8 +101,8 @@ require 'header.php';
                             while($row = mysqli_fetch_array($subresult))
                             {
                                 echo "<form method='get'>";
-                                echo "<li style='margin-left:10%'>".$row['subcategory_name']."</li>";
-                                echo "<input type='submit' name='updateSubCategory' style='margin-top:5px; margin-left:10%;' class='btn btn-warning' value='Update' />";
+                                echo "<li style='margin-left:10%'><input type='text' value='".$row['subcategory_name']."' </li>";
+                                echo "<input type='submit' name='updateSubCategory' style='margin-top:5px;' class='btn btn-warning' value='Update' />";
                                 echo "<input type='submit' name='deleteSubCategory' style='margin-top:5px;' class='btn btn-danger' value='Delete' />";
                                 echo "</form><br />";
                             }
