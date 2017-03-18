@@ -50,23 +50,6 @@ if (isset($_POST['upload'])) {
         form div{
             margin-top: 5px;
         }
-        #img div{
-            width: 80%;
-            padding: 5px;
-            margin: 15px auto;
-            border: 1px solid #cbcbcb;
-        }
-        #img div:after{
-            content: "";
-            display: block;
-            clear: both;
-        }
-        img{
-            float: left;
-            margin: 5px;
-            width: 300px;
-            height: 140px;
-        }
     </style>
 </head>
 <body style="padding-bottom: 167px;">
@@ -100,7 +83,7 @@ if (isset($_POST['upload'])) {
                 Categorie ID: <input type="number" name="product_SubCatID">
             </div>
             <div>
-                <input type="submit" name="upload" class="btn btn-success" value="Upload image">
+                <input type="submit" name="upload" class="btn btn-success" value="Add new product">
             </div>
         </form>
     </div>

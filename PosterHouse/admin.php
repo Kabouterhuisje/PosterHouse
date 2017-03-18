@@ -73,7 +73,9 @@ require 'header.php';
                 </div>
             </div>
             <div id="menu2" class="tab-pane fade"><br />
-                <h2>Categoriën <input type='submit' name='deleteProduct' style='margin-top:5px;' class='btn btn-success' value='Add' /></h2>
+                <form method="post" action="addCategory.php">
+                <h2>Categoriën <input type='submit' name='addCategory' style='margin-top:5px;' class='btn btn-success' value='Add' /></h2>
+                </form>
                 <?php
 
                 $query = "SELECT * FROM category";
