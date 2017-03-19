@@ -89,7 +89,7 @@ require 'header.php';
                     while($row = mysqli_fetch_array($result))
                     {
 
-                        echo "<li><input type='text' value='".$row['category_name']."'</li>";
+                        echo "<li><input type='text' name='catName[]' value='".$row['category_name']."'</li>";
                         $checkValueCat = $row['id'];
                         echo "<input type='checkbox' name='checkboxCat[]' value='$checkValueCat' style='margin-top:5px;' />";
 
@@ -103,7 +103,7 @@ require 'header.php';
                             while($row = mysqli_fetch_array($subresult))
                             {
 
-                                echo "<li style='margin-left:10%'><input type='text' value='".$row['subcategory_name']."' </li>";
+                                echo "<li style='margin-left:10%'><input type='text' name='subCatName[]' value='".$row['subcategory_name']."' </li>";
                                 $checkValue = $row['id'];
                                 echo "<input type='checkbox' name='checkbox[]' value='$checkValue' style='margin-top:5px;' />";
 
@@ -118,7 +118,7 @@ require 'header.php';
 
                     echo "</form><br />";
 
-                    if (isset($_POST['deleteCategory'])) {
+                    if (isset($_POST['deleteCategory']) && isset($_POST['checkboxCat'])) {
                         foreach($_POST['checkboxCat'] as $del_id){
                             $del_id = (int)$del_id;
                             if($connect->query("DELETE FROM category WHERE id = $del_id") && $connect->query("DELETE FROM subcategory WHERE Category_id = $del_id")) {
@@ -131,7 +131,7 @@ require 'header.php';
                         echo '<script>window.location="admin.php"</script>';
                     }
 
-                    if (isset($_POST['deleteSubCategory'])) {
+                    if (isset($_POST['deleteSubCategory']) && isset($_POST['checkbox'])) {
                         foreach($_POST['checkbox'] as $del_id){
                             $del_id = (int)$del_id;
                             if($connect->query("DELETE FROM subcategory WHERE id = $del_id")) {
@@ -139,6 +139,28 @@ require 'header.php';
                             }
                             else {
                                 echo '<script>alert("error");</script>';
+                            }
+                        }
+                        echo '<script>window.location="admin.php"</script>';
+                    }
+
+                    if (isset($_POST['updateCategory']) && isset($_POST['checkboxCat'])) {
+                        foreach($_POST['checkboxCat'] as $up_id){
+                            $up_id = (int)$up_id;
+                        foreach ($_POST['catName'] as $catName) {
+                            $query = $connect->query("UPDATE category SET category_name = '".$catName."' WHERE id = $up_id");
+                        }
+
+                        }
+                        echo '<script>window.location="admin.php"</script>';
+                    }
+
+                    if (isset($_POST['updateSubCategory']) && isset($_POST['checkbox'])) {
+                        foreach($_POST['checkbox'] as $up_id){
+                            $up_id = (int)$up_id;
+
+                            foreach ($_POST['subCatName'] as $subCatName) {
+                                $query = $connect->query("UPDATE subcategory SET subcategory_name = '".$subCatName."' WHERE id = $up_id");
                             }
                         }
                         echo '<script>window.location="admin.php"</script>';
