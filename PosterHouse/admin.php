@@ -41,9 +41,12 @@ require 'header.php';
             <div id="menu1" class="tab-pane fade">
                 <!-- artikelen -->
                 <div class="col-sm-6" style="margin-bottom:2%; text-align:center;">
-                    <form method="post" action="addProduct.php">
-                    <h2>Producten <input type='submit' name='addProduct' style='margin-top:5px;' class='btn btn-success' value='Add' /></h2>
-                    </form>
+                    <form method='post' style='margin-right: -400px'>
+                    <h2>Producten <input type='submit' name='addProduct' style='margin-top:5px;' class='btn btn-success' value='Add' />
+                        <input type='submit' name='updateProduct' style='margin-top:5px;' class='btn btn-warning' value='Update' />
+                        <input type='submit' name='deleteProduct' style='margin-top:5px;' class='btn btn-danger' value='Delete' />
+                    </h2>
+
                     <?php
 
                     $query = "SELECT * FROM product";
@@ -52,11 +55,10 @@ require 'header.php';
 
                     while($row = mysqli_fetch_array($result))
                     {
-                        echo "<form method='post' style='margin-right: -400px'>";
                         echo "<div class='col-xs-6 col-md-3' align='center'>";
                         echo "<img src='images/posters/".$row['image']."' height='250' width='180'/>";
                         echo "<p><b>Prijs:</b> €<input type='number' step='any' name='p_prijs' value='".$row['price']."'</p>";
-                        echo "<p><b>Product:</b> <input type='text' name='p_naam' value='".$row['product_name']."' </p>";
+                        echo "<p><b>Product:</b> <input type='text' name='productName[]' value='".$row['product_name']."' </p>";
                         echo "<p><b>Beschrijving:</b> <input type='text' name='p_beschrijving' value='".$row['description']."' </p>";
                         $catQuery = $connect->query("SELECT * FROM product_has_category WHERE Product_id = ".$row['id'].";");
                         $catRow = $catQuery->fetch_array();
@@ -64,11 +66,39 @@ require 'header.php';
                         $subCatQuery = $connect->query("SELECT * FROM subcategory WHERE Category_id = ".$catRow['Category_id'].";");
                         $subCatRow = $subCatQuery->fetch_array();
                         echo "<p><b>Subcategorie:</b> <input type='number' name='p_subcategory' value='".$subCatRow['id']."' </p>";
-                        echo "<input type='submit' name='updateProduct' style='margin-top:5px;' class='btn btn-warning' value='Update' />&nbsp";
-                        echo "<input type='submit' name='deleteProduct' style='margin-top:5px;' class='btn btn-danger' value='Delete' />";
+                        $checkValueProd = $row['id'];
+                        echo "<br /><input type='checkbox' name='checkboxProd[]' value='$checkValueProd' style='margin-top:5px;' />";
                         echo "</div>";
-                        echo "</form>";
                     }
+                    ?>
+                    </form>
+                    <?php
+                    if (isset($_POST['addProduct'])) {
+                        echo '<script>window.location="addProduct.php"</script>';
+                    }
+
+                    if (isset($_POST['deleteProduct']) && isset($_POST['checkboxProd'])) {
+                        foreach($_POST['checkboxProd'] as $del_id){
+                            $del_id = (int)$del_id;
+                            if($connect->query("DELETE FROM product WHERE id = $del_id")) {
+                                echo '<script>alert("succes");</script>';
+                            }
+                            else {
+                                echo '<script>alert("error");</script>';
+                            }
+                        }
+                        echo '<script>window.location="admin.php"</script>';
+                    }
+
+//                    if (isset($_POST['updateProduct']) && isset($_POST['checkboxProd'])) {
+//                        foreach($_POST['checkboxProd'] as $up_id){
+//                            $up_id = (int)$up_id;
+//                            foreach ($_POST['productName'] as $prodName) {
+//                                $query = $connect->query("UPDATE product SET product_name = '".$prodName."' WHERE id = $up_id");
+//                            }
+//                        }
+//                        echo '<script>window.location="admin.php"</script>';
+//                    }
                     ?>
                 </div>
             </div>
@@ -102,11 +132,9 @@ require 'header.php';
                         {
                             while($row = mysqli_fetch_array($subresult))
                             {
-
                                 echo "<li style='margin-left:10%'><input type='text' name='subCatName[]' value='".$row['subcategory_name']."' </li>";
                                 $checkValue = $row['id'];
                                 echo "<input type='checkbox' name='checkbox[]' value='$checkValue' style='margin-top:5px;' />";
-
                             }
                         }
                     }
