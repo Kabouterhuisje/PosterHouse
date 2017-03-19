@@ -122,15 +122,27 @@ require 'header.php';
 
                 $result = mysqli_query($connect, $query);
 
+                echo "<form method='post'>";
                 while ($row = mysqli_fetch_array($result))
                 {
-                    echo "<form method='post'>";
+
                     echo "<p>Order ID: ".$row['id']."</p>";
                     echo "<p>Totaalprijs: ".$row['total_price']."</p>";
                     echo "<p>Besteldatum: ".$row['date_created']."</p>";
                     echo "<p>User ID: ".$row['User_id']."</p>";
-                    echo "<input type='submit' name='deleteOrder' style='margin-top:5px;' class='btn btn-danger' value='Delete' />";
-                    echo "</form><br />";
+                    $checkValue = $row['id'];
+                    echo "<input type='checkbox' name='checkbox[]' value='$checkValue' style='margin-top:5px;' />";
+
+                }
+                echo "<br /><input type='submit' name='deleteOrder' style='margin-top:5px;' class='btn btn-danger' value='Delete' />";
+                echo "</form><br />";
+
+                if (isset($_POST['deleteOrder'])) {
+                    foreach($_POST['checkbox'] as $del_id){
+                        $del_id = (int)$del_id;
+                        $query = $connect->query("DELETE FROM `order` WHERE id = $del_id");
+                    }
+                    echo '<script>window.location="admin.php"</script>';
                 }
 
                 $connect->close();
