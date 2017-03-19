@@ -85,13 +85,14 @@ require 'header.php';
 
                 if($num_rows > 0)
                 {
+                    echo "<form method='post'>";
                     while($row = mysqli_fetch_array($result))
                     {
-                        echo "<form method='get'>";
+
                         echo "<li><input type='text' value='".$row['category_name']."'</li>";
-                        echo "<input type='submit' name='updateCategory' style='margin-top:5px;' class='btn btn-warning' value='Update' />";
-                        echo "<input type='submit' name='deleteCategory' style='margin-top:5px;' class='btn btn-danger' value='Delete' />";
-                        echo "</form><br />";
+                        $checkValueCat = $row['id'];
+                        echo "<input type='checkbox' name='checkboxCat[]' value='$checkValueCat' style='margin-top:5px;' />";
+
 
                         $subquery = "SELECT * FROM subcategory where Category_id = ".$row['id'];
                         $subresult = mysqli_query($connect, $subquery);
@@ -101,13 +102,46 @@ require 'header.php';
                         {
                             while($row = mysqli_fetch_array($subresult))
                             {
-                                echo "<form method='get'>";
+
                                 echo "<li style='margin-left:10%'><input type='text' value='".$row['subcategory_name']."' </li>";
-                                echo "<input type='submit' name='updateSubCategory' style='margin-top:5px;' class='btn btn-warning' value='Update' />";
-                                echo "<input type='submit' name='deleteSubCategory' style='margin-top:5px;' class='btn btn-danger' value='Delete' />";
-                                echo "</form><br />";
+                                $checkValue = $row['id'];
+                                echo "<input type='checkbox' name='checkbox[]' value='$checkValue' style='margin-top:5px;' />";
+
                             }
                         }
+                    }
+                    echo "<br /><input type='submit' name='updateCategory' style='margin-top:5px;' class='btn btn-warning' value='Update category' />&nbsp;";
+                    echo "<input type='submit' name='deleteCategory' style='margin-top:5px;' class='btn btn-danger' value='Delete category' /><br />";
+
+                    echo "<input type='submit' name='updateSubCategory' style='margin-top:5px;' class='btn btn-warning' value='Update subcategory' />&nbsp;";
+                    echo "<input type='submit' name='deleteSubCategory' style='margin-top:5px;' class='btn btn-danger' value='Delete subcategory' />";
+
+                    echo "</form><br />";
+
+                    if (isset($_POST['deleteCategory'])) {
+                        foreach($_POST['checkboxCat'] as $del_id){
+                            $del_id = (int)$del_id;
+                            if($connect->query("DELETE FROM category WHERE id = $del_id") && $connect->query("DELETE FROM subcategory WHERE Category_id = $del_id")) {
+                                echo '<script>alert("succes");</script>';
+                            }
+                            else {
+                                echo '<script>alert("error");</script>';
+                            }
+                        }
+                        echo '<script>window.location="admin.php"</script>';
+                    }
+
+                    if (isset($_POST['deleteSubCategory'])) {
+                        foreach($_POST['checkbox'] as $del_id){
+                            $del_id = (int)$del_id;
+                            if($connect->query("DELETE FROM subcategory WHERE id = $del_id")) {
+                                echo '<script>alert("succes");</script>';
+                            }
+                            else {
+                                echo '<script>alert("error");</script>';
+                            }
+                        }
+                        echo '<script>window.location="admin.php"</script>';
                     }
                 }
                 ?>

@@ -11,10 +11,8 @@ if (isset($_POST['addCat'])) {
     $query = $connect->query("INSERT INTO category (category_name) VALUES ('".$_POST['category_name']."');");
 }
 
-$last_id = $connect->insert_id;
-
 if (isset($_POST['addSubCat'])) {
-    $query = $connect->query("INSERT INTO subcategory (subcategory_name,Category_id) VALUES ('".$_POST['subcategory_name']."',$last_id);");
+    $query = $connect->query("INSERT INTO subcategory (subcategory_name,Category_id) VALUES ('".$_POST['subcategory_name']."',".$_POST['category_id'].");");
 }
 
 ?>
@@ -67,6 +65,9 @@ if (isset($_POST['addSubCat'])) {
         <form method="post" enctype="multipart/form-data">
             <div>
                 Subcategorienaam: <input type="text" name="subcategory_name">
+            </div>
+            <div>
+                Categorie ID: <input type="number" name="category_id">
             </div>
             <div>
                 <input type="submit" name="addSubCat" class="btn btn-success" value="Add new subcategory">
