@@ -50,22 +50,23 @@ require 'header.php';
                     <?php
 
                     $query = "SELECT * FROM product";
-
                     $result = mysqli_query($connect, $query);
+                    $num_rows = mysqli_num_rows($result);
 
-                    while($row = mysqli_fetch_array($result))
+                    if($num_rows > 0)
                     {
+                    while ($row = mysqli_fetch_array($result)) {
                         echo "<div class='col-xs-6 col-md-3' align='center'>";
-                        echo "<img src='images/posters/".$row['image']."' height='250' width='180'/>";
-                        echo "<p><b>Prijs:</b> €<input type='number' step='any' name='p_prijs' value='".$row['price']."'</p>";
-                        echo "<p><b>Product:</b> <input type='text' name='productName[]' value='".$row['product_name']."' </p>";
-                        echo "<p><b>Beschrijving:</b> <input type='text' name='p_beschrijving' value='".$row['description']."' </p>";
-                        $catQuery = $connect->query("SELECT * FROM product_has_category WHERE Product_id = ".$row['id'].";");
+                        echo "<img src='images/posters/" . $row['image'] . "' height='250' width='180'/>";
+                        echo "<p><b>Prijs:</b> €<input type='number' step='any' name='productPrice[]' value='" . $row['price'] . "'</p>";
+                        echo "<p><b>Product:</b> <input type='text' name='productName[]' value='" . $row['product_name'] . "' </p>";
+                        echo "<p><b>Beschrijving:</b> <input type='text' name='productDescription[]' value='" . $row['description'] . "' </p>";
+                        $catQuery = $connect->query("SELECT * FROM product_has_category WHERE Product_id = " . $row['id'] . ";");
                         $catRow = $catQuery->fetch_array();
-                        echo "<p><b>Categorie:</b> <input type='number' name='p_category' value='".$catRow['Category_id']."' </p>";
-                        $subCatQuery = $connect->query("SELECT * FROM subcategory WHERE Category_id = ".$catRow['Category_id'].";");
+                        echo "<p><b>Categorie:</b> <input type='number' name='productCategory[]' value='" . $catRow['Category_id'] . "' </p>";
+                        $subCatQuery = $connect->query("SELECT * FROM subcategory WHERE Category_id = " . $catRow['Category_id'] . ";");
                         $subCatRow = $subCatQuery->fetch_array();
-                        echo "<p><b>Subcategorie:</b> <input type='number' name='p_subcategory' value='".$subCatRow['id']."' </p>";
+                        echo "<p><b>Subcategorie:</b> <input type='number' name='productSubCategory[]' value='" . $subCatRow['id'] . "' </p>";
                         $checkValueProd = $row['id'];
                         echo "<br /><input type='checkbox' name='checkboxProd[]' value='$checkValueProd' style='margin-top:5px;' />";
                         echo "</div>";
@@ -73,38 +74,39 @@ require 'header.php';
                     ?>
                     </form>
                     <?php
+
                     if (isset($_POST['addProduct'])) {
                         echo '<script>window.location="addProduct.php"</script>';
                     }
 
                     if (isset($_POST['deleteProduct']) && isset($_POST['checkboxProd'])) {
-                        foreach($_POST['checkboxProd'] as $del_id){
+                        foreach ($_POST['checkboxProd'] as $del_id) {
                             $del_id = (int)$del_id;
-                            if($connect->query("DELETE FROM product WHERE id = $del_id")) {
+                            if ($connect->query("DELETE FROM product WHERE id = $del_id")) {
                                 echo '<script>alert("succes");</script>';
-                            }
-                            else {
+                            } else {
                                 echo '<script>alert("error");</script>';
                             }
                         }
                         echo '<script>window.location="admin.php"</script>';
                     }
 
-//                    if (isset($_POST['updateProduct']) && isset($_POST['checkboxProd'])) {
-//                        foreach($_POST['checkboxProd'] as $up_id){
-//                            $up_id = (int)$up_id;
-//                            foreach ($_POST['productName'] as $prodName) {
-//                                $query = $connect->query("UPDATE product SET product_name = '".$prodName."' WHERE id = $up_id");
-//                            }
-//                        }
-//                        echo '<script>window.location="admin.php"</script>';
-//                    }
+                    if (isset($_POST['updateProduct']) && isset($_POST['checkboxProd'])) {
+                        foreach ($_POST['checkboxProd'] as $up_id) {
+                            $up_id = (int)$up_id;
+                            foreach ($_POST['productName'] as $prodName) {
+                                $connect->query("UPDATE product SET product_name = '".$prodName."' WHERE id = $up_id");
+                            }
+                        }
+                        echo '<script>window.location="admin.php"</script>';
+                    }
+                    }
                     ?>
                 </div>
             </div>
             <div id="menu2" class="tab-pane fade"><br />
                 <form method="post" action="addCategory.php">
-                <h2>Categoriën <input type='submit' name='addCategory' style='margin-top:5px;' class='btn btn-success' value='Add' /></h2>
+                <h2>Categorieën <input type='submit' name='addCategory' style='margin-top:5px;' class='btn btn-success' value='Add' /></h2>
                 </form>
                 <?php
 
@@ -176,7 +178,7 @@ require 'header.php';
                         foreach($_POST['checkboxCat'] as $up_id){
                             $up_id = (int)$up_id;
                         foreach ($_POST['catName'] as $catName) {
-                            $query = $connect->query("UPDATE category SET category_name = '".$catName."' WHERE id = $up_id");
+                            $connect->query("UPDATE category SET category_name = '".$catName."' WHERE id = $up_id");
                         }
 
                         }
