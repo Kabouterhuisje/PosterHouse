@@ -11,7 +11,7 @@ if (isset($_SESSION['userSession'])) {
     <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>Welcome</title>
+        <title>Producten</title>
         <!-- Verwijzingen -->
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
