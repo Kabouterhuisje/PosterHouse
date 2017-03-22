@@ -92,17 +92,41 @@ require 'header.php';
                     }
 
                     if (isset($_POST['updateProduct']) && isset($_POST['checkboxProd'])) {
-                        $x = 1;
+                        $x = 0;
                         foreach ($_POST['checkboxProd'] as $up_id) {
                             $up_id = (int)$up_id;
                             foreach ($_POST['productName'] as $prodName) {
                                 $x++;
                                 if ($x == $up_id) {
                                     $connect->query("UPDATE product SET product_name = '".$prodName."' WHERE id = $up_id");
-                                    echo '<script>alert("'.$prodName.'");</script>';
                                 }
-                                else {
-                                    echo '<script>alert("error");</script>';
+                            }
+                            $x = 0;
+                            foreach ($_POST['productPrice'] as $prodPrice) {
+                                $x++;
+                                if ($x == $up_id) {
+                                    $connect->query("UPDATE product SET price = ".$prodPrice." WHERE id = $up_id");
+                                }
+                            }
+                            $x = 0;
+                            foreach ($_POST['productDescription'] as $prodDescription) {
+                                $x++;
+                                if ($x == $up_id) {
+                                    $connect->query("UPDATE product SET description = '".$prodDescription."' WHERE id = $up_id");
+                                }
+                            }
+                            $x = 0;
+                            foreach ($_POST['productCategory'] as $prodCategory) {
+                                $x++;
+                                if ($x == $up_id) {
+                                    $connect->query("UPDATE product_has_category SET Category_id = ".$prodCategory." WHERE Product_id = $up_id");
+                                }
+                            }
+                            $x = 0;
+                            foreach ($_POST['productSubCategory'] as $prodSubCategory) {
+                                $x++;
+                                if ($x == $up_id) {
+                                    $connect->query("UPDATE subcategory SET id = ".$prodSubCategory." WHERE id = $up_id");
                                 }
                             }
                         }
