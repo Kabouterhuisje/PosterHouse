@@ -49,7 +49,7 @@ require 'header.php';
 
                     <?php
 
-                    $query = "SELECT * FROM product";
+                    $query = "SELECT * FROM product ORDER BY id";
                     $result = mysqli_query($connect, $query);
                     $num_rows = mysqli_num_rows($result);
 
@@ -92,10 +92,18 @@ require 'header.php';
                     }
 
                     if (isset($_POST['updateProduct']) && isset($_POST['checkboxProd'])) {
+                        $x = 1;
                         foreach ($_POST['checkboxProd'] as $up_id) {
                             $up_id = (int)$up_id;
                             foreach ($_POST['productName'] as $prodName) {
-                                $connect->query("UPDATE product SET product_name = '".$prodName."' WHERE id = $up_id");
+                                $x++;
+                                if ($x == $up_id) {
+                                    $connect->query("UPDATE product SET product_name = '".$prodName."' WHERE id = $up_id");
+                                    echo '<script>alert("'.$prodName.'");</script>';
+                                }
+                                else {
+                                    echo '<script>alert("error");</script>';
+                                }
                             }
                         }
                         echo '<script>window.location="admin.php"</script>';
