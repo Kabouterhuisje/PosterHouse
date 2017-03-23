@@ -71,7 +71,7 @@ require 'header.php';
                         echo "<p><b>Categorie:</b> <input type='number' name='productCategory[]' value='" . $catRow['Category_id'] . "' </p>";
                         $subCatQuery = $connect->query("SELECT * FROM subcategory WHERE Category_id = " . $catRow['Category_id'] . ";");
                         $subCatRow = $subCatQuery->fetch_array();
-                        echo "<p><b>Subcategorie:</b> <input type='number' name='productSubCategory[]' value='" . $subCatRow['id'] . "' </p>";
+                        echo "<p><b>Subcategorie:</b> <input type='number' name='productSubCategory[]' value='" . $subCatRow['Product_id'] . "' </p>";
                         $checkValueProd = $row['id'];
                         echo "<br /><input type='checkbox' name='checkboxProd[]' value='$checkValueProd' style='margin-top:5px;' />";
                         echo "</div>";
