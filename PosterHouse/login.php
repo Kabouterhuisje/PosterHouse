@@ -1,6 +1,6 @@
 <?php
 session_start();
-$connect = mysqli_connect("localhost", "root", "", "posterhouse_databaseV4");
+$connect = mysqli_connect("localhost", "root", "", "posterhouse_databaseV5");
 
 if (isset($_SESSION['userSession'])!="") {
 	header("Location: index.php");
