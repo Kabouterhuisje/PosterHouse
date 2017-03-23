@@ -55,7 +55,7 @@ if(isset($_GET["action"]))
     }
 }
 
-if(isset($_POST['checkout'])) {
+if(isset($_POST['checkout']) && isset($_SESSION['shopping_cart'])) {
 
     $total = 0;
     foreach($_SESSION["shopping_cart"] as $keys => $values)
