@@ -156,6 +156,7 @@ require 'header.php';
     echo "<input type='submit' name='checkout' style='margin-top:5px;' class='btn btn-success' value='Afrekenen' />";
     echo "<input type='submit' name='verder' style='margin-top:5px;' class='btn btn-primary' value='Verder winkelen' />";
     echo "</form>";
+    echo "<br /><b><p style='color: red'>Wij maken gebruik van de gegevens die u heeft opgeslagen in uw account. <br /> Controleer voordat u een bestelling plaatst of deze gegevens nog kloppen!</p></b>";
 
     if(isset($_POST['quantity'])) {
         $_SESSION['updatedQuantity'] = $_POST['quantity'];

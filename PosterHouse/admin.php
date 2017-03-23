@@ -239,7 +239,7 @@ require 'header.php';
 
                 $query = "SELECT * FROM `order`";
                 $result = mysqli_query($connect, $query);
-                
+
                 while ($row = mysqli_fetch_array($result)) {
                     echo "<div class='col-xs-6 col-md-3' align='center'>";
                     echo "<p>Order ID: " . $row['id'] . "</p>";
