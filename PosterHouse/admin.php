@@ -231,27 +231,26 @@ require 'header.php';
             ?>
         </div>
         <div id="menu3" class="tab-pane fade"><br/>
-            <div class="col-sm-3" style="margin-bottom:2%; text-align:center;">
-                <h2>Bestellingen</h2>
+            <div class="col-sm-12" style="margin-bottom:2%; text-align:center;">
+                <form method='post'>
+                <h2>Bestellingen <input type='submit' name='deleteOrder' style='margin-top:5px;' class='btn btn-danger' value='Delete' /></h2>
 
                 <?php
 
                 $query = "SELECT * FROM `order`";
-
                 $result = mysqli_query($connect, $query);
-
-                echo "<form method='post'>";
+                
                 while ($row = mysqli_fetch_array($result)) {
-
+                    echo "<div class='col-xs-6 col-md-3' align='center'>";
                     echo "<p>Order ID: " . $row['id'] . "</p>";
                     echo "<p>Totaalprijs: " . $row['total_price'] . "</p>";
                     echo "<p>Besteldatum: " . $row['date_created'] . "</p>";
                     echo "<p>User ID: " . $row['User_id'] . "</p>";
                     $checkValue = $row['id'];
                     echo "<input type='checkbox' name='checkbox[]' value='$checkValue' style='margin-top:5px;' />";
-
+                    echo "</div>";
                 }
-                echo "<br /><input type='submit' name='deleteOrder' style='margin-top:5px;' class='btn btn-danger' value='Delete' />";
+
                 echo "</form><br />";
 
                 if (isset($_POST['deleteOrder'])) {
