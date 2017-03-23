@@ -77,9 +77,12 @@ require 'header.php';
         <li><a data-toggle="tab" href="#menu2">Wachtwoord veranderen</a></li>
     </ul>
     <div class="tab-content">
-        <div id="home" class="tab-pane fade in active">
-            <h3>Home</h3>
-            <p>Welkom, <?php echo $userRow['username'];?>!<br /><br /> Pas op deze pagina je gegevens aan om zo eenvoudig producten te kunnen bestellen. De gegevens die u hier invuld, zullen automatisch worden ingevuld als u een product wilt kopen! Bespaar tijd en sla uw contactgegevens nu op in het profiel!</p>
+        <div id="home" class="tab-pane fade in active"><br />
+            <div class="jumbotron">
+                <h1>Welkom, <?php echo $userRow['username'];?>!</h1>
+                <p>Pas op deze pagina je gegevens aan om zo eenvoudig producten te kunnen bestellen. De gegevens die u hier invuld, zullen automatisch worden ingevuld als u een product wilt kopen! Bespaar tijd en sla uw contactgegevens nu op in het profiel!
+                </p>
+            </div>
         </div>
         <div id="menu1" class="tab-pane fade">
             <h3>Gegevens</h3>
