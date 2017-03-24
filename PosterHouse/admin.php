@@ -67,30 +67,55 @@ require 'header.php';
                         echo "<p><b>Product:</b> <input type='text' name='productName[]' value='" . $row['product_name'] . "' </p>";
                         echo "<p><b>Beschrijving:</b> <input type='text' name='productDescription[]' value='" . $row['description'] . "' </p>";
                         //Dropdownlist voor categorie
-                        $catQuery = ("SELECT * FROM category where id = ( SELECT category_id FROM product_has_category where product_id = ".$row['id']." );");
+                        $selectedCatQuery = $connect->query("SELECT * FROM category AS c"
+        													." JOIN product_has_category AS phc ON phc.Category_id = c.id"
+        													." WHERE phc.Product_id = '".$row['id']."';");
+                        $selectedCatRow = $selectedCatQuery->fetch_array();
+                        
+                        $catQuery = ("SELECT * FROM category");
                         $catResult = mysqli_query($connect, $catQuery);
                         $select = "<p><b>Categorie:</b> <select name='productCategory' style='width: 174px;'>";
                         while ($row = mysqli_fetch_array($catResult))
                         {
-                        	$select.= "<option value='".$row['category_name']."'>".$row['category_name']."</option>";
+                        	
+                        	if ($row['id'] == $selectedCatRow['id'])
+                        	{
+                        		$select.= "<option selected value='".$row['category_name']."'>".$row['category_name']."</option>";
+                        	}
+                        	else
+                        	{
+                        		$select.= "<option value='".$row['category_name']."'>".$row['category_name']."</option>";
+                        	}
                         }
                         $select.= "</select></p>";
                         echo $select;
+                        
                         //Dropdownlist voor subcategorie
-                        $subCatQuery = ("SELECT * FROM subcategory AS sc"
-				                        ." JOIN category AS c ON c.id = sc.Category_id"
-				                        ." JOIN product_has_category AS phc ON phc.Category_id = c.id"
-                    					." JOIN product AS p ON p.id = phc.Product_id");
-			                    		//." WHERE phc.product_id = '".$row['id']."'");
-                        $subCatResult = mysqli_query($connect, $subCatQuery) or die("Error: ".mysqli_error($connect));;
+                        $selectedSubCatQuery = $connect->query("SELECT * FROM subcategory AS sc"
+				                        					." JOIN category AS c ON c.id = sc.Category_id"
+				                        					." JOIN product_has_category AS phc ON phc.Category_id = c.id"
+				                        					." WHERE phc.Product_id = '".$row['id']."'");
+                        $selectedSubCatRow = $selectedSubCatQuery->fetch_array();
+                        echo "<p><b>Subcategorie:</b> <input type='text' name='productSubCategory[]' value='" . $selectedSubCatRow['category_name'] . "' </p>";
+                        
+                        $subCatQuery = ("SELECT * FROM subcategory");
+                        $subCatResult = mysqli_query($connect, $subCatQuery);
                         $select = "<p><b>SubCategorie:</b> <select name='productSubCategory'  style='width: 174px;'>";
                         
                         while ($row = mysqli_fetch_array($subCatResult))
                         {
-                        	$select.= "<option value='".$row['subcategory_name']."'>".$row['subcategory_name']."</option>";
+                        	if ($row['id'] == $selectedSubCatRow['id'])
+                        	{
+                        		$select.= "<option selected value='".$row['subcategory_name']."'>".$row['subcategory_name']."</option>";
+                        	}
+                        	else
+                        	{
+                        		$select.= "<option value='".$row['subcategory_name']."'>".$row['subcategory_name']."</option>";
+                        	}
                         }
                         $select.= "</select></p>";
                         echo $select;
+                        
                         $checkValueProd = $row['id'];
                         echo "<br /><input type='checkbox' name='checkboxProd[]' value='$checkValueProd' style='margin-top:5px;' />";
                         echo "</div>";
