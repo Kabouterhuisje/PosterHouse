@@ -66,12 +66,31 @@ require 'header.php';
                         echo "<p><b>Prijs:</b> €<input type='number' step='any' name='productPrice[]' value='" . $row['price'] . "'</p>";
                         echo "<p><b>Product:</b> <input type='text' name='productName[]' value='" . $row['product_name'] . "' </p>";
                         echo "<p><b>Beschrijving:</b> <input type='text' name='productDescription[]' value='" . $row['description'] . "' </p>";
-                        $catQuery = $connect->query("SELECT * FROM product_has_category WHERE Product_id = " . $row['id'] . ";");
-                        $catRow = $catQuery->fetch_array();
-                        echo "<p><b>Categorie:</b> <input type='number' name='productCategory[]' value='" . $catRow['Category_id'] . "' </p>";
-                        $subCatQuery = $connect->query("SELECT * FROM subcategory WHERE Category_id = " . $catRow['Category_id'] . ";");
-                        $subCatRow = $subCatQuery->fetch_array();
-                        echo "<p><b>Subcategorie:</b> <input type='number' name='productSubCategory[]' value='" . $subCatRow['Product_id'] . "' </p>";
+                        //Dropdownlist voor categorie
+                        $catQuery = ("SELECT * FROM category where id = ( SELECT category_id FROM product_has_category where product_id = ".$row['id']." );");
+                        $catResult = mysqli_query($connect, $catQuery);
+                        $select = "<p><b>Categorie:</b> <select name='productCategory' style='width: 174px;'>";
+                        while ($row = mysqli_fetch_array($catResult))
+                        {
+                        	$select.= "<option value='".$row['category_name']."'>".$row['category_name']."</option>";
+                        }
+                        $select.= "</select></p>";
+                        echo $select;
+                        //Dropdownlist voor subcategorie
+                        $subCatQuery = ("SELECT * FROM subcategory AS sc"
+				                        ." JOIN category AS c ON c.id = sc.Category_id"
+				                        ." JOIN product_has_category AS phc ON phc.Category_id = c.id"
+                    					." JOIN product AS p ON p.id = phc.Product_id");
+			                    		//." WHERE phc.product_id = '".$row['id']."'");
+                        $subCatResult = mysqli_query($connect, $subCatQuery) or die("Error: ".mysqli_error($connect));;
+                        $select = "<p><b>SubCategorie:</b> <select name='productSubCategory'  style='width: 174px;'>";
+                        
+                        while ($row = mysqli_fetch_array($subCatResult))
+                        {
+                        	$select.= "<option value='".$row['subcategory_name']."'>".$row['subcategory_name']."</option>";
+                        }
+                        $select.= "</select></p>";
+                        echo $select;
                         $checkValueProd = $row['id'];
                         echo "<br /><input type='checkbox' name='checkboxProd[]' value='$checkValueProd' style='margin-top:5px;' />";
                         echo "</div>";
