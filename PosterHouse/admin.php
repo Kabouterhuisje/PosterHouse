@@ -139,7 +139,9 @@ require 'header.php';
                     foreach ($_POST['checkboxProd'] as $del_id) {
                         $del_id = (int)$del_id;
                         if ($connect->query("DELETE FROM product WHERE id = $del_id")) {
-                            echo '<script>alert("succes");</script>';
+                        	if ($connect->query("DELETE FROM product_has_category WHERE Product_id = $del_id")) {
+                            	echo '<script>alert("succes");</script>';
+                        	}
                         } else {
                             echo '<script>alert("error");</script>';
                         }
