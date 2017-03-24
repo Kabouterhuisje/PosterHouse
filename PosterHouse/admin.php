@@ -84,18 +84,18 @@ require 'header.php';
                         $catResult = mysqli_query($connect, $catQuery);
                         $select = "<p><b>Categorie:</b> <select name='productCategory[]' style='width: 174px;'>";
                         // Loopt door alle rows van category
-                        while ($row = mysqli_fetch_array($catResult))
+                        while ($catRow = mysqli_fetch_array($catResult))
                         {
                         	// Checkt of het id van het product gelijk is aan een id uit de category table
-                        	if ($row['id'] == $selectedCatRow['id'])
+                        	if ($catRow['id'] == $selectedCatRow['id'])
                         	{
                         		// Als de id's overeenkomen dan wordt het toegevoegd aan de dropdownlist als selected value
-                        		$select.= "<option selected value='".$row['category_name']."'>".$row['category_name']."</option>";
+                        		$select.= "<option selected value='".$catRow['category_name']."'>".$catRow['category_name']."</option>";
                         	}
                         	else
                         	{
                         		// Als de id's niet overeenkomen dan wordt het alleen toegevoegd aan de dropdownlist
-                        		$select.= "<option value='".$row['category_name']."'>".$row['category_name']."</option>";
+                        		$select.= "<option value='".$catRow['category_name']."'>".$catRow['category_name']."</option>";
                         	}
                         }
                         $select.= "</select></p>";
@@ -106,18 +106,18 @@ require 'header.php';
                         $subCatResult = mysqli_query($connect, $subCatQuery);
                         $select = "<p><b>SubCategorie:</b> <select name='productSubCategory[]'  style='width: 174px;'>";
                         // Loopt door alle rows van subcategory
-                        while ($row = mysqli_fetch_array($subCatResult))
+                        while ($subCatRow = mysqli_fetch_array($subCatResult))
                         {
                         	// Checkt of het id van het product gelijk is aan een id uit de subcategory table
-                        	if ($row['id'] == $selectedSubCatRow['id'])
+                        	if ($subCatRow['id'] == $selectedSubCatRow['id'])
                         	{
                         		// Als de id's overeenkomen dan wordt het toegevoegd aan de dropdownlist als selected value
-                        		$select.= "<option selected value='".$row['subcategory_name']."'>".$row['subcategory_name']."</option>";
+                        		$select.= "<option selected value='".$subCatRow['subcategory_name']."'>".$subCatRow['subcategory_name']."</option>";
                         	}
                         	else
                         	{
                         		// Als de id's niet overeenkomen dan wordt het alleen toegevoegd aan de dropdownlist
-                        		$select.= "<option value='".$row['subcategory_name']."'>".$row['subcategory_name']."</option>";
+                        		$select.= "<option value='".$subCatRow['subcategory_name']."'>".$subCatRow['subcategory_name']."</option>";
                         	}
                         }
                         $select.= "</select></p>";
