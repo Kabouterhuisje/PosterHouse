@@ -7,17 +7,39 @@ if (isset($_SESSION['userSession'])) {
     $userRow=$query->fetch_array();
 }
 
+// Het ophalen van de subcategorie;
+$subCatQuery = ("SELECT * FROM subcategory");
+$subCatResult = mysqli_query($connect, $subCatQuery);
+$select = "<p>Subcategorie: <select name='product_SubCatName' style='width: 174px;'>";
+// Loopt door alle rows van subcategory
+while ($row = mysqli_fetch_array($subCatResult))
+{
+	$select.= "<option value='".$row['subcategory_name']."'>".$row['subcategory_name']."</option>";
+}
+$select.= "</select></p>";
+
 if (isset($_POST['upload'])) {
     $target = "images/posters/".basename($_FILES['image']['name']);
     $image = $_FILES['image']['name'];
 
     $query = $connect->query("INSERT INTO product (product_name,price,description,image) VALUES ('".$_POST['product_name']."','".$_POST['product_price']."','".$_POST['product_beschrijving']."','$image');");
     $last_id = $connect->insert_id;
-    $queryAddCat = $connect->query("INSERT INTO product_has_category (Product_id, Category_id) VALUES ($last_id,'".$_POST['product_CatID']."');");
-    if ($_POST['product_SubCatName'] != null && $_POST['product_SubCatID'] != null) {
-        $queryAddSubCat = $connect->query("INSERT INTO subcategory (subcategory_name,Category_id) VALUES ('".$_POST['product_SubCatName']."','".$_POST['product_SubCatID']."');");
+    
+    // Checkt of product_SubCatName niet null is
+    if ($_POST["product_SubCatName"] != null)
+    {
+    	// Het toevoegen van de subcategorie naam aan de variabele $selectedValue
+    	$selectedValue = $_POST['product_SubCatName'];
+    	// Bepalen wat de Category_id is aan de hand van de volgende query
+    	$catNameQuery = $connect->query("SELECT * FROM subcategory AS sc"
+    									." JOIN category AS c ON c.id = sc.Category_id"
+    									." JOIN product_has_category AS phc ON phc.Category_id = c.id"
+    									." WHERE sc.subcategory_name = '".$selectedValue."'");
+    	$catNameRow = $catNameQuery->fetch_array();
+   
+    	$queryAddSubCat = $connect->query("INSERT INTO product_has_category (Product_id, Category_id) VALUES ($last_id,'".$catNameRow['Category_id']."');");
     }
-
+    
     if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
         echo '<script>window.location="admin.php"</script>';
     }
@@ -25,7 +47,6 @@ if (isset($_POST['upload'])) {
         echo "<script>alert('Error');</script>";
     }
 }
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -74,13 +95,7 @@ if (isset($_POST['upload'])) {
                 Beschrijving: <input type="text" name="product_beschrijving">
             </div>
             <div>
-                Categorie ID: <input type="number" name="product_CatID">
-            </div>
-            <div>
-                Subcategorienaam: <input type="text" name="product_SubCatName">
-            </div>
-            <div>
-                Categorie ID: <input type="number" name="product_SubCatID">
+                <?php echo $select; ?>
             </div>
             <div>
                 <input type="submit" name="upload" class="btn btn-success" value="Add new product">

@@ -74,15 +74,15 @@ require 'header.php';
                         $selectedCatRow = $selectedCatQuery->fetch_array();
                         // We slaan de query om de bijbehorende subcategorie naam van het product op te halen op in een variabele
                         $selectedSubCatQuery = $connect->query("SELECT * FROM subcategory AS sc"
-                        		." JOIN category AS c ON c.id = sc.Category_id"
-                        		." JOIN product_has_category AS phc ON phc.Category_id = c.id"
-                        		." WHERE phc.Product_id = '".$row['id']."'");
+                        									   ." JOIN category AS c ON c.id = sc.Category_id"
+                        									   ." JOIN product_has_category AS phc ON phc.Category_id = c.id"
+                        									   ." WHERE phc.Product_id = '".$row['id']."'");
                         $selectedSubCatRow = $selectedSubCatQuery->fetch_array();
                         
                         // Dropdownlist voor categorie
                         $catQuery = ("SELECT * FROM category");
                         $catResult = mysqli_query($connect, $catQuery);
-                        $select = "<p><b>Categorie:</b> <select name='productCategory' style='width: 174px;'>";
+                        $select = "<p><b>Categorie:</b> <select name='productCategory[]' style='width: 174px;'>";
                         // Loopt door alle rows van category
                         while ($row = mysqli_fetch_array($catResult))
                         {
@@ -104,7 +104,7 @@ require 'header.php';
                         // Dropdownlist voor subcategorie
                         $subCatQuery = ("SELECT * FROM subcategory");
                         $subCatResult = mysqli_query($connect, $subCatQuery);
-                        $select = "<p><b>SubCategorie:</b> <select name='productSubCategory'  style='width: 174px;'>";
+                        $select = "<p><b>SubCategorie:</b> <select name='productSubCategory[]'  style='width: 174px;'>";
                         // Loopt door alle rows van subcategory
                         while ($row = mysqli_fetch_array($subCatResult))
                         {
