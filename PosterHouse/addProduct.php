@@ -8,7 +8,7 @@ if (isset($_SESSION['userSession'])) {
 }
 
 // Het ophalen van de subcategorie;
-$subCatQuery = ("SELECT * FROM subcategory");
+$subCatQuery = ("SELECT * FROM subcategory;");
 $subCatResult = mysqli_query($connect, $subCatQuery);
 $select = "<p>Subcategorie: <select name='product_SubCatName' style='width: 174px;'>";
 // Loopt door alle rows van subcategory
@@ -34,10 +34,15 @@ if (isset($_POST['upload'])) {
     	$catNameQuery = $connect->query("SELECT * FROM subcategory AS sc"
     									." JOIN category AS c ON c.id = sc.Category_id"
     									." JOIN product_has_category AS phc ON phc.Category_id = c.id"
-    									." WHERE sc.subcategory_name = '".$selectedValue."'");
+    									." WHERE sc.subcategory_name = '".$selectedValue."';");
     	$catNameRow = $catNameQuery->fetch_array();
    
-    	$queryAddSubCat = $connect->query("INSERT INTO product_has_category (Product_id, Category_id) VALUES ($last_id,'".$catNameRow['Category_id']."');");
+    	$queryAddSubCat = $connect->query("INSERT INTO product_has_category (Product_id, Category_id) VALUES ('".$last_id."', '".$catNameRow['Category_id']."');");
+    	
+    	//printf("Error: %s\n", $connect->error);
+    	//die();
+    		//echo "<script>alert('".$last_id."');</script>";
+
     }
     
     if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
