@@ -66,12 +66,63 @@ require 'header.php';
                         echo "<p><b>Prijs:</b> €<input type='number' step='any' name='productPrice[]' value='" . $row['price'] . "'</p>";
                         echo "<p><b>Product:</b> <input type='text' name='productName[]' value='" . $row['product_name'] . "' </p>";
                         echo "<p><b>Beschrijving:</b> <input type='text' name='productDescription[]' value='" . $row['description'] . "' </p>";
-                        $catQuery = $connect->query("SELECT * FROM product_has_category WHERE Product_id = " . $row['id'] . ";");
-                        $catRow = $catQuery->fetch_array();
-                        echo "<p><b>Categorie:</b> <input type='number' name='productCategory[]' value='" . $catRow['Category_id'] . "' </p>";
-                        $subCatQuery = $connect->query("SELECT * FROM subcategory WHERE Category_id = " . $catRow['Category_id'] . ";");
-                        $subCatRow = $subCatQuery->fetch_array();
-                        echo "<p><b>Subcategorie:</b> <input type='number' name='productSubCategory[]' value='" . $subCatRow['Product_id'] . "' </p>";
+                        
+                        // We slaan de query om de bijbehorende categorie naam van het product op te halen op in een variabele
+                        $selectedCatQuery = $connect->query("SELECT * FROM category AS c"
+        													." JOIN product_has_category AS phc ON phc.Category_id = c.id"
+        													." WHERE phc.Product_id = '".$row['id']."';");
+                        $selectedCatRow = $selectedCatQuery->fetch_array();
+                        // We slaan de query om de bijbehorende subcategorie naam van het product op te halen op in een variabele
+                        $selectedSubCatQuery = $connect->query("SELECT * FROM subcategory AS sc"
+                        									   ." JOIN category AS c ON c.id = sc.Category_id"
+                        									   ." JOIN product_has_category AS phc ON phc.Category_id = c.id"
+                        									   ." WHERE phc.Product_id = '".$row['id']."'");
+                        $selectedSubCatRow = $selectedSubCatQuery->fetch_array();
+                        
+                        // Dropdownlist voor categorie
+                        $catQuery = ("SELECT * FROM category");
+                        $catResult = mysqli_query($connect, $catQuery);
+                        $select = "<p><b>Categorie:</b> <select name='productCategory[]' style='width: 174px;'>";
+                        // Loopt door alle rows van category
+                        while ($catRow = mysqli_fetch_array($catResult))
+                        {
+                        	// Checkt of het id van het product gelijk is aan een id uit de category table
+                        	if ($catRow['id'] == $selectedCatRow['id'])
+                        	{
+                        		// Als de id's overeenkomen dan wordt het toegevoegd aan de dropdownlist als selected value
+                        		$select.= "<option selected value='".$catRow['category_name']."'>".$catRow['category_name']."</option>";
+                        	}
+                        	else
+                        	{
+                        		// Als de id's niet overeenkomen dan wordt het alleen toegevoegd aan de dropdownlist
+                        		$select.= "<option value='".$catRow['category_name']."'>".$catRow['category_name']."</option>";
+                        	}
+                        }
+                        $select.= "</select></p>";
+                        echo $select;
+                        
+                        // Dropdownlist voor subcategorie
+                        $subCatQuery = ("SELECT * FROM subcategory");
+                        $subCatResult = mysqli_query($connect, $subCatQuery);
+                        $select = "<p><b>SubCategorie:</b> <select name='productSubCategory[]'  style='width: 174px;'>";
+                        // Loopt door alle rows van subcategory
+                        while ($subCatRow = mysqli_fetch_array($subCatResult))
+                        {
+                        	// Checkt of het id van het product gelijk is aan een id uit de subcategory table
+                        	if ($subCatRow['id'] == $selectedSubCatRow['id'])
+                        	{
+                        		// Als de id's overeenkomen dan wordt het toegevoegd aan de dropdownlist als selected value
+                        		$select.= "<option selected value='".$subCatRow['subcategory_name']."'>".$subCatRow['subcategory_name']."</option>";
+                        	}
+                        	else
+                        	{
+                        		// Als de id's niet overeenkomen dan wordt het alleen toegevoegd aan de dropdownlist
+                        		$select.= "<option value='".$subCatRow['subcategory_name']."'>".$subCatRow['subcategory_name']."</option>";
+                        	}
+                        }
+                        $select.= "</select></p>";
+                        echo $select;
+                        
                         $checkValueProd = $row['id'];
                         echo "<br /><input type='checkbox' name='checkboxProd[]' value='$checkValueProd' style='margin-top:5px;' />";
                         echo "</div>";
@@ -88,7 +139,9 @@ require 'header.php';
                     foreach ($_POST['checkboxProd'] as $del_id) {
                         $del_id = (int)$del_id;
                         if ($connect->query("DELETE FROM product WHERE id = $del_id")) {
-                            echo '<script>alert("succes");</script>';
+                        	if ($connect->query("DELETE FROM product_has_category WHERE Product_id = $del_id")) {
+                            	echo '<script>alert("succes");</script>';
+                        	}
                         } else {
                             echo '<script>alert("error");</script>';
                         }
