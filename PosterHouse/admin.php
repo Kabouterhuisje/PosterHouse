@@ -3,7 +3,7 @@ session_start();
 include 'dbconnect.php';
 
 if (isset($_SESSION['userSession'])) {
-    $query = $connect->query("SELECT * FROM user WHERE user_id=".$_SESSION['userSession']);
+    $query = $DBconnect->query("SELECT * FROM user WHERE user_id=".$_SESSION['userSession']);
     $userRow=$query->fetch_array();
 }
 
@@ -55,7 +55,7 @@ require 'header.php';
                     <?php
 
                     $query = "SELECT * FROM product ORDER BY id";
-                    $result = mysqli_query($connect, $query);
+                    $result = mysqli_query($DBconnect, $query);
                     $num_rows = mysqli_num_rows($result);
 
                     if ($num_rows > 0)
@@ -68,12 +68,12 @@ require 'header.php';
                         echo "<p><b>Beschrijving:</b> <input type='text' name='productDescription[]' value='" . $row['description'] . "' </p>";
                         
                         // We slaan de query om de bijbehorende categorie naam van het product op te halen op in een variabele
-                        $selectedCatQuery = $connect->query("SELECT * FROM category AS c"
+                        $selectedCatQuery = $DBconnect->query("SELECT * FROM category AS c"
         													." JOIN product_has_category AS phc ON phc.Category_id = c.id"
         													." WHERE phc.Product_id = '".$row['id']."';");
                         $selectedCatRow = $selectedCatQuery->fetch_array();
                         // We slaan de query om de bijbehorende subcategorie naam van het product op te halen op in een variabele
-                        $selectedSubCatQuery = $connect->query("SELECT * FROM subcategory AS sc"
+                        $selectedSubCatQuery = $DBconnect->query("SELECT * FROM subcategory AS sc"
                         									   ." JOIN category AS c ON c.id = sc.Category_id"
                         									   ." JOIN product_has_category AS phc ON phc.Category_id = c.id"
                         									   ." WHERE phc.Product_id = '".$row['id']."'");
@@ -81,7 +81,7 @@ require 'header.php';
                         
                         // Dropdownlist voor categorie
                         $catQuery = ("SELECT * FROM category");
-                        $catResult = mysqli_query($connect, $catQuery);
+                        $catResult = mysqli_query($DBconnect, $catQuery);
                         $select = "<p><b>Categorie:</b> <select name='productCategory[]' style='width: 174px;'>";
                         // Loopt door alle rows van category
                         while ($catRow = mysqli_fetch_array($catResult))
@@ -103,7 +103,7 @@ require 'header.php';
                         
                         // Dropdownlist voor subcategorie
                         $subCatQuery = ("SELECT * FROM subcategory");
-                        $subCatResult = mysqli_query($connect, $subCatQuery);
+                        $subCatResult = mysqli_query($DBconnect, $subCatQuery);
                         $select = "<p><b>SubCategorie:</b> <select name='productSubCategory[]'  style='width: 174px;'>";
                         // Loopt door alle rows van subcategory
                         while ($subCatRow = mysqli_fetch_array($subCatResult))
@@ -138,8 +138,8 @@ require 'header.php';
                 if (isset($_POST['deleteProduct']) && isset($_POST['checkboxProd'])) {
                     foreach ($_POST['checkboxProd'] as $del_id) {
                         $del_id = (int)$del_id;
-                        if ($connect->query("DELETE FROM product WHERE id = $del_id")) {
-                        	if ($connect->query("DELETE FROM product_has_category WHERE Product_id = $del_id")) {
+                        if ($DBconnect->query("DELETE FROM product WHERE id = $del_id")) {
+                        	if ($DBconnect->query("DELETE FROM product_has_category WHERE Product_id = $del_id")) {
                             	echo '<script>alert("succes");</script>';
                         	}
                         } else {
@@ -156,35 +156,35 @@ require 'header.php';
                         foreach ($_POST['productName'] as $prodName) {
                             $x++;
                             if ($x == $up_id) {
-                                $connect->query("UPDATE product SET product_name = '" . $prodName . "' WHERE id = $up_id");
+                                $DBconnect->query("UPDATE product SET product_name = '" . $prodName . "' WHERE id = $up_id");
                             }
                         }
                         $x = 0;
                         foreach ($_POST['productPrice'] as $prodPrice) {
                             $x++;
                             if ($x == $up_id) {
-                                $connect->query("UPDATE product SET price = " . $prodPrice . " WHERE id = $up_id");
+                                $DBconnect->query("UPDATE product SET price = " . $prodPrice . " WHERE id = $up_id");
                             }
                         }
                         $x = 0;
                         foreach ($_POST['productDescription'] as $prodDescription) {
                             $x++;
                             if ($x == $up_id) {
-                                $connect->query("UPDATE product SET description = '" . $prodDescription . "' WHERE id = $up_id");
+                                $DBconnect->query("UPDATE product SET description = '" . $prodDescription . "' WHERE id = $up_id");
                             }
                         }
                         $x = 0;
                         foreach ($_POST['productCategory'] as $prodCategory) {
                             $x++;
                             if ($x == $up_id) {
-                                $connect->query("UPDATE product_has_category SET Category_id = " . $prodCategory . " WHERE Product_id = $up_id");
+                                $DBconnect->query("UPDATE product_has_category SET Category_id = " . $prodCategory . " WHERE Product_id = $up_id");
                             }
                         }
                         $x = 0;
                         foreach ($_POST['productSubCategory'] as $prodSubCategory) {
                             $x++;
                             if ($x == $up_id) {
-                                $connect->query("UPDATE subcategory SET Product_id = " . $prodSubCategory . " WHERE id = $up_id");
+                                $DBconnect->query("UPDATE subcategory SET Product_id = " . $prodSubCategory . " WHERE id = $up_id");
                             }
                         }
                     }
@@ -203,7 +203,7 @@ require 'header.php';
 
             $query = "SELECT * FROM category";
             $subquery = "";
-            $result = mysqli_query($connect, $query);
+            $result = mysqli_query($DBconnect, $query);
             $num_rows = mysqli_num_rows($result);
 
             if ($num_rows > 0) {
@@ -216,7 +216,7 @@ require 'header.php';
 
 
                     $subquery = "SELECT * FROM subcategory where Category_id = " . $row['id'];
-                    $subresult = mysqli_query($connect, $subquery);
+                    $subresult = mysqli_query($DBconnect, $subquery);
                     $num_rows = mysqli_num_rows($result);
 
                     if ($num_rows > 0) {
@@ -238,7 +238,7 @@ require 'header.php';
                 if (isset($_POST['deleteCategory']) && isset($_POST['checkboxCat'])) {
                     foreach ($_POST['checkboxCat'] as $del_id) {
                         $del_id = (int)$del_id;
-                        if ($connect->query("DELETE FROM category WHERE id = $del_id") && $connect->query("DELETE FROM subcategory WHERE Category_id = $del_id")) {
+                        if ($DBconnect->query("DELETE FROM category WHERE id = $del_id") && $DBconnect->query("DELETE FROM subcategory WHERE Category_id = $del_id")) {
                             echo '<script>alert("succes");</script>';
                         } else {
                             echo '<script>alert("error");</script>';
@@ -250,7 +250,7 @@ require 'header.php';
                 if (isset($_POST['deleteSubCategory']) && isset($_POST['checkbox'])) {
                     foreach ($_POST['checkbox'] as $del_id) {
                         $del_id = (int)$del_id;
-                        if ($connect->query("DELETE FROM subcategory WHERE id = $del_id")) {
+                        if ($DBconnect->query("DELETE FROM subcategory WHERE id = $del_id")) {
                             echo '<script>alert("succes");</script>';
                         } else {
                             echo '<script>alert("error");</script>';
@@ -263,7 +263,7 @@ require 'header.php';
                     foreach ($_POST['checkboxCat'] as $up_id) {
                         $up_id = (int)$up_id;
                         foreach ($_POST['catName'] as $catName) {
-                            $connect->query("UPDATE category SET category_name = '" . $catName . "' WHERE id = $up_id");
+                            $DBconnect->query("UPDATE category SET category_name = '" . $catName . "' WHERE id = $up_id");
                         }
 
                     }
@@ -275,7 +275,7 @@ require 'header.php';
                         $up_id = (int)$up_id;
 
                         foreach ($_POST['subCatName'] as $subCatName) {
-                            $query = $connect->query("UPDATE subcategory SET subcategory_name = '" . $subCatName . "' WHERE id = $up_id");
+                            $query = $DBconnect->query("UPDATE subcategory SET subcategory_name = '" . $subCatName . "' WHERE id = $up_id");
                         }
                     }
                     echo '<script>window.location="admin.php"</script>';
@@ -291,7 +291,7 @@ require 'header.php';
                 <?php
 
                 $query = "SELECT * FROM `order`";
-                $result = mysqli_query($connect, $query);
+                $result = mysqli_query($DBconnect, $query);
 
                 while ($row = mysqli_fetch_array($result)) {
                     echo "<div class='col-xs-6 col-md-3' align='center'>";
@@ -309,12 +309,12 @@ require 'header.php';
                 if (isset($_POST['deleteOrder'])) {
                     foreach ($_POST['checkbox'] as $del_id) {
                         $del_id = (int)$del_id;
-                        $query = $connect->query("DELETE FROM `order` WHERE id = $del_id");
+                        $query = $DBconnect->query("DELETE FROM `order` WHERE id = $del_id");
                     }
                     echo '<script>window.location="admin.php"</script>';
                 }
 
-                $connect->close();
+                $DBconnect->close();
                 ?>
             </div>
         </div>
