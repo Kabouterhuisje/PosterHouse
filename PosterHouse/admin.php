@@ -150,8 +150,14 @@ require 'header.php';
                         foreach ($_POST['productSubCategory'] as $prodSubCategory) {
                             $x++;
                             if ($x == $up_id) {
-                                $DBconnect->query("UPDATE subcategory SET Product_id = " . $up_id . " WHERE subcategory_name = '$prodSubCategory'");
-                                echo '<script>alert("'.$prodSubCategory.'");</script>';
+                            	// Bepalen wat de Category_id is aan de hand van de volgende query
+                            	$catNameQuery = $DBconnect->query("SELECT c.id FROM category AS c"
+                            			." JOIN subcategory AS sc ON sc.Category_id = c.id"
+                            			." WHERE sc.subcategory_name = '".$prodSubCategory."';");
+                            	$catNameRow = $catNameQuery->fetch_array();
+                            	echo '<script>alert("'.$catNameRow['Category_id'].'");</script>';
+                                $DBconnect->query("UPDATE product_has_category SET Category_id = " . $catNameRow['id'] . " WHERE Product_id = $up_id");
+                                
                             }
                         }
                     }

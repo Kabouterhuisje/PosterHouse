@@ -31,13 +31,12 @@ if (isset($_POST['upload'])) {
     	// Het toevoegen van de subcategorie naam aan de variabele $selectedValue
     	$selectedValue = $_POST['product_SubCatName'];
     	// Bepalen wat de Category_id is aan de hand van de volgende query
-    	$catNameQuery = $connect->query("SELECT * FROM subcategory AS sc"
-    									." JOIN category AS c ON c.id = sc.Category_id"
-    									." JOIN product_has_category AS phc ON phc.Category_id = c.id"
+    	$catNameQuery = $connect->query("SELECT c.id FROM category AS c"
+    									." JOIN subcategory AS sc ON sc.Category_id = c.id"
     									." WHERE sc.subcategory_name = '".$selectedValue."';");
     	$catNameRow = $catNameQuery->fetch_array();
    
-    	$queryAddSubCat = $connect->query("INSERT INTO product_has_category (Product_id, Category_id) VALUES ('".$last_id."', '".$catNameRow['Category_id']."');");
+    	$queryAddSubCat = $connect->query("INSERT INTO product_has_category (Product_id, Category_id) VALUES ('".$last_id."', '".$catNameRow['id']."');");
     	
     	//printf("Error: %s\n", $connect->error);
     	//die();
