@@ -147,17 +147,10 @@ require 'header.php';
                             }
                         }
                         $x = 0;
-                        foreach ($_POST['productCategory'] as $prodCategory) {
-                            $x++;
-                            if ($x == $up_id) {
-                                $DBconnect->query("UPDATE product_has_category SET Category_id = " . $prodCategory . " WHERE Product_id = $up_id");
-                            }
-                        }
-                        $x = 0;
                         foreach ($_POST['productSubCategory'] as $prodSubCategory) {
                             $x++;
                             if ($x == $up_id) {
-                                $DBconnect->query("UPDATE subcategory SET Product_id = " . $prodSubCategory . " WHERE id = $up_id");
+                                $DBconnect->query("UPDATE subcategory SET subcategory_name = " . $prodSubCategory . " WHERE id = $up_id");
                             }
                         }
                     }
