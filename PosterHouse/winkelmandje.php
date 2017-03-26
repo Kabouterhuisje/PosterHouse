@@ -161,7 +161,7 @@ require 'header.php';
     if(isset($_POST['quantity'])) {
         $_SESSION['updatedQuantity'] = $_POST['quantity'];
     }
-        $connect->close();
+
     ?>
 </div>
 <br />

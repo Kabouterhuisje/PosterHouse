@@ -6,4 +6,6 @@
          die("ERROR : -> ".$connect->connect_error);
      }
 
+     $DBconnect = new mysqli("localhost", "root", "", "posterhouse_databaseV5");
+
 ?>

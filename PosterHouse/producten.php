@@ -3,7 +3,7 @@ session_start();
 include 'dbconnect.php';
 
 if (isset($_SESSION['userSession'])) {
-    $query = $connect->query("SELECT * FROM user WHERE user_id=".$_SESSION['userSession']);
+    $query = $DBconnect->query("SELECT * FROM user WHERE user_id=".$_SESSION['userSession']);
     $userRow=$query->fetch_array();
 }
 ?>
@@ -37,7 +37,7 @@ require 'header.php';
 		      	
 				$query = "SELECT * FROM category";
 				$subquery = "";
-				$result = mysqli_query($connect, $query);
+				$result = mysqli_query($DBconnect, $query);
 				$num_rows = mysqli_num_rows($result);
 				
 				if($num_rows > 0)
@@ -49,7 +49,7 @@ require 'header.php';
 						echo "</form>";
 					       	
 						$subquery = "SELECT * FROM subcategory where Category_id = ".$row['id'];
-						$subresult = mysqli_query($connect, $subquery);
+						$subresult = mysqli_query($DBconnect, $subquery);
 						$num_rows = mysqli_num_rows($result);
 						 
 						if($num_rows > 0)
@@ -96,7 +96,7 @@ require 'header.php';
 		{
 			$query = "SELECT * FROM product";
 		}
-		$result = mysqli_query($connect, $query);
+		$result = mysqli_query($DBconnect, $query);
 		$num_rows = mysqli_num_rows($result);
 		
 		// De hoeveelheid resultaten die we per pagina willen laten zien
@@ -140,7 +140,7 @@ require 'header.php';
 		{
 			$query = "SELECT * FROM product LIMIT " . $firstresult . ',' . $countresults;
 		}
-		$result = mysqli_query($connect, $query);
+		$result = mysqli_query($DBconnect, $query);
 	
 		if($num_rows > 0)
 		{
