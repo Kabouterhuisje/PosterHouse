@@ -1,17 +1,19 @@
 <?php
 session_start();
 include 'dbconnect.php';
+include 'ClWinkelmandje.php';
 
 if (isset($_SESSION['userSession'])) {
     $query = $connect->query("SELECT * FROM user WHERE user_id=".$_SESSION['userSession']);
     $userRow=$query->fetch_array();
 }
 
+$winkelmandje = new ShoppingCart();
+
 if(isset($_POST['closeOveriew'])) {
-    unset($_SESSION['shopping_cart']);
+    $winkelmandje->closeOverview();
     echo '<script>window.location="index.php"</script>';
 }
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -41,29 +43,7 @@ if(isset($_POST['closeOveriew'])) {
             <th width="15%">Totaal</th>
         </tr>
         <?php
-        if(!empty($_SESSION["shopping_cart"]))
-        {
-            $total = 0;
-            foreach($_SESSION["shopping_cart"] as $keys => $values)
-            {
-                ?>
-                <tr>
-                    <td><?php echo $values["item_name"]; ?></td>
-                    <td><?php echo $_SESSION['updatedQuantity']; ?></td>
-                    <td>$ <?php echo $values["item_price"]; ?></td>
-                    <td>$ <?php echo number_format($values["item_quantity"] * $values["item_price"], 2); ?></td>
-                </tr>
-                <?php
-                $total = $total + ($values["item_quantity"] * $values["item_price"]);
-            }
-            ?>
-            <tr>
-                <td colspan="3" align="right">Total</td>
-                <td align="right">$ <?php echo number_format($total, 2); ?></td>
-            </tr>
-            <?php
-        }
-        $connect->close();
+        $winkelmandje->viewShoppingCart($connect);
         ?>
     </table><br />
     <form method="post">

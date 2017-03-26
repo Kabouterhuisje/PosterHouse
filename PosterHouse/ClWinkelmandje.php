@@ -89,6 +89,36 @@ class ShoppingCart {
             echo '<script>window.location="login.php"</script>';
         }
     }
+
+    public function closeOverview() {
+        unset($_SESSION['shopping_cart']);
+    }
+
+    public function viewShoppingCart($connect) {
+        if(!empty($_SESSION["shopping_cart"]))
+        {
+            $total = 0;
+            foreach($_SESSION["shopping_cart"] as $keys => $values)
+            {
+                ?>
+                <tr>
+                    <td><?php echo $values["item_name"]; ?></td>
+                    <td><?php echo $_SESSION['updatedQuantity']; ?></td>
+                    <td>$ <?php echo $values["item_price"]; ?></td>
+                    <td>$ <?php echo number_format($values["item_quantity"] * $values["item_price"], 2); ?></td>
+                </tr>
+                <?php
+                $total = $total + ($values["item_quantity"] * $values["item_price"]);
+            }
+            ?>
+            <tr>
+                <td colspan="3" align="right">Total</td>
+                <td align="right">$ <?php echo number_format($total, 2); ?></td>
+            </tr>
+            <?php
+        }
+        $connect->close();
+    }
 }
 
 ?>
