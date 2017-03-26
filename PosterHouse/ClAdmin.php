@@ -241,6 +241,14 @@ class Admin {
             echo "<script>alert('Error');</script>";
         }
     }
+
+    public function addCategoryItem($connect) {
+        $query = $connect->query("INSERT INTO category (category_name) VALUES ('".$_POST['category_name']."');");
+    }
+
+    public function addSubCategoryItem($connect) {
+        $query = $connect->query("INSERT INTO subcategory (subcategory_name,Category_id) VALUES ('".$_POST['subcategory_name']."',".$_POST['category_id'].");");
+    }
 }
 
 ?>

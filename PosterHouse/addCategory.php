@@ -1,18 +1,21 @@
 <?php
 session_start();
 include 'dbconnect.php';
+include 'ClAdmin.php';
 
 if (isset($_SESSION['userSession'])) {
     $query = $connect->query("SELECT * FROM user WHERE user_id=".$_SESSION['userSession']);
     $userRow=$query->fetch_array();
 }
 
+$admin = new Admin();
+
 if (isset($_POST['addCat'])) {
-    $query = $connect->query("INSERT INTO category (category_name) VALUES ('".$_POST['category_name']."');");
+    $admin->addCategoryItem($connect);
 }
 
 if (isset($_POST['addSubCat'])) {
-    $query = $connect->query("INSERT INTO subcategory (subcategory_name,Category_id) VALUES ('".$_POST['subcategory_name']."',".$_POST['category_id'].");");
+    $admin->addSubCategoryItem($connect);
 }
 
 ?>
