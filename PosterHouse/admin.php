@@ -66,40 +66,13 @@ require 'header.php';
                         echo "<p><b>Prijs:</b> €<input type='number' step='any' name='productPrice[]' value='" . $row['price'] . "'</p>";
                         echo "<p><b>Product:</b> <input type='text' name='productName[]' value='" . $row['product_name'] . "' </p>";
                         echo "<p><b>Beschrijving:</b> <input type='text' name='productDescription[]' value='" . $row['description'] . "' </p>";
-                        
-                        // We slaan de query om de bijbehorende categorie naam van het product op te halen op in een variabele
-                        $selectedCatQuery = $DBconnect->query("SELECT * FROM category AS c"
-        													." JOIN product_has_category AS phc ON phc.Category_id = c.id"
-        													." WHERE phc.Product_id = '".$row['id']."';");
-                        $selectedCatRow = $selectedCatQuery->fetch_array();
+
                         // We slaan de query om de bijbehorende subcategorie naam van het product op te halen op in een variabele
                         $selectedSubCatQuery = $DBconnect->query("SELECT * FROM subcategory AS sc"
                         									   ." JOIN category AS c ON c.id = sc.Category_id"
                         									   ." JOIN product_has_category AS phc ON phc.Category_id = c.id"
                         									   ." WHERE phc.Product_id = '".$row['id']."'");
                         $selectedSubCatRow = $selectedSubCatQuery->fetch_array();
-                        
-                        // Dropdownlist voor categorie
-                        $catQuery = ("SELECT * FROM category");
-                        $catResult = mysqli_query($DBconnect, $catQuery);
-                        $select = "<p><b>Categorie:</b> <select name='productCategory[]' style='width: 174px;'>";
-                        // Loopt door alle rows van category
-                        while ($catRow = mysqli_fetch_array($catResult))
-                        {
-                        	// Checkt of het id van het product gelijk is aan een id uit de category table
-                        	if ($catRow['id'] == $selectedCatRow['id'])
-                        	{
-                        		// Als de id's overeenkomen dan wordt het toegevoegd aan de dropdownlist als selected value
-                        		$select.= "<option selected value='".$catRow['category_name']."'>".$catRow['category_name']."</option>";
-                        	}
-                        	else
-                        	{
-                        		// Als de id's niet overeenkomen dan wordt het alleen toegevoegd aan de dropdownlist
-                        		$select.= "<option value='".$catRow['category_name']."'>".$catRow['category_name']."</option>";
-                        	}
-                        }
-                        $select.= "</select></p>";
-                        echo $select;
                         
                         // Dropdownlist voor subcategorie
                         $subCatQuery = ("SELECT * FROM subcategory");
