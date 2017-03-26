@@ -3,7 +3,7 @@ session_start();
 include 'dbconnect.php';
 
 if (isset($_SESSION['userSession'])) {
-	$query = $connect->query("SELECT * FROM user WHERE user_id=".$_SESSION['userSession']);
+	$query = $DBconnect->query("SELECT * FROM user WHERE user_id=".$_SESSION['userSession']);
 	$userRow=$query->fetch_array();
 }
 ?>
@@ -27,7 +27,7 @@ require 'header.php';
 
 <?php 
 		$query = "SELECT * FROM product where id = " . $_GET['id'];
-		$result = mysqli_query($connect, $query);
+		$result = mysqli_query($DBconnect, $query);
 		$row = mysqli_fetch_array($result);
 ?>
 
@@ -60,7 +60,6 @@ require 'header.php';
 
 <?php
 require 'footer.php';
-$connect->close();
 ?>
 
 </body>
