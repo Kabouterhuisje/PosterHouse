@@ -56,7 +56,7 @@ class Producten {
 
         // De hoeveelheid resultaten die we per pagina willen laten zien
         $countresults = 8;
-
+        global $countpages;
         // De hoeveelheid pagina's die we nodig hebben
         $countpages = ceil($num_rows / $countresults);
 
@@ -112,6 +112,14 @@ class Producten {
                     echo "</form>";
                 }
             }
+        }
+    }
+
+    public function viewPagination() {
+        // Het weergeven van de links naar de pagina's
+        for ($page=1; $page<=$GLOBALS['countpages']; $page++)
+        {
+                echo '<li><a href="producten.php?page=' . $page . '">' . $page . '</a></li>';
         }
     }
 }

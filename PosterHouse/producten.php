@@ -57,14 +57,7 @@ require 'header.php';
     <div class="container center">
         <ul class="pagination">
           <?php
-          // Het weergeven van de links naar de pagina's
-          for ($page=1; $page<=$countpages; $page++)
-          {
-          	if ($num_rows > $countresults)
-          	{
-          		echo '<li><a href="producten.php?page=' . $page . '">' . $page . '</a></li>';
-          	}
-          }
+          $producten->viewPagination();
           ?>
         </ul>
     </div>
