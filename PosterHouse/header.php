@@ -1,18 +1,9 @@
 <?php
 
-$DBhost = "localhost";
-$DBuser = "root";
-$DBpass = "";
-$DBname = "posterhouse_databaseV5";
-
-$DBcon = new MySQLi($DBhost,$DBuser,$DBpass,$DBname);
-
-if ($DBcon->connect_errno) {
-    die("ERROR : -> ".$DBcon->connect_error);
-}
+include 'dbconnect.php';
 
 $menuQuery = "SELECT menuitem_name, menuitem_link FROM menuitem ORDER BY id ASC";
-$result = $DBcon->query($menuQuery);
+$result = $connect->query($menuQuery);
 
 while($row = $result->fetch_array()) {
     $rows[] = $row;
@@ -92,5 +83,5 @@ while($row = $result->fetch_array()) {
 </nav>
 
 <?php
-$DBcon->close();
+$connect->close();
 ?>

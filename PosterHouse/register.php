@@ -3,7 +3,7 @@ session_start();
 if (isset($_SESSION['userSession'])!="") {
 	header("Location: index.php");
 }
-$connect = mysqli_connect("localhost", "root", "", "posterhouse_databaseV5");
+include 'dbconnect.php';
 
 if(isset($_POST['btn-signup'])) {
 	
