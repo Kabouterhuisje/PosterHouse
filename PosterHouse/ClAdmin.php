@@ -197,6 +197,50 @@ class Admin {
             $query = $DBconnect->query("DELETE FROM `order` WHERE id = $del_id");
         }
     }
+
+    public function getDropdown($connect) {
+        // Het ophalen van de subcategorie;
+        $subCatQuery = ("SELECT * FROM subcategory;");
+        $subCatResult = mysqli_query($connect, $subCatQuery);
+        $select = "<p>Subcategorie: <select name='product_SubCatName' style='width: 174px;'>";
+        // Loopt door alle rows van subcategory
+        while ($row = mysqli_fetch_array($subCatResult))
+        {
+            $select.= "<option value='".$row['subcategory_name']."'>".$row['subcategory_name']."</option>";
+        }
+        $select.= "</select></p>";
+
+        return $select;
+    }
+
+    public function addProduct($connect) {
+        $target = "images/posters/".basename($_FILES['image']['name']);
+        $image = $_FILES['image']['name'];
+
+        $query = $connect->query("INSERT INTO product (product_name,price,description,image) VALUES ('".$_POST['product_name']."','".$_POST['product_price']."','".$_POST['product_beschrijving']."','$image');");
+        $last_id = $connect->insert_id;
+
+        // Checkt of product_SubCatName niet null is
+        if ($_POST["product_SubCatName"] != null)
+        {
+            // Het toevoegen van de subcategorie naam aan de variabele $selectedValue
+            $selectedValue = $_POST['product_SubCatName'];
+            // Bepalen wat de Category_id is aan de hand van de volgende query
+            $catNameQuery = $connect->query("SELECT c.id FROM category AS c"
+                ." JOIN subcategory AS sc ON sc.Category_id = c.id"
+                ." WHERE sc.subcategory_name = '".$selectedValue."';");
+            $catNameRow = $catNameQuery->fetch_array();
+
+            $queryAddSubCat = $connect->query("INSERT INTO product_has_category (Product_id, Category_id) VALUES ('".$last_id."', '".$catNameRow['id']."');");
+        }
+
+        if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
+            echo '<script>window.location="admin.php"</script>';
+        }
+        else {
+            echo "<script>alert('Error');</script>";
+        }
+    }
 }
 
 ?>

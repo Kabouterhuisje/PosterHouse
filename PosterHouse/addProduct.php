@@ -1,55 +1,17 @@
 <?php
 session_start();
 include 'dbconnect.php';
+include 'ClAdmin.php';
 
 if (isset($_SESSION['userSession'])) {
     $query = $connect->query("SELECT * FROM user WHERE user_id=".$_SESSION['userSession']);
     $userRow=$query->fetch_array();
 }
 
-// Het ophalen van de subcategorie;
-$subCatQuery = ("SELECT * FROM subcategory;");
-$subCatResult = mysqli_query($connect, $subCatQuery);
-$select = "<p>Subcategorie: <select name='product_SubCatName' style='width: 174px;'>";
-// Loopt door alle rows van subcategory
-while ($row = mysqli_fetch_array($subCatResult))
-{
-	$select.= "<option value='".$row['subcategory_name']."'>".$row['subcategory_name']."</option>";
-}
-$select.= "</select></p>";
+$admin = new Admin();
 
 if (isset($_POST['upload'])) {
-    $target = "images/posters/".basename($_FILES['image']['name']);
-    $image = $_FILES['image']['name'];
-
-    $query = $connect->query("INSERT INTO product (product_name,price,description,image) VALUES ('".$_POST['product_name']."','".$_POST['product_price']."','".$_POST['product_beschrijving']."','$image');");
-    $last_id = $connect->insert_id;
-    
-    // Checkt of product_SubCatName niet null is
-    if ($_POST["product_SubCatName"] != null)
-    {
-    	// Het toevoegen van de subcategorie naam aan de variabele $selectedValue
-    	$selectedValue = $_POST['product_SubCatName'];
-    	// Bepalen wat de Category_id is aan de hand van de volgende query
-    	$catNameQuery = $connect->query("SELECT c.id FROM category AS c"
-    									." JOIN subcategory AS sc ON sc.Category_id = c.id"
-    									." WHERE sc.subcategory_name = '".$selectedValue."';");
-    	$catNameRow = $catNameQuery->fetch_array();
-   
-    	$queryAddSubCat = $connect->query("INSERT INTO product_has_category (Product_id, Category_id) VALUES ('".$last_id."', '".$catNameRow['id']."');");
-    	
-    	//printf("Error: %s\n", $connect->error);
-    	//die();
-    		//echo "<script>alert('".$last_id."');</script>";
-
-    }
-    
-    if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
-        echo '<script>window.location="admin.php"</script>';
-    }
-    else {
-        echo "<script>alert('Error');</script>";
-    }
+    $admin->addProduct($connect);
 }
 ?>
 <!DOCTYPE html>
@@ -99,7 +61,7 @@ if (isset($_POST['upload'])) {
                 Beschrijving: <input type="text" name="product_beschrijving">
             </div>
             <div>
-                <?php echo $select; ?>
+                <?php echo $admin->getDropdown($connect); ?>
             </div>
             <div>
                 <input type="submit" name="upload" class="btn btn-success" value="Add new product">
