@@ -150,7 +150,8 @@ require 'header.php';
                         foreach ($_POST['productSubCategory'] as $prodSubCategory) {
                             $x++;
                             if ($x == $up_id) {
-                                $DBconnect->query("UPDATE subcategory SET subcategory_name = " . $prodSubCategory . " WHERE id = $up_id");
+                                $DBconnect->query("UPDATE subcategory SET Product_id = " . $up_id . " WHERE subcategory_name = '$prodSubCategory'");
+                                echo '<script>alert("'.$prodSubCategory.'");</script>';
                             }
                         }
                     }
