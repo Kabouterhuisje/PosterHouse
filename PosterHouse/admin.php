@@ -155,7 +155,6 @@ require 'header.php';
                             			." JOIN subcategory AS sc ON sc.Category_id = c.id"
                             			." WHERE sc.subcategory_name = '".$prodSubCategory."';");
                             	$catNameRow = $catNameQuery->fetch_array();
-                            	echo '<script>alert("'.$catNameRow['Category_id'].'");</script>';
                                 $DBconnect->query("UPDATE product_has_category SET Category_id = " . $catNameRow['id'] . " WHERE Product_id = $up_id");
                                 
                             }
