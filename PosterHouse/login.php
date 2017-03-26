@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'dbconnect.php';
+include 'ClAuthenticatie.php';
 
 if (isset($_SESSION['userSession'])!="") {
 	header("Location: index.php");
