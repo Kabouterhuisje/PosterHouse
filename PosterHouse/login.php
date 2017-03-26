@@ -7,28 +7,10 @@ if (isset($_SESSION['userSession'])!="") {
 	exit;
 }
 
+$auth = new Authenticatie();
+
 if (isset($_POST['btn-login'])) {
-	
-	$email = strip_tags($_POST['email']);
-	$password = strip_tags($_POST['password']);
-	
-	$email = $connect->real_escape_string($email);
-	$password = $connect->real_escape_string($password);
-	
-	$query = $connect->query("SELECT user_id, email, password FROM user WHERE email='$email'");
-	$row=$query->fetch_array();
-	
-	$count = $query->num_rows; // if email/password are correct returns must be 1 row
-	
-	if (password_verify($password, $row['password']) && $count==1) {
-		$_SESSION['userSession'] = $row['user_id'];
-		header("Location: index.php");
-	} else {
-		$msg = "<div class='alert alert-danger'>
-					<span class='glyphicon glyphicon-info-sign'></span> &nbsp; Invalid Username or Password !
-				</div>";
-	}
-    $connect->close();
+    $auth->login($connect);
 }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -41,49 +23,31 @@ if (isset($_POST['btn-login'])) {
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 <body>
-
 <div class="signin-form">
-
 	<div class="container">
-     
-        
        <form class="form-signin" method="post" id="login-form">
-      
         <h2 class="form-signin-heading">Sign In.</h2><hr />
-        
         <?php
 		if(isset($msg)){
 			echo $msg;
 		}
 		?>
-        
         <div class="form-group">
         <input type="email" class="form-control" placeholder="Email address" name="email" required />
         <span id="check-e"></span>
         </div>
-        
         <div class="form-group">
         <input type="password" class="form-control" placeholder="Password" name="password" required />
         </div>
-       
      	<hr />
-        
         <div class="form-group">
             <button type="submit" class="btn btn-default" name="btn-login" id="btn-login">
     		<span class="glyphicon glyphicon-log-in"></span> &nbsp; Sign In
-			</button> 
-            
+			</button>
             <a href="register.php" class="btn btn-default" style="float:right;">Sign UP Here</a>
-            
-        </div>  
-        
-        
-      
+        </div>
       </form>
-
     </div>
-    
 </div>
-
 </body>
 </html>
