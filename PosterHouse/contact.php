@@ -45,13 +45,13 @@ require 'header.php';
             <div class="form-group">
                 <label for="naam" class="col-sm-2 control-label">Naam*</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Naam" value="">
+                    <input required type="text" class="form-control" id="name" name="name" placeholder="Naam" value="">
                 </div>
             </div>
             <div class="form-group">
                 <label for="email" class="col-sm-2 control-label">Email*</label>
                 <div class="col-sm-10">
-                    <input type="email" class="form-control" id="email" name="email" placeholder="voorbeeld@domain.com" value="">
+                    <input required type="email" class="form-control" id="email" name="email" placeholder="voorbeeld@domain.com" value="">
                 </div>
             </div>
             <div class="form-group">
@@ -63,7 +63,7 @@ require 'header.php';
             <div class="form-group">
                 <label for="message" class="col-sm-2 control-label">Bericht*</label>
                 <div class="col-sm-10">
-                    <textarea class="form-control" rows="4" name="message"></textarea>
+                    <textarea required class="form-control" rows="4" name="message"></textarea>
                 </div>
             </div>
             <div class="form-group">

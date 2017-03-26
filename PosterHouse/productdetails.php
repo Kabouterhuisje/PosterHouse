@@ -48,8 +48,8 @@ require 'header.php';
                     <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" />
                     <p><?php echo $row['description'];?></p>
 					<div class="btn-group cart">
-							<input type="text" name="quantity" class="form-control" value="1" />
-	        				<input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-success" value="Add to Cart" />	
+							<input required type="number" name="quantity" class="form-control" min="1" value="1" />
+	        				<input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-success" value="Add to Cart" />
         				</form>
 					</div>
 				</div>

@@ -9,9 +9,9 @@ class Admin {
         while ($row = mysqli_fetch_array($result)) {
             echo "<div class='col-xs-6 col-md-3' align='center'>";
             echo "<img src='images/posters/" . $row['image'] . "' height='250' width='180'/>";
-            echo "<p><b>Prijs:</b> €<input type='number' step='any' name='productPrice[]' value='" . $row['price'] . "'</p>";
-            echo "<p><b>Product:</b> <input type='text' name='productName[]' value='" . $row['product_name'] . "' </p>";
-            echo "<p><b>Beschrijving:</b> <input type='text' name='productDescription[]' value='" . $row['description'] . "' </p>";
+            echo "<p><b>Prijs:</b> €<input required type='number' step='any' name='productPrice[]' min='1' value='" . $row['price'] . "'</p>";
+            echo "<p><b>Product:</b> <input required type='text' name='productName[]' value='" . $row['product_name'] . "' </p>";
+            echo "<p><b>Beschrijving:</b> <input required type='text' name='productDescription[]' value='" . $row['description'] . "' </p>";
 
             // We slaan de query om de bijbehorende subcategorie naam van het product op te halen op in een variabele
             $selectedSubCatQuery = $DBconnect->query("SELECT * FROM subcategory AS sc"
@@ -108,7 +108,7 @@ class Admin {
         echo "<form method='post'>";
         while ($row = mysqli_fetch_array($result)) {
 
-            echo "<li><input type='text' name='catName[]' value='" . $row['category_name'] . "'</li>";
+            echo "<li><input required type='text' name='catName[]' value='" . $row['category_name'] . "'</li>";
             $checkValueCat = $row['id'];
             echo "<input type='checkbox' name='checkboxCat[]' value='$checkValueCat' style='margin-top:5px;' />";
 
@@ -116,7 +116,7 @@ class Admin {
             $subresult = mysqli_query($DBconnect, $subquery);
 
             while ($row = mysqli_fetch_array($subresult)) {
-                echo "<li style='margin-left:10%'><input type='text' name='subCatName[]' value='" . $row['subcategory_name'] . "' </li>";
+                echo "<li style='margin-left:10%'><input required type='text' name='subCatName[]' value='" . $row['subcategory_name'] . "' </li>";
                 $checkValue = $row['id'];
                 echo "<input type='checkbox' name='checkbox[]' value='$checkValue' style='margin-top:5px;' />";
             }

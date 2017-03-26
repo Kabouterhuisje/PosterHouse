@@ -91,43 +91,43 @@ require 'header.php';
                 <div class="form-group row">
                     <label for="example-text-input" class="col-2 col-form-label">Username</label>
                     <div class="col-10">
-                        <input name="username" class="form-control" type="text" value=<?php echo $userRow['username']?> id="example-text-input">
+                        <input required name="username" class="form-control" type="text" value=<?php echo $userRow['username']?> id="example-text-input">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="example-search-input" class="col-2 col-form-label">Email</label>
                     <div class="col-10">
-                        <input name="email" class="form-control" type="email" value=<?php echo $userRow['email']?> id="example-search-input">
+                        <input required name="email" class="form-control" type="email" value=<?php echo $userRow['email']?> id="example-search-input">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="example-email-input" class="col-2 col-form-label">Naam</label>
                     <div class="col-10">
-                        <input name="name" class="form-control" type="text" value=<?php echo $uName?> id="example-email-input">
+                        <input required name="name" class="form-control" type="text" value=<?php echo $uName?> id="example-email-input">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="example-url-input" class="col-2 col-form-label">Telefoonnummer</label>
                     <div class="col-10">
-                        <input name="phone" class="form-control" type="tel" maxlength="10" value=<?php echo $uTel?> id="example-url-input">
+                        <input required name="phone" class="form-control" type="tel" maxlength="10" value=<?php echo $uTel?> id="example-url-input">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="example-tel-input" class="col-2 col-form-label">Adres</label>
                     <div class="col-10">
-                        <input name="address" class="form-control" type="text" value=<?php echo $uAddress?> id="example-tel-input">
+                        <input required name="address" class="form-control" type="text" value=<?php echo $uAddress?> id="example-tel-input">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="example-password-input" class="col-2 col-form-label">Stad</label>
                     <div class="col-10">
-                        <input name="city" class="form-control" type="text" value=<?php echo $uCity?> id="example-password-input">
+                        <input required name="city" class="form-control" type="text" value=<?php echo $uCity?> id="example-password-input">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="example-number-input" class="col-2 col-form-label">Land</label>
                     <div class="col-10">
-                        <input name="country" class="form-control" type="text" value=<?php echo $uCountry?> id="example-number-input">
+                        <input required name="country" class="form-control" type="text" value=<?php echo $uCountry?> id="example-number-input">
                     </div>
                 </div>
                 <input type="submit" class="btn btn-primary" name="btnInfo" value="Update"></input>
@@ -146,19 +146,19 @@ require 'header.php';
                 <div class="form-group row">
                     <label for="example-search-input" class="col-2 col-form-label">Huidig wachtwoord</label>
                     <div class="col-10">
-                        <input name="oldPass" class="form-control" type="password" value="" id="example-search-input">
+                        <input required name="oldPass" class="form-control" type="password" value="" id="example-search-input">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="example-search-input" class="col-2 col-form-label">Nieuw wachtwoord</label>
                     <div class="col-10">
-                        <input name="newPass" class="form-control" type="password" value="" id="example-search-input">
+                        <input required name="newPass" class="form-control" type="password" value="" id="example-search-input">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="example-search-input" class="col-2 col-form-label">Herhaal nieuw wachtwoord</label>
                     <div class="col-10">
-                        <input name="newPassAgain" class="form-control" type="password" value="" id="example-search-input">
+                        <input required name="newPassAgain" class="form-control" type="password" value="" id="example-search-input">
                     </div>
                 </div>
                 <input type="submit" class="btn btn-primary" name="btnPassword" value="Update"></input>
