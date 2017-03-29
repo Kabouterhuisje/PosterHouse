@@ -212,6 +212,21 @@ class Admin {
 
         return $select;
     }
+    
+    public function getCategoryDropdown($connect) {
+    	// Het ophalen van de subcategorie;
+    	$catQuery = ("SELECT * FROM category;");
+    	$catResult = mysqli_query($connect, $catQuery);
+    	$select = "<p>Categorie: <select name='product_CatName' style='width: 174px;'>";
+    	// Loopt door alle rows van subcategory
+    	while ($row = mysqli_fetch_array($catResult))
+    	{
+    		$select.= "<option value='".$row['category_name']."'>".$row['category_name']."</option>";
+    	}
+    	$select.= "</select></p>";
+    	
+    	return $select;
+    }
 
     public function addProduct($connect) {
         $target = "images/posters/".basename($_FILES['image']['name']);
@@ -247,7 +262,9 @@ class Admin {
     }
 
     public function addSubCategoryItem($connect) {
-        $query = $connect->query("INSERT INTO subcategory (subcategory_name,Category_id) VALUES ('".$_POST['subcategory_name']."',".$_POST['category_id'].");");
+    	$catIdQuery = $connect->query("SELECT id FROM category where category_name = '".$_POST['product_CatName']."'");
+    	$catIdRow = $catIdQuery->fetch_array();
+        $query = $connect->query("INSERT INTO subcategory (subcategory_name,Category_id) VALUES ('".$_POST['subcategory_name']."','".$catIdRow['id']."');");
     }
 }
 

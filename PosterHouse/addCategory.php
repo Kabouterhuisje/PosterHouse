@@ -70,7 +70,7 @@ if (isset($_POST['addSubCat'])) {
                 Subcategorienaam: <input type="text" name="subcategory_name">
             </div>
             <div>
-                Categorie ID: <input type="number" name="category_id">
+                <?php echo $admin->getCategoryDropdown($connect); ?>
             </div>
             <div>
                 <input type="submit" name="addSubCat" class="btn btn-success" value="Add new subcategory">
