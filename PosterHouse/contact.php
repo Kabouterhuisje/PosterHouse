@@ -1,19 +1,25 @@
 <?php
+// We starten de sessie en includen de database connectie en contact klasse
 session_start();
 include 'dbconnect.php';
 include 'ClContact.php';
 
+// Checkt of de usersessie is gezet
 if (isset($_SESSION['userSession'])) {
     $query = $connect->query("SELECT * FROM user WHERE user_id=".$_SESSION['userSession']);
     $userRow=$query->fetch_array();
 }
 
+// Maakt een nieuw contact aan
 $contact = new Contact();
 
+// Checkt of er op submit is gedrukt
 if (isset($_POST['submit'])) {
+	// Zoja roep dan de functie sendMessage aan
     $contact->sendMessage($connect);
 }
 
+// Sluit de connectie met de database
 $connect->close();
 
 ?>
@@ -35,8 +41,8 @@ $connect->close();
 require 'header.php';
 ?>
 
-<!-- Form -->
 <div class="container">
+	<!-- Form -->
     <div class="col-xs-6 col-md-7">
         <form class="form-horizontal" role="form" method="post" action="contact.php">
         <div class="form-group" style="margin-top:23%;text-align:center;font-family:Verdana, Geneva, sans-serif;font-size:35px;">
