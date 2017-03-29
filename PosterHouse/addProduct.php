@@ -1,8 +1,10 @@
 <?php
+// We starten de sessie en includen de database connectie en de Admin klasse
 session_start();
 include 'dbconnect.php';
 include 'ClAdmin.php';
 
+// Checkt of de usersessie is gezet
 if (isset($_SESSION['userSession'])) {
     $query = $connect->query("SELECT * FROM user WHERE user_id=".$_SESSION['userSession']);
     $userRow=$query->fetch_array();
@@ -10,6 +12,7 @@ if (isset($_SESSION['userSession'])) {
 
 $admin = new Admin();
 
+// Kijkt of upload is gepost en roept vervolgens functie addProduct aan
 if (isset($_POST['upload'])) {
     $admin->addProduct($connect);
 }
@@ -20,9 +23,11 @@ if (isset($_POST['upload'])) {
     <title>Product toevoegen</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Verwijzingen -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Styling -->
     <style>
         #content{
             width: 50%;
@@ -45,6 +50,7 @@ if (isset($_POST['upload'])) {
     <form method="post" action="admin.php">
         <input type='submit' name='goBack' style='margin-top:5px;' class='btn btn-primary' value='Go Back' />
     </form>
+    <!-- Product toevoegen -->
     <div id="content">
         <form method="post" enctype="multipart/form-data">
             <input type="hidden" name="size" value="1000000">
@@ -61,6 +67,7 @@ if (isset($_POST['upload'])) {
                 Beschrijving: <input type="text" name="product_beschrijving">
             </div>
             <div>
+            	<!-- Roept de getDropdown functie aan -->
                 <?php echo $admin->getDropdown($connect); ?>
             </div>
             <div>
