@@ -1,8 +1,10 @@
 <?php
+// We starten de sessie en includen de database connectie en Producten klasse
 session_start();
 include 'dbconnect.php';
 include 'ClProducten.php';
 
+// Checkt of de usersessie is gezet
 if (isset($_SESSION['userSession'])) {
     $query = $DBconnect->query("SELECT * FROM user WHERE user_id=".$_SESSION['userSession']);
     $userRow=$query->fetch_array();
@@ -36,6 +38,7 @@ require 'header.php';
 		      	<div class="col-lg">
 		      	<?php 
 		      	$producten = new Producten();
+		      	// Roept de viewCategoryMenu functie aan
 		      	$producten->viewCategoryMenu($DBconnect);
 				 ?>
 		        </div>
@@ -47,6 +50,7 @@ require 'header.php';
 	<div class="col-sm-6" style="margin-bottom:2%; text-align:center;">
 		<h2>Artikelen</h2>
 		<?php 
+		// Roept de viewProducts functie aan
 		$producten->viewProducts($DBconnect);
 		?>
 	</div>
@@ -57,6 +61,7 @@ require 'header.php';
     <div class="container center">
         <ul class="pagination">
           <?php
+          // Roept de viewPagination functie aan
           $producten->viewPagination();
           ?>
         </ul>
@@ -66,5 +71,6 @@ require 'header.php';
 <?php
 require 'footer.php';
 ?>
+
 </body>
 </html>
