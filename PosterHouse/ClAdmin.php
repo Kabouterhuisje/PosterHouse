@@ -19,9 +19,8 @@ class Admin {
 
             // Haalt bijbehorende SubCategorieën van het product op
             $selectedSubCatQuery = $DBconnect->query("SELECT * FROM subcategory AS sc"
-                ." JOIN category AS c ON c.id = sc.Category_id"
-                ." JOIN product_has_category AS phc ON phc.Category_id = c.id"
-                ." WHERE phc.Product_id = '".$row['id']."'");
+                ." JOIN product_has_subcategory AS phsc ON phsc.Subcategory_id = sc.id"
+                ." WHERE phsc.Product_id = '".$row['id']."'");
             $selectedSubCatRow = $selectedSubCatQuery->fetch_array();
 
             // Dropdownlist voor subcategorie
@@ -60,7 +59,7 @@ class Admin {
             $del_id = (int)$del_id;
             // Verwijdert de producten uit de database als de query is geslaagt
             if ($DBconnect->query("DELETE FROM product WHERE id = $del_id")) {
-                if ($DBconnect->query("DELETE FROM product_has_category WHERE Product_id = $del_id")) {
+                if ($DBconnect->query("DELETE FROM product_has_subcategory WHERE Product_id = $del_id")) {
                     echo '<script>alert("succes");</script>';
                 }
             } else {
@@ -115,12 +114,11 @@ class Admin {
             	// Checkt of het product is aangevinkt door het te vergelijken met variabele x
                 if ($x == $up_id) {
                     // Bepalen wat de Category_id is aan de hand van de volgende query
-                    $catNameQuery = $DBconnect->query("SELECT c.id FROM category AS c"
-                        ." JOIN subcategory AS sc ON sc.Category_id = c.id"
-                        ." WHERE sc.subcategory_name = '".$prodSubCategory."';");
-                    $catNameRow = $catNameQuery->fetch_array();
-                    // Wijzigt de Category_id van een product aan de hand van welke subcategorie wordt geselecteerd
-                    $DBconnect->query("UPDATE product_has_category SET Category_id = " . $catNameRow['id'] . " WHERE Product_id = $up_id");
+                    $subCatNameQuery = $DBconnect->query("SELECT id FROM subcategory"
+                        ." WHERE subcategory_name = '".$prodSubCategory."';");
+                    $subCatNameRow = $subCatNameQuery->fetch_array();
+                    // Wijzigt de Subcategory_id van een product aan de hand van welke subcategorie wordt geselecteerd
+                    $DBconnect->query("UPDATE product_has_subcategory SET Subcategory_id = " . $subCatNameRow['id'] . " WHERE Product_id = $up_id");
                 }
             }
         }
@@ -295,14 +293,13 @@ class Admin {
         {
             // Het toevoegen van de subcategorie naam aan de variabele $selectedValue
             $selectedValue = $_POST['product_SubCatName'];
-            // Bepalen wat de Category_id is aan de hand van de volgende query
-            $catNameQuery = $connect->query("SELECT c.id FROM category AS c"
-                ." JOIN subcategory AS sc ON sc.Category_id = c.id"
-                ." WHERE sc.subcategory_name = '".$selectedValue."';");
-            $catNameRow = $catNameQuery->fetch_array();
+            // We selecteren het id dat bij de meegegeven subcategorienaam hoort
+            $subCatNameQuery = $connect->query("SELECT id FROM subcategory"
+                ." WHERE subcategory_name = '".$selectedValue."';");
+            $subCatNameRow = $subCatNameQuery->fetch_array();
 
-            // Voegt de producten toe aan een categorie aan de hand van de geselecteerde categorienaam
-            $queryAddSubCat = $connect->query("INSERT INTO product_has_category (Product_id, Category_id) VALUES ('".$last_id."', '".$catNameRow['id']."');");
+            // Voegt de producten toe aan een subcategorie aan de hand van de geselecteerde subcategorie
+            $queryAddSubCat = $connect->query("INSERT INTO product_has_subcategory (Product_id, Subcategory_id) VALUES ('".$last_id."', '".$subCatNameRow['id']."');");
         }
 
         // Verandert de locatie van de file naar de target als alles goed gaat

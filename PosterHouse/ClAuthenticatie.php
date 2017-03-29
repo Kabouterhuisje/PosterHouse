@@ -1,8 +1,9 @@
 <?php
 
 class Authenticatie {
-
+	// Functie voor het inloggen
     public function login($connect) {
+    	// Stopt het ingevoerde email en wachtwoord in variabele
         $email = strip_tags($_POST['email']);
         $password = strip_tags($_POST['password']);
 
@@ -24,7 +25,7 @@ class Authenticatie {
         }
         $connect->close();
     }
-
+    // Functie voor het registreren
     public function register($connect) {
         $uname = strip_tags($_POST['username']);
         $email = strip_tags($_POST['email']);

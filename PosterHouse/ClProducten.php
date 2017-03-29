@@ -40,27 +40,28 @@ class Producten {
         if (isset($_GET['btnsearch']))
         {
         	// Haalt producten op aan de hand van het ingegeven zoekwoord
-            $query = "SELECT * FROM product WHERE product_name LIKE '%" . $_GET['searchbar'] . "%'";
+            $query = "SELECT * FROM product JOIN product_has_subcategory ON product_has_subcategory.Product_id = product.id" 
+            	." WHERE product_name LIKE '%" . $_GET['searchbar'] . "%'";
         }
         // Controleert of iemand filtert op een categorie
-        else if (isset($_GET['category']))
-        {
-        	// Haalt producten op aan de hand van de aangeklikte categorie
-            $query = "SELECT * FROM product JOIN product_has_category ON product_has_category.Product_id = product.id"
-                ." JOIN category ON category.id = product_has_category.Category_id where category_name = '" . $_GET['category'] . "'";
-        }
-        // Controleert of iemand filtert op een subcategorie
         else if (isset($_GET['subcategory']))
         {
         	// Haalt producten op aan de hand van de aangeklikte subcategorie
-            $query = "SELECT * FROM product JOIN product_has_category ON product_has_category.Product_id = product.id"
-                ." JOIN category ON category.id = product_has_category.Category_id JOIN subcategory ON subcategory.Category_id = category.id"
-                ." where subcategory_name = '" . $_GET['subcategory'] . "'";
+            $query = "SELECT * FROM product JOIN product_has_subcategory ON product_has_subcategory.Product_id = product.id"
+                ." JOIN subcategory ON subcategory.id = product_has_subcategory.Subcategory_id WHERE subcategory_name = '" . $_GET['subcategory'] . "'";
+        }
+        // Controleert of iemand filtert op een subcategorie
+        else if (isset($_GET['category']))
+        {
+        	// Haalt producten op aan de hand van de aangeklikte categorie
+            $query = "SELECT * FROM product JOIN product_has_subcategory ON product_has_subcategory.Product_id = product.id"
+                ." JOIN subcategory ON subcategory.id = product_has_subcategory.Subcategory_id JOIN category ON category.id = subcategory.Category_id"
+                ." WHERE category_name = '" . $_GET['category'] . "'";
         }
         // Zoniet dat laten we alle producten zien
         else
         {
-            $query = "SELECT * FROM product";
+            $query = "SELECT * FROM product JOIN product_has_subcategory ON product_has_subcategory.Product_id = product.id";
         }
         $result = mysqli_query($DBconnect, $query);
         $num_rows = mysqli_num_rows($result);
@@ -89,27 +90,28 @@ class Producten {
         if (isset($_GET['btnsearch']))
         {
         	// Haalt producten op aan de hand van het ingegeven zoekwoord en voegt er een limit aan toe
-            $query = "SELECT * FROM product WHERE product_name LIKE '%" . $_GET['searchbar'] . "%' LIMIT " . $firstresult . ',' . $countresults;
-        }
-        else if (isset($_GET['category']))
-        {
-        	// Haalt producten op aan de hand van de aangeklikte categorie en voegt er een limit aan toe
-            $query = "SELECT * FROM `product` JOIN product_has_category ON product_has_category.Product_id = product.id"
-                ." JOIN category ON category.id = product_has_category.Category_id where category_name = '" . $_GET['category'] . "'"
-                ." LIMIT " . $firstresult . ',' . $countresults;
+            $query = "SELECT * FROM product JOIN product_has_subcategory ON product_has_subcategory.Product_id = product.id"
+            		." WHERE product_name LIKE '%" . $_GET['searchbar'] . "%' LIMIT " . $firstresult . ',' . $countresults;
         }
         else if (isset($_GET['subcategory']))
         {
         	// Haalt producten op aan de hand van de aangeklikte subcategorie en voegt er een limit aan toe
-            $query = "SELECT * FROM product JOIN product_has_category ON product_has_category.Product_id = product.id"
-                ." JOIN category ON category.id = product_has_category.Category_id JOIN subcategory ON subcategory.Category_id = category.id"
-                ." where subcategory_name = '" . $_GET['subcategory'] . "'"
+        	$query = "SELECT * FROM product JOIN product_has_subcategory ON product_has_subcategory.Product_id = product.id"
+        		." JOIN subcategory ON subcategory.id = product_has_subcategory.Subcategory_id WHERE subcategory_name = '" . $_GET['subcategory'] . "'"
+              	." LIMIT " . $firstresult . ',' . $countresults;
+        }
+        else if (isset($_GET['category']))
+        {
+        	// Haalt producten op aan de hand van de aangeklikte categorie en voegt er een limit aan toe
+        	$query = "SELECT * FROM product JOIN product_has_subcategory ON product_has_subcategory.Product_id = product.id"
+        		." JOIN subcategory ON subcategory.id = product_has_subcategory.Subcategory_id JOIN category ON category.id = subcategory.Category_id"
+        		." WHERE category_name = '" . $_GET['category'] . "'"
                 ." LIMIT " . $firstresult . ',' . $countresults;
         }
         // Zoniet dan selecteren we alle producten met het toegevoegde limit
         else
         {
-            $query = "SELECT * FROM product LIMIT " . $firstresult . ',' . $countresults;
+            $query = "SELECT * FROM product JOIN product_has_subcategory ON product_has_subcategory.Product_id = product.id LIMIT " . $firstresult . ',' . $countresults;
         }
         $result = mysqli_query($DBconnect, $query);
 
@@ -127,7 +129,7 @@ class Producten {
                     echo "<div class='col-xs-6 col-md-3' align='center'>";
                     echo "<img src='images/posters/".$row['image']."' height='250' width='180'/>";
                     echo "<p> €".$row['price']."</p>";
-                    echo "<a href='productdetails.php?id=".$row['id']."'>".$row['product_name']."</a>";
+                    echo "<a href='productdetails.php?id=".$row['Product_id']."'>".$row['product_name']."</a>";
                     echo "</div>";
                     echo "</form>";
                 }
