@@ -211,9 +211,10 @@ class Admin {
             // Als de query slaagt dan wordt er voor elke aangevinkte subcategorie de subcategorienaam gewijzigt
 
             foreach ($_POST['subCatName'] as $subCatName) {
+                $x++;
                 if ($x == $up_id) {
                     $DBconnect->query("UPDATE subcategory SET subcategory_name = '" . $subCatName . "' WHERE id = $up_id");
-                    echo '<script>alert("'.$x.'");</script>';
+                    echo '<script>alert("'.$subCatName.'");</script>';
                 }
             }
         }
