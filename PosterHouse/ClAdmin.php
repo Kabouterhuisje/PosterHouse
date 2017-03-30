@@ -140,7 +140,7 @@ class Admin {
             echo "<input type='checkbox' name='checkboxCat[]' value='$checkValueCat' style='margin-top:5px;' />";
 
             // Haalt alle SubCategorieën op aan de hand van de Category_id
-            $subquery = "SELECT * FROM subcategory where Category_id = " . $row['id'];
+            $subquery = "SELECT * FROM subcategory where Category_id = " . $row['id']." ORDER BY id";
             $subresult = mysqli_query($DBconnect, $subquery);
 
             // Gaat elke subcategorie af
@@ -211,10 +211,9 @@ class Admin {
             // Als de query slaagt dan wordt er voor elke aangevinkte subcategorie de subcategorienaam gewijzigt
 
             foreach ($_POST['subCatName'] as $subCatName) {
-                $x++;
                 if ($x == $up_id) {
                     $DBconnect->query("UPDATE subcategory SET subcategory_name = '" . $subCatName . "' WHERE id = $up_id");
-                    echo '<script>alert("'.$subCatName + $x.'");</script>';
+                    echo '<script>alert("'.$x.'");</script>';
                 }
             }
         }
