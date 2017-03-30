@@ -127,7 +127,7 @@ class Admin {
     // Functie die Categorieën laat zien
     public function viewCategorys($DBconnect) {
 		// Haalt alle Categorieën uit de database op
-        $query = "SELECT * FROM category";
+        $query = "SELECT * FROM category ORDER BY id";
         $result = mysqli_query($DBconnect, $query);
 
         echo "<form method='post'>";
@@ -204,12 +204,18 @@ class Admin {
 
     // Functie die SubCategorieën wijzigt
     public function updateSubCategorys($DBconnect) {
+        $x = 0;
     	// Gaat alle SubCategorieën af die zijn aangevinkt
         foreach ($_POST['checkbox'] as $up_id) {
             $up_id = (int)$up_id;
             // Als de query slaagt dan wordt er voor elke aangevinkte subcategorie de subcategorienaam gewijzigt
+
             foreach ($_POST['subCatName'] as $subCatName) {
-                $query = $DBconnect->query("UPDATE subcategory SET subcategory_name = '" . $subCatName . "' WHERE id = $up_id");
+                $x++;
+                if ($x == $up_id) {
+                    $DBconnect->query("UPDATE subcategory SET subcategory_name = '" . $subCatName . "' WHERE id = $up_id");
+                    echo '<script>alert("'.$subCatName + $x.'");</script>';
+                }
             }
         }
     }
